@@ -1,7 +1,16 @@
 <template>
   <header>
-    <img class="logo home" src="@/assets/image/logo.png" alt="" srcset="" />
-    <div class="menu_list">
+    <img
+      class="logo"
+      :src="
+        is_1st_slide
+          ? require('@/assets/image/logo_1st_slide.png')
+          : require('@/assets/image/logo.png')
+      "
+      alt=""
+      srcset=""
+    />
+    <div class="menu_list" :class="[is_1st_slide ? 'home_1st_slide' : '']">
       <div
         class="_item"
         :class="[index === 0 ? 'active' : '']"
@@ -38,6 +47,12 @@ export default {
         }
       ]
     };
+  },
+  props: {
+    is_1st_slide: {
+      type: Boolean,
+      default: false
+    }
   }
 };
 </script>
@@ -61,13 +76,13 @@ header {
     align-items: center;
     & > ._item {
       cursor: pointer;
-      color: rgba(255, 255, 255, 0.2);
+      color: #000000;
       margin-right: px(55);
       font-size: px(18);
       font-family: PingFangSC-Regular, PingFang SC;
       position: relative;
       &.active {
-        color: #fff;
+        color: #599ae5;
         &::after {
           content: "";
           display: block;
@@ -76,7 +91,18 @@ header {
           left: 0;
           width: 100%;
           height: px(2);
-          background-color: #fff;
+          background-color: #599ae5;
+        }
+      }
+    }
+    &.home_1st_slide {
+      & > ._item {
+        color: rgba(255, 255, 255, 0.2);
+        &.active {
+          color: #fff;
+          &::after {
+            background-color: #fff;
+          }
         }
       }
     }
