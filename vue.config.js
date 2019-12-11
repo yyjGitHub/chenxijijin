@@ -6,6 +6,6 @@ module.exports = {
       preProcessor: "scss",
       patterns: ["./src/styles/fun.scss"]
     }
-  }
-  // publicPath: "./"
+  },
+  publicPath: "./"
 };
