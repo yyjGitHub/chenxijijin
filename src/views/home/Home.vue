@@ -27,6 +27,16 @@
         <swiper-slide class="home_2nd_slide">
           <div class="_box">
             <div class="_title"></div>
+            <div class="_center">
+              <div>
+                <div class="_circle"></div>
+              </div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide>Slide 3</swiper-slide>
@@ -171,6 +181,7 @@ export default {
               transform: translate(-50%, -50%);
               z-index: 77;
               height: px(275);
+              text-align: center;
               width: px(623);
               background: url("~@/assets/image/home_1st_slide_logo.png")
                 no-repeat center;
@@ -199,6 +210,50 @@ export default {
             transform: translate(-50%, -50%);
             box-sizing: border-box;
             padding: px(60) px(120) px(0) px(120);
+            ._center {
+              margin-top: px(144);
+              width: 100%;
+              height: 1px;
+              position: relative;
+              display: flex;
+              align-items: flex-end;
+              &::after,
+              &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: px(12);
+                height: px(12);
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                border-radius: 50%;
+                top: 50%;
+                transform: translateY(-50%);
+              }
+              &::after {
+                right: px(-12);
+              }
+              &::before {
+                left: px(-12);
+              }
+              & > div {
+                display: block;
+                flex: 1;
+                height: 1px;
+                background-color: #fff;
+                position: relative;
+                ._circle {
+                  border: 1px solid #fff;
+                  border-radius: 50%;
+                  width: px(20);
+                  height: px(20);
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
+            }
           }
         }
       }
