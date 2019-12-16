@@ -26,17 +26,73 @@
         </swiper-slide>
         <swiper-slide class="home_2nd_slide">
           <div class="_box">
-            <div class="_title"></div>
+            <div class="_top">
+              <img
+                src="~@/assets/image/home_2nd_slide_pic.png"
+                alt=""
+                srcset=""
+              />
+            </div>
             <div class="_center">
               <div>
-                <div class="_circle"></div>
+                <div class="_circle">
+                  <div class="_into">
+                    <div class="_title">
+                      2017年4月12日<br />
+                      在中国证券基金业协会<br />
+                      完成私募基金管理人备案登记
+                    </div>
+                    <div class="_line line1"></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="_circle">
+                  <div class="_into">
+                    <div class="_title">
+                      私募投资基金管理人<br />
+                      登记号为P1062335
+                    </div>
+                    <div class="_line line2"></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="_circle">
+                  <div class="_into">
+                    <div class="_title">
+                      以“轻资产运营”为导向
+                    </div>
+                    <div class="_line line3"></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="_circle">
+                  <div class="_into">
+                    <div class="_title">
+                      多元发展地产基金和<br />
+                      财富管理等多个业务板块
+                    </div>
+                    <div class="_line line2"></div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="_circle">
+                  <div class="_into">
+                    <div class="_title">
+                      集项目研判、结构化<br />
+                      产品定制、投资运营、<br />
+                      风险控制、资产管理于一体
+                    </div>
+                    <div class="_line line1"></div>
+                  </div>
+                </div>
               </div>
               <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
             </div>
+            <div class="_bottom"></div>
           </div>
         </swiper-slide>
         <swiper-slide>Slide 3</swiper-slide>
@@ -210,6 +266,13 @@ export default {
             transform: translate(-50%, -50%);
             box-sizing: border-box;
             padding: px(60) px(120) px(0) px(120);
+            ._top {
+              img {
+                display: block;
+                width: px(310);
+                height: px(61);
+              }
+            }
             ._center {
               margin-top: px(144);
               width: 100%;
@@ -217,6 +280,7 @@ export default {
               position: relative;
               display: flex;
               align-items: flex-end;
+              margin-bottom: px(65);
               &::after,
               &::before {
                 content: "";
@@ -248,9 +312,53 @@ export default {
                   width: px(20);
                   height: px(20);
                   border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
+                  position: absolute;
+                  right: px(-10);
+                  top: px(-10);
+                  &::after {
+                    display: block;
+                    content: "";
+                    width: px(12);
+                    height: px(12);
+                    background-color: #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                  }
+                  ._into {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: calc(100% + 0.07rem);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    ._title {
+                      text-align: center;
+                      font-size: px(14);
+                      font-family: Helvetica;
+                      color: rgba(255, 255, 255, 1);
+                      line-height: px(24);
+                      white-space: nowrap;
+                      margin-bottom: px(2);
+                    }
+                    ._line {
+                      width: 2px;
+                      background-color: rgba(255, 255, 255, 0.6);
+                      &.line1 {
+                        height: px(20);
+                      }
+                      &.line2 {
+                        height: px(60);
+                      }
+                      &.line3 {
+                        height: px(100);
+                      }
+                    }
+                  }
                 }
               }
             }
