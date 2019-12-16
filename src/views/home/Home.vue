@@ -92,7 +92,96 @@
               </div>
               <div></div>
             </div>
-            <div class="_bottom"></div>
+            <div class="_bottom">
+              <div>
+                <img
+                  src="~@/assets/image/home_2nd_slide_pic1.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_content">
+                  <div>
+                    <div class="_title">
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <span>1</span>
+                    </div>
+                    <div class="_into">
+                      优选百强房企
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="~@/assets/image/home_2nd_slide_pic2.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_content">
+                  <div>
+                    <div class="_title">
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <span>2</span>
+                    </div>
+                    <div class="_into">
+                      项目素质优质
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="~@/assets/image/home_2nd_slide_pic3.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_content">
+                  <div>
+                    <div class="_title">
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <span>3</span>
+                    </div>
+                    <div class="_into">
+                      优选核心城市
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <img
+                  src="~@/assets/image/home_2nd_slide_pic4.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_content">
+                  <div>
+                    <div class="_title">
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <span>4</span>
+                    </div>
+                    <div class="_into">
+                      交易条件优质
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide class="home_3rd_slide">
@@ -299,22 +388,62 @@
                     </div>
                   </swiper-slide>
                   <swiper-slide>
-                    111
+                    <div class="left_box">
+                      <span class="day">22</span>
+                      <span class="year">2019-07</span>
+                    </div>
+                    <div class="right_box">
+                      <div class="_title">
+                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
+                      </div>
+                      <div class="_into">
+                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
+                      </div>
+                    </div>
                   </swiper-slide>
                   <swiper-slide>
-                    111
+                    <div class="left_box">
+                      <span class="day">22</span>
+                      <span class="year">2019-07</span>
+                    </div>
+                    <div class="right_box">
+                      <div class="_title">
+                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
+                      </div>
+                      <div class="_into">
+                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
+                      </div>
+                    </div>
                   </swiper-slide>
                   <swiper-slide>
-                    222
+                    <div class="left_box">
+                      <span class="day">22</span>
+                      <span class="year">2019-07</span>
+                    </div>
+                    <div class="right_box">
+                      <div class="_title">
+                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
+                      </div>
+                      <div class="_into">
+                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
+                      </div>
+                    </div>
                   </swiper-slide>
-                  <swiper-slide>
-                    222
-                  </swiper-slide>
-                  <swiper-slide>
-                    222
-                  </swiper-slide>
-                  <div class="subswiper-pagination" slot="pagination"></div>
                 </swiper>
+                <div @click="subswiperPrev" class="own_swiper_btn_prev">
+                  <img
+                    src="~@/assets/image/own_swiper_btn.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div @click="subswiperNext" class="own_swiper_btn_next">
+                  <img
+                    src="~@/assets/image/own_swiper_btn.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -336,7 +465,8 @@ export default {
         direction: "vertical",
         slidesPerView: 1,
         mousewheel: true,
-        initialSlide: 4,
+        initialSlide: 0,
+        simulateTouch: false,
         pagination: {
           el: ".swiper-pagination",
           clickable: false
@@ -346,8 +476,9 @@ export default {
       subSwiperOption: {
         direction: "vertical",
         slidesPerView: 3,
-        // loop: true,
+        loop: true,
         // loopFillGroupWithBlank: true,
+        centeredSlides: true,
         height:
           2.73 *
           ((document.documentElement.clientWidth > 1920
@@ -355,17 +486,16 @@ export default {
             : document.documentElement.clientWidth < 1366
             ? 1366
             : document.documentElement.clientWidth * 100) /
-            1920),
-        pagination: {
-          el: ".subswiper-pagination",
-          clickable: false
-        }
+            1920)
       }
     };
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
+    },
+    subSwiper() {
+      return this.$refs.subSwiper.swiper;
     }
   },
   mounted() {
@@ -384,6 +514,12 @@ export default {
       } else {
         this.active_slide_index = false;
       }
+    },
+    subswiperNext() {
+      this.subSwiper.slideNext();
+    },
+    subswiperPrev() {
+      this.subSwiper.slidePrev();
     }
   },
   components: { Footer, Header }
@@ -602,6 +738,54 @@ export default {
                         height: px(100);
                       }
                     }
+                  }
+                }
+              }
+            }
+            ._bottom {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              & > div {
+                width: px(280);
+                height: px(320);
+                background: rgba(255, 255, 255, 1);
+                & > img {
+                  display: block;
+                  width: px(280);
+                  height: px(168);
+                }
+                & > div._content {
+                  height: px(152);
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                  justify-content: center;
+                  ._title {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: px(8);
+                    img {
+                      display: block;
+                      width: px(17);
+                      height: px(36);
+                      margin-right: px(8);
+                    }
+                    span {
+                      font-size: px(48);
+                      font-family: Helvetica;
+                      color: rgba(0, 0, 0, 1);
+                      line-height: px(48);
+                    }
+                  }
+                  ._into {
+                    font-size: px(24);
+                    font-family: Helvetica;
+                    color: #7f7f7f;
+                    line-height: px(29);
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                   }
                 }
               }
@@ -926,23 +1110,73 @@ export default {
               ._right {
                 width: px(660);
                 height: px(273);
+                position: relative;
+                .own_swiper_btn_prev,
+                .own_swiper_btn_next {
+                  cursor: pointer;
+                  display: block;
+                  width: px(33);
+                  height: px(17);
+                  position: absolute;
+                  left: 50%;
+                  margin-left: px(-8.5);
+                  img {
+                    display: block;
+                    width: 100%;
+                  }
+                }
+                .own_swiper_btn_prev {
+                  top: px(-48);
+                  img {
+                    transform: rotateZ(180deg);
+                  }
+                }
+                .own_swiper_btn_next {
+                  bottom: px(-48);
+                }
                 .sub_swiper {
                   height: px(273);
+                  position: relative;
+                  // &::after,
+                  // &::before {
+                  //   content: "";
+                  //   display: block;
+                  //   height: 2px;
+                  //   width: 100%;
+                  //   position: absolute;
+                  //   background-color: #5b9be4;
+                  //   left: 0;
+                  // }
+                  // &::after {
+                  //   bottom: px(89);
+                  // }
+                  // &::before {
+                  //   top: px(89);
+                  // }
                   .swiper-wrapper {
                     height: px(273);
                     .swiper-slide {
                       color: #7f7f7f;
-                      &::after {
-                        content: "";
-                        display: block;
-                        clear: both;
-                      }
                       display: flex;
                       align-items: center;
-                      // &:nth-child(3n) {
-                      //   border-bottom: none;
-                      // }
-                      border-bottom: px(2) solid #5b9be4;
+                      &.swiper-slide-active {
+                        border: 1px #5b9de4 solid;
+                        border-left: none;
+                        border-right: none;
+                        .left_box {
+                          span {
+                            &.day {
+                              color: #000;
+                            }
+                            &.year {
+                              color: #333;
+                            }
+                          }
+                        }
+                        .right_box {
+                          color: #333;
+                        }
+                      }
                       .left_box {
                         display: flex;
                         align-items: center;

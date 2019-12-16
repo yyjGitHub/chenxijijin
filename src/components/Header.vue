@@ -13,45 +13,59 @@
     <div class="menu_list" :class="[is_1st_slide ? 'home_1st_slide' : '']">
       <div
         class="_item"
-        :class="[index === 0 ? 'active' : '']"
-        v-for="(item, index) in menu_list"
+        :class="[index === active_index ? 'active' : '']"
+        v-for="(item, index) in menulist"
         :key="index"
+        @click="toPage(item, index)"
       >
-        {{ item.title }}
+        {{ item.meta.label }}
       </div>
     </div>
   </header>
 </template>
 <script>
+// import { EventBus } from "@/bus";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      menu_list: [
-        {
-          title: "首页"
-        },
-        {
-          title: "关于晨曦"
-        },
-        {
-          title: "业务领域"
-        },
-        {
-          title: "新闻资讯"
-        },
-        {
-          title: "投资者关系"
-        },
-        {
-          title: "服务中心"
-        }
-      ]
+      active_index: 0
     };
+  },
+  computed: {
+    ...mapGetters({
+      menulist: "menulist"
+    })
   },
   props: {
     is_1st_slide: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    toPage(item, index) {
+      this.active_index = index;
+      this.$router.push(item.path);
+    }
+  },
+  watch: {
+    $route: {
+      handler(newVal) {
+        for (let i = 0; i < this.menulist.length; i++) {
+          const element = this.menulist[i];
+          if (newVal.path.includes(element.path)) {
+            this.active_index = i;
+            console.log(1);
+            // EventBus.$emit("sendSubMenu", {
+            //   path: element.path,
+            //   children: element.children
+            // });
+          }
+        }
+      },
+      deep: true,
+      immediate: true
     }
   }
 };
@@ -64,12 +78,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-top: px(60);
+  padding-bottom: px(60);
   .logo {
     width: px(235);
     height: px(40);
     display: block;
-    &.home {
-    }
   }
   .menu_list {
     display: flex;

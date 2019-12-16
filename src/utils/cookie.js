@@ -1,19 +1,19 @@
-const Token = "user_token";
+const Menu = "cxjj_menu";
 
-export function setToken(token) {
+export function setMenu(menu) {
   return new Promise(resolve => {
-    sessionStorage.setItem(Token, token);
+    sessionStorage.setItem(Menu, menu);
     return resolve(true);
   });
 }
 
-export function getToken() {
-  return sessionStorage.getItem(Token);
+export function getMenu() {
+  return sessionStorage.getItem(Menu);
 }
 
-export function removeToken() {
+export function removeMenu() {
   return new Promise(resolve => {
-    sessionStorage.removeItem(Token);
+    sessionStorage.removeItem(Menu);
     resolve(true);
   });
 }

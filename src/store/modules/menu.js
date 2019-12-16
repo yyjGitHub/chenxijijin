@@ -1,15 +1,20 @@
+import { setMenu, getMenu } from "@/utils/cookie";
 const menu = {
   state: {
-    menulist: []
+    menulist: getMenu()
   },
   mutations: {
     SAVE_MENULIST: (state, list) => {
+      setMenu(list);
       state.menulist = list;
     }
   },
   actions: {
     saveMenuList({ commit }, list) {
-      commit("SAVE_MENULIST", list);
+      return new Promise(resolve => {
+        commit("SAVE_MENULIST", list);
+        resolve(true);
+      });
     }
   }
 };
