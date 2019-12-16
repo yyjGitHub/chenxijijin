@@ -53,8 +53,8 @@ export default {
   },
   methods: {
     toPage(url) {
-      console.log(url);
-      // this.$router.push(url);
+      // console.log(url);
+      this.$router.push(url);
     }
   }
 };
@@ -78,6 +78,7 @@ export default {
       line-height: px(57);
       position: relative;
       margin-right: px(48);
+      cursor: pointer;
       &.active {
         color: rgba(89, 154, 229, 1);
       }
