@@ -91,3 +91,71 @@ body {
   height: px(22);
   line-height: px(22);
 }
+
+.layout_content_box .layout_content_innerbox ._c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: px(223);
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_title {
+  height: px(80);
+  font-size: px(80);
+  font-family: Helvetica;
+  color: #666666;
+  line-height: px(80);
+  font-weight: bold;
+  position: relative;
+  margin-bottom: px(18);
+  z-index: 99;
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_title::before {
+  content: 'COMPANY';
+  display: block;
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  transform: translateX(-50%);
+  top: px(-103);
+  color: #f7f7f7;
+  height: px(144);
+  font-size: px(120);
+  font-family: HelveticaNeue-Bold, HelveticaNeue;
+  font-weight: bolder;
+  line-height: px(144);
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_into {
+  height: px(30);
+  font-size: px(30);
+  font-family: Helvetica;
+  color: #7f7f7f;
+  line-height: px(30);
+  letter-spacing: px(6);
+  margin-bottom: px(82);
+  position: relative;
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_into::after {
+  content: '';
+  display: block;
+  width: px(120);
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: px(-40);
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_intro {
+  text-align: center;
+  width: px(665);
+  font-size: px(18);
+  font-family: Helvetica;
+  color: #7f7f7f;
+  line-height: px(32);
+  margin-bottom: px(120);
+}

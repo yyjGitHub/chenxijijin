@@ -42,8 +42,13 @@ export default {
           const element = this.menulist[i];
           if (element.path === activePath) {
             this.menu_path = activePath;
-            console.log(activePath);
             this.submenu_list = element.children;
+            for (let j = 0; j < element.children.length; j++) {
+              const elementj = element.children[j];
+              if (newVal.path.includes(elementj.path)) {
+                this.subactive_index = j;
+              }
+            }
           }
         }
       },
@@ -62,6 +67,7 @@ export default {
 
 <style lang="scss" scoped>
 .submenu_box {
+  width: 100%;
   height: px(57);
   border-top: 1px solid #979797;
   ._box {
@@ -83,6 +89,7 @@ export default {
         color: rgba(89, 154, 229, 1);
       }
       &.line {
+        color: rgba(89, 154, 229, 1);
         &::after {
           position: absolute;
           right: px(-24);

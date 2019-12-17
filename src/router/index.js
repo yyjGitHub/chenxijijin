@@ -37,11 +37,76 @@ const mainroutes = [
           label: "关于晨曦",
           title: "关于晨曦-晨曦基金"
         }
+      },
+      {
+        path: "CompanyProfile",
+        name: "CompanyProfile",
+        component: _import("about/CompanyProfile"),
+        meta: {
+          label: "企业简介",
+          title: "企业简介-晨曦基金"
+        }
+      },
+      {
+        path: "CorporateVision",
+        name: "CorporateVision",
+        component: _import("about/CorporateVision"),
+        meta: {
+          label: "企业愿景",
+          title: "企业愿景-晨曦基金"
+        }
+      },
+      {
+        path: "CorporateHonor",
+        name: "CorporateHonor",
+        component: _import("about/CorporateHonor"),
+        meta: {
+          label: "企业荣誉",
+          title: "企业荣誉-晨曦基金"
+        }
+      },
+      {
+        path: "InvestmentStrategy",
+        name: "InvestmentStrategy",
+        component: _import("about/InvestmentStrategy"),
+        meta: {
+          label: "投资策略",
+          title: "投资策略-晨曦基金"
+        }
+      },
+      {
+        path: "CooperationPartners",
+        name: "CooperationPartners",
+        component: _import("about/CooperationPartners"),
+        meta: {
+          label: "合作伙伴",
+          title: "合作伙伴-晨曦基金"
+        }
       }
     ],
     meta: {
       label: "关于晨曦",
       title: "关于晨曦-晨曦基金"
+    }
+  },
+  {
+    path: "/news",
+    name: "news",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        name: "index",
+        component: _import("news/Index"),
+        meta: {
+          label: "新闻资讯",
+          title: "新闻资讯-晨曦基金"
+        }
+      }
+    ],
+    meta: {
+      label: "新闻资讯",
+      title: "新闻资讯-晨曦基金"
     }
   }
 ];
