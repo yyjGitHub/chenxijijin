@@ -1,15 +1,13 @@
 <template>
   <div class="submenu_box">
     <div class="_box">
-      <div
-        @click="toPage(menu_path + '/' + item.path)"
-        v-for="(item, index) in submenu_list"
-        :key="index"
-        :class="[
+      <div @click="toPage(menu_path + '/' + item.path)"
+           v-for="(item, index) in submenu_list"
+           :key="index"
+           :class="[
           item.name === 'index' ? 'line' : '',
           subactive_index === index ? 'active' : ''
-        ]"
-      >
+        ]">
         {{ item.meta.label }}
       </div>
     </div>
@@ -19,7 +17,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  data() {
+  data () {
     return {
       menu_path: "",
       submenu_list: [],
@@ -33,7 +31,7 @@ export default {
   },
   watch: {
     $route: {
-      handler(newVal) {
+      handler (newVal) {
         let activePath = "/" + newVal.path.split("/")[1];
         if (activePath === "/home") {
           return;
@@ -57,7 +55,7 @@ export default {
     }
   },
   methods: {
-    toPage(url) {
+    toPage (url) {
       // console.log(url);
       this.$router.push(url);
     }

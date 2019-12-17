@@ -1,7 +1,9 @@
 <template>
   <div class="news_index_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/about_index_toppic.png" alt="" srcset="" />
+      <img src="~@/assets/image/about_index_toppic.png"
+           alt=""
+           srcset="" />
       <div class="_box">
         <div class="_title">共享成长 互利共赢</div>
         <div class="_into">
@@ -22,6 +24,12 @@
           <div class="layout_content_intro">
             结合管理团队过去的投资和运营经验以及对未来基金发展的规划，基金的投资理念和投资方式主要是理解全球发展规律，抓住中国独特的结构性机会
           </div>
+          <div class="_bottom">
+            <el-pagination background
+                           layout="prev, pager, next"
+                           :total="1000">
+            </el-pagination>
+          </div>
         </div>
       </div>
       <div class="part_2">
@@ -39,7 +47,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {};
   }
 };
