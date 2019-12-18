@@ -271,7 +271,7 @@ export default {
             ._title {
               height: px(33);
               font-size: px(24);
-              
+
               color: rgba(0, 0, 0, 1);
               line-height: px(29);
               margin-bottom: px(15);
@@ -280,7 +280,7 @@ export default {
             ._into {
               width: px(479);
               font-size: px(18);
-              
+
               color: #7f7f7f;
               line-height: px(25);
               margin-bottom: px(24);
@@ -296,7 +296,7 @@ export default {
                 align-items: center;
                 span {
                   font-size: px(14);
-                  
+
                   color: rgba(116, 116, 116, 1);
                   display: block;
                   margin-right: px(8);
@@ -359,14 +359,14 @@ export default {
               &:first-child {
                 height: px(33);
                 font-size: px(24);
-                
+
                 color: rgba(0, 0, 0, 1);
                 line-height: px(29);
               }
               &:last-child {
                 height: px(22);
                 font-size: px(16);
-                
+
                 color: rgba(0, 0, 0, 1);
                 line-height: px(19);
               }
@@ -398,7 +398,7 @@ export default {
             & > ._left {
               & > span {
                 display: block;
-                
+
                 color: rgba(255, 255, 255, 1);
                 &:first-child {
                   height: px(65);
@@ -426,7 +426,7 @@ export default {
                   align-items: center;
                   span {
                     font-size: px(14);
-                    
+
                     color: #fff;
                     display: block;
                     margin-right: px(8);
@@ -476,7 +476,7 @@ export default {
                     &:first-child {
                       height: px(33);
                       font-size: px(24);
-                      
+
                       color: rgba(0, 0, 0, 1);
                       line-height: px(33);
                       margin-right: px(12);
@@ -484,7 +484,7 @@ export default {
                     &:last-child {
                       height: px(22);
                       font-size: px(16);
-                      
+
                       color: #7f7f7f;
                       line-height: px(22);
                     }
@@ -492,7 +492,7 @@ export default {
                 }
                 .bottom {
                   font-size: px(18);
-                  
+
                   color: #7f7f7f;
                   line-height: px(24);
                   margin-top: px(13);
@@ -524,7 +524,7 @@ export default {
               align-items: center;
               span {
                 font-size: px(14);
-                
+
                 color: rgba(116, 116, 116, 1);
                 display: block;
                 margin-right: px(8);

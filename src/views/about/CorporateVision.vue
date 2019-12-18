@@ -115,7 +115,7 @@ export default {
           ._title {
             height: px(65);
             font-size: px(48);
-            
+
             color: #636363;
             line-height: px(58);
             font-weight: bold;
@@ -134,14 +134,14 @@ export default {
             span {
               height: px(33);
               font-size: px(24);
-              
+
               color: rgba(89, 154, 229, 1);
               line-height: px(33);
             }
           }
           ._into {
             font-size: px(20);
-            
+
             line-height: px(43);
             color: #636363;
             display: -webkit-box;
@@ -190,7 +190,7 @@ export default {
               -webkit-line-clamp: 2;
               overflow: hidden;
               font-size: px(24);
-              
+
               color: #363636;
               line-height: px(29);
             }

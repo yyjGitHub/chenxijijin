@@ -90,6 +90,26 @@ const mainroutes = [
     }
   },
   {
+    path: "/business",
+    name: "business",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        name: "index",
+        component: _import("business/Index"),
+        meta: {
+          label: "业务领域",
+          title: "业务领域-晨曦基金"
+        }
+      }
+    ],
+    meta: {
+      label: "业务领域",
+      title: "业务领域-晨曦基金"
+    }
+  },
+  {
     path: "/news",
     name: "news",
     component: Layout,
@@ -118,10 +138,50 @@ const mainroutes = [
       label: "新闻资讯",
       title: "新闻资讯-晨曦基金"
     }
+  },
+  {
+    path: "/relation",
+    name: "relation",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        name: "index",
+        component: _import("relation/Index"),
+        meta: {
+          label: "投资者关系",
+          title: "投资者关系-晨曦基金"
+        }
+      }
+    ],
+    meta: {
+      label: "投资者关系",
+      title: "投资者关系-晨曦基金"
+    }
+  },
+  {
+    path: "/service",
+    name: "service",
+    component: Layout,
+    children: [
+      {
+        path: "",
+        name: "index",
+        component: _import("service/Index"),
+        meta: {
+          label: "服务中心",
+          title: "服务中心-晨曦基金"
+        }
+      }
+    ],
+    meta: {
+      label: "服务中心",
+      title: "服务中心-晨曦基金"
+    }
   }
 ];
 const routerPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function push (location) {
+VueRouter.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(error => error);
 };
 const router = new VueRouter({

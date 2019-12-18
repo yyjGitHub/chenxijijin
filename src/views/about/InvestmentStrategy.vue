@@ -249,7 +249,7 @@ export default {
           ._title {
             height: px(60);
             font-size: px(60);
-            
+
             color: rgba(255, 255, 255, 1);
             line-height: px(60);
             margin-bottom: px(16);
@@ -257,7 +257,7 @@ export default {
           ._subtitle {
             height: px(24);
             font-size: px(24);
-            
+
             color: rgba(255, 255, 255, 1);
             line-height: px(24);
             letter-spacing: px(4);
@@ -281,7 +281,7 @@ export default {
               & > span {
                 height: px(33);
                 font-size: px(24);
-                
+
                 color: rgba(0, 0, 0, 1);
                 line-height: px(33);
               }
@@ -290,7 +290,7 @@ export default {
               & > span {
                 display: block;
                 font-size: px(20);
-                
+
                 color: #7f7f7f;
                 line-height: px(40);
                 b.wrap {

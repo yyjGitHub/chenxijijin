@@ -1,6 +1,7 @@
 html,
 body {
   background-color: #fff;
+  min-width: 100%;
 }
 
 .tran-3s {
@@ -169,4 +170,52 @@ body {
 .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: #599ae5;
   border-color: #599ae5;
+}
+
+.amap-copyright,
+.amap-logo {
+  display: none !important;
+}
+
+.el-input__inner,
+.el-textarea__inner {
+  background-color: transparent;
+  height: px(40);
+  line-height: px(40);
+  border-radius: 0;
+  font-size: px(16);
+  border: 0.5px solid #fff;
+  padding: 0 px(12);
+  color: #fff;
+  outline: none;
+}
+
+.el-input__inner:active, .el-input__inner:focus,
+.el-textarea__inner:active,
+.el-textarea__inner:focus {
+  border-color: #fff;
+}
+
+.el-input__inner::-webkit-input-placeholder,
+.el-textarea__inner::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+}
+
+.el-input__inner::-moz-placeholder,
+.el-textarea__inner::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+.el-input__inner:-ms-input-placeholder,
+.el-textarea__inner:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+}
+
+.el-input__inner:-moz-placeholder,
+.el-textarea__inner:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
 }
