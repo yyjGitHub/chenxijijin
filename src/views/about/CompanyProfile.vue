@@ -104,7 +104,7 @@ export default {
           & > span {
             height: px(42);
             font-size: px(30);
-            font-family: Helvetica;
+            
             color: rgba(0, 0, 0, 1);
             line-height: px(36);
             margin-bottom: px(16);
@@ -112,7 +112,7 @@ export default {
           & > div {
             text-align: center;
             font-size: px(20);
-            font-family: Helvetica;
+            
             color: #454545;
             line-height: px(24);
           }

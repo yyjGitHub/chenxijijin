@@ -719,7 +719,7 @@ export default {
                     ._title {
                       text-align: center;
                       font-size: px(14);
-                      font-family: Helvetica;
+
                       color: rgba(255, 255, 255, 1);
                       line-height: px(24);
                       white-space: nowrap;
@@ -773,14 +773,14 @@ export default {
                     }
                     span {
                       font-size: px(48);
-                      font-family: Helvetica;
+
                       color: rgba(0, 0, 0, 1);
                       line-height: px(48);
                     }
                   }
                   ._into {
                     font-size: px(24);
-                    font-family: Helvetica;
+
                     color: #7f7f7f;
                     line-height: px(29);
                     white-space: nowrap;
@@ -846,7 +846,7 @@ export default {
                         justify-content: center;
                         & > span {
                           font-size: px(14);
-                          font-family: Helvetica;
+
                           color: rgba(83, 150, 228, 1);
                           margin-right: px(8);
                         }
@@ -859,7 +859,7 @@ export default {
                     }
                     & > ._center {
                       font-size: px(14);
-                      font-family: Helvetica;
+
                       color: rgba(0, 0, 0, 1);
                       line-height: px(23);
                       margin-bottom: px(53);
@@ -880,13 +880,13 @@ export default {
                         padding-left: px(16);
                         .label_title {
                           font-size: px(18);
-                          font-family: Helvetica;
+
                           color: rgba(91, 155, 228, 1);
                         }
                         .label_value {
                           max-width: px(120);
                           font-size: px(16);
-                          font-family: Helvetica;
+
                           color: rgba(0, 0, 0, 1);
                           line-height: px(19);
                           color: #7f7f7f;
@@ -911,14 +911,14 @@ export default {
                     ._title {
                       height: px(33);
                       font-size: px(24);
-                      font-family: Helvetica;
+
                       color: #6f777b;
                       line-height: px(29);
                     }
                     ._entitle {
                       height: px(22);
                       font-size: px(16);
-                      font-family: Helvetica;
+
                       color: #b1bfc3;
                       line-height: px(19);
                     }
@@ -1008,7 +1008,7 @@ export default {
                   .title {
                     transition: all ease-in-out 0.3s;
                     font-size: px(28);
-                    font-family: Helvetica;
+
                     color: #000;
                     line-height: px(34);
                     margin-bottom: px(4);
@@ -1016,7 +1016,7 @@ export default {
                   .entitle {
                     transition: all ease-in-out 0.3s;
                     font-size: px(18);
-                    font-family: Helvetica;
+
                     color: #7f7f7f;
                     line-height: px(22);
                   }
@@ -1024,7 +1024,7 @@ export default {
                 & > ._into {
                   transition: all ease-in-out 0.3s;
                   font-size: px(24);
-                  font-family: Helvetica;
+
                   color: #7f7f7f;
                   line-height: px(29);
                   margin-bottom: px(16);
@@ -1080,7 +1080,7 @@ export default {
                 .topic_title {
                   height: px(27);
                   font-size: px(20);
-                  font-family: Helvetica;
+
                   color: rgba(0, 0, 0, 1);
                   line-height: px(24);
                   margin-top: px(20);
@@ -1092,7 +1092,7 @@ export default {
                 }
                 .topic_into {
                   font-size: px(16);
-                  font-family: Helvetica;
+
                   color: #333333;
                   line-height: px(22);
                   display: -webkit-box;
@@ -1104,7 +1104,6 @@ export default {
                 .topic_time {
                   color: #7f7f7f;
                   font-size: px(14);
-                  font-family: Helvetica;
                 }
               }
               ._right {
@@ -1203,7 +1202,7 @@ export default {
                         ._title {
                           height: px(25);
                           font-size: px(18);
-                          font-family: Helvetica;
+
                           text-overflow: ellipsis;
                           overflow: hidden;
                           white-space: nowrap;

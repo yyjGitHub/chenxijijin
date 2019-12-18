@@ -63,7 +63,7 @@ footer {
         margin-bottom: px(32);
         & > div {
           font-size: px(16);
-          font-family: Helvetica;
+
           margin-right: px(120);
           cursor: pointer;
         }

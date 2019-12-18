@@ -27,7 +27,6 @@ body {
   text-align: center;
   height: px(88);
   font-size: px(64);
-  font-family: Helvetica;
   color: white;
   line-height: px(77);
   position: relative;
@@ -50,7 +49,6 @@ body {
   max-width: px(600);
   text-align: center;
   font-size: px(16);
-  font-family: Helvetica;
   color: white;
   line-height: px(23);
 }
@@ -63,7 +61,6 @@ body {
 .layout_content_box .page_bottom_box .__part_title .title {
   height: px(50);
   font-size: px(36);
-  font-family: Helvetica;
   color: #599ae5;
   line-height: px(43);
   margin-bottom: px(10);
@@ -86,7 +83,6 @@ body {
 .layout_content_box .page_bottom_box .__part_title .en_title span {
   display: block;
   font-size: px(16);
-  font-family: Helvetica;
   color: #333;
   height: px(22);
   line-height: px(22);
@@ -102,7 +98,6 @@ body {
 .layout_content_box .layout_content_innerbox ._c .layout_content_title {
   height: px(80);
   font-size: px(80);
-  font-family: Helvetica;
   color: #666666;
   line-height: px(80);
   font-weight: bold;
@@ -128,9 +123,7 @@ body {
 }
 
 .layout_content_box .layout_content_innerbox ._c .layout_content_into {
-  height: px(30);
   font-size: px(30);
-  font-family: Helvetica;
   color: #7f7f7f;
   line-height: px(30);
   letter-spacing: px(6);
@@ -154,8 +147,26 @@ body {
   text-align: center;
   width: px(665);
   font-size: px(18);
-  font-family: Helvetica;
   color: #7f7f7f;
   line-height: px(32);
   margin-bottom: px(120);
+}
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  margin: 0 px(16);
+  background-color: transparent;
+  color: #888888;
+  min-width: auto;
+  border-radius: 0px;
+  border: 1px solid #d8d8d8;
+  width: px(48);
+  height: px(48);
+  line-height: px(48);
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #599ae5;
+  border-color: #599ae5;
 }

@@ -102,6 +102,16 @@ const mainroutes = [
           label: "新闻资讯",
           title: "新闻资讯-晨曦基金"
         }
+      },
+      {
+        path: ":newsID",
+        name: "newsietm",
+        component: _import("news/Item"),
+        meta: {
+          label: "新闻资讯",
+          title: "新闻资讯-晨曦基金",
+          isntShow: true
+        }
       }
     ],
     meta: {
@@ -111,7 +121,7 @@ const mainroutes = [
   }
 ];
 const routerPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function push(location) {
+VueRouter.prototype.push = function push (location) {
   return routerPush.call(this, location).catch(error => error);
 };
 const router = new VueRouter({
