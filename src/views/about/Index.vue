@@ -30,7 +30,7 @@
               <div class="_into">
                 上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
               </div>
-              <div class="_more">
+              <div class="_more" @click="toPage('/about/CompanyProfile')">
                 <div>
                   <span>了解更多</span>
                   <i></i>
@@ -65,7 +65,7 @@
               srcset=""
             />
             <div>
-              <div>
+              <div @click="toPage('/about/CorporateVision/QYYJ')">
                 <img
                   src="~@/assets/image/about_index_part2_icon1.png"
                   alt=""
@@ -84,7 +84,7 @@
                 alt=""
                 srcset=""
               />
-              <div>
+              <div @click="toPage('/about/CorporateVision/QYRY')">
                 <img
                   src="~@/assets/image/about_index_part2_icon2.png"
                   alt=""
@@ -115,7 +115,7 @@
               <div class="_left">
                 <span>灵活配置 专业投资</span>
                 <span>Flexible configuration, professional investment</span>
-                <div class="_more">
+                <div class="_more" @click="toPage('/about/InvestmentStrategy')">
                   <div>
                     <span>了解更多</span>
                     <i></i>
@@ -123,7 +123,7 @@
                 </div>
               </div>
               <div class="_right">
-                <div>
+                <div @click="toPage('InvestmentStrategy', 'TZLN')">
                   <div class="top">
                     <span>投资理念</span>
                     <span>Investment philosophy</span>
@@ -132,7 +132,7 @@
                     以房地产投融资业务为主导，同时关注房地产行业衍生业务的股权投资机会。
                   </div>
                 </div>
-                <div>
+                <div @click="toPage('InvestmentStrategy', 'TZCL')">
                   <div class="top">
                     <span>投资策略</span>
                     <span>Investment strategy</span>
@@ -141,7 +141,7 @@
                     以房地产投融资业务为主导，同时关注房地产行业衍生业务的股权投资机会。
                   </div>
                 </div>
-                <div>
+                <div @click="toPage('InvestmentStrategy', 'FXKZ')">
                   <div class="top">
                     <span>风险控制</span>
                     <span>Risk control</span>
@@ -167,7 +167,7 @@
                 <span>PARTNERS</span>
               </div>
             </div>
-            <div class="_more">
+            <div class="_more" @click="toPage('/about/CooperationPartners')">
               <div>
                 <span>了解更多</span>
                 <i></i>
@@ -249,6 +249,18 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    toPage(url, query = "") {
+      if (query) {
+        this.$router.push({
+          name: url,
+          params: { activeDIV: query }
+        });
+      } else {
+        this.$router.push(url);
+      }
+    }
   }
 };
 </script>
@@ -286,6 +298,7 @@ export default {
               margin-bottom: px(24);
             }
             ._more {
+              cursor: pointer;
               padding: 0 px(24);
               display: inline-block;
               height: px(40);
@@ -325,10 +338,12 @@ export default {
     .part_2 {
       height: px(837);
       box-sizing: border-box;
+      width: 100%;
       padding-top: px(80);
       ._box {
         margin-top: px(35);
         display: flex;
+        width: 100%;
         & > img {
           display: block;
           width: px(720);
@@ -344,6 +359,7 @@ export default {
             height: px(280);
           }
           & > div {
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -415,6 +431,7 @@ export default {
                 }
               }
               ._more {
+                cursor: pointer;
                 margin-top: px(50);
                 padding: 0 px(24);
                 display: inline-block;
@@ -449,6 +466,7 @@ export default {
               flex-direction: column;
               justify-content: space-between;
               & > div {
+                cursor: pointer;
                 width: px(560);
                 height: px(160);
                 background: rgba(255, 255, 255, 1);
@@ -514,6 +532,7 @@ export default {
           justify-content: space-between;
           margin-bottom: px(11);
           ._more {
+            cursor: pointer;
             padding: 0 px(24);
             display: inline-block;
             height: px(40);

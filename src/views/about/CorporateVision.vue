@@ -23,7 +23,7 @@
           P1062335，公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于成为集项目研判、结构化产品定制、投资运营、风险控制、资产管理于一体的房地产综合服务提供商和独具特色的股权投资机构，跻身业内一流的综合基金平台行列。
         </div>
         <div class="_bottom">
-          <div class="top_part">
+          <div class="top_part" id="QYYJ">
             <div class="_left">
               <div class="_title">晨曦基金</div>
               <div class="_entitle">
@@ -47,7 +47,7 @@
               />
             </div>
           </div>
-          <div class="bottom_part">
+          <div class="bottom_part" id="QYRY">
             <div>
               <img
                 src="~@/assets/image/about_corporatevision_pic2.png"

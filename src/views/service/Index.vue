@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
-      <div class="part1">
+      <div class="part1" id="LXWM">
         <div class="_c">
           <div class="layout_content_title">
             联系我们
@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-      <div class="part2">
+      <div class="part2" id="SHZP">
         <div class="_c">
           <div class="layout_content_title">
             人才招聘
@@ -459,6 +459,7 @@ export default {
               }
             }
             .show_more {
+              cursor: pointer;
               width: px(240);
               height: px(48);
               border: 1px solid #5b9be4;

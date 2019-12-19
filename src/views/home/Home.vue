@@ -1,37 +1,34 @@
 <template>
   <div class="container_box homepage_box">
-    <Header :is_1st_slide="active_slide_index" class="header"></Header>
-    <div
-      class="swiper_box"
-      :class="[active_slide_index ? 'home_1st_slide' : '']"
-    >
-      <swiper
-        class="home_swiper"
-        ref="mySwiper"
-        :options="homeSwiperOption"
-        @slideChangeTransitionStart="homeSlideChange"
-      >
+    <Header :is_1st_slide="active_slide_index"
+            class="header"></Header>
+    <div class="page_index_box"
+         :class="[active_slide_index ? 'active' : '']">
+      <span class="active_index">{{ active_slide_indexnum }}</span><span class="total_index">/05</span>
+    </div>
+    <div class="swiper_box"
+         :class="[active_slide_index ? 'home_1st_slide' : '']">
+      <swiper class="home_swiper"
+              ref="mySwiper"
+              :options="homeSwiperOption"
+              @slideChangeTransitionStart="homeSlideChange">
         <swiper-slide class="home_1st_slide">
           <div class="_box">
             <div>
               <span>忠于所托 成就价值</span>
             </div>
           </div>
-          <img
-            class="home_bg"
-            src="~@/assets/image/home_1st_slide_bg.png"
-            alt=""
-            srcset=""
-          />
+          <img class="home_bg"
+               src="~@/assets/image/home_1st_slide_bg.png"
+               alt=""
+               srcset="" />
         </swiper-slide>
         <swiper-slide class="home_2nd_slide">
           <div class="_box">
             <div class="_top">
-              <img
-                src="~@/assets/image/home_2nd_slide_pic.png"
-                alt=""
-                srcset=""
-              />
+              <img src="~@/assets/image/home_2nd_slide_pic.png"
+                   alt=""
+                   srcset="" />
             </div>
             <div class="_center">
               <div>
@@ -94,19 +91,15 @@
             </div>
             <div class="_bottom">
               <div>
-                <img
-                  src="~@/assets/image/home_2nd_slide_pic1.png"
-                  alt=""
-                  srcset=""
-                />
+                <img src="~@/assets/image/home_2nd_slide_pic1.png"
+                     alt=""
+                     srcset="" />
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
+                      <img src="~@/assets/image/half_circle_icon.png"
+                           alt=""
+                           srcset="" />
                       <span>1</span>
                     </div>
                     <div class="_into">
@@ -116,19 +109,15 @@
                 </div>
               </div>
               <div>
-                <img
-                  src="~@/assets/image/home_2nd_slide_pic2.png"
-                  alt=""
-                  srcset=""
-                />
+                <img src="~@/assets/image/home_2nd_slide_pic2.png"
+                     alt=""
+                     srcset="" />
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
+                      <img src="~@/assets/image/half_circle_icon.png"
+                           alt=""
+                           srcset="" />
                       <span>2</span>
                     </div>
                     <div class="_into">
@@ -138,19 +127,15 @@
                 </div>
               </div>
               <div>
-                <img
-                  src="~@/assets/image/home_2nd_slide_pic3.png"
-                  alt=""
-                  srcset=""
-                />
+                <img src="~@/assets/image/home_2nd_slide_pic3.png"
+                     alt=""
+                     srcset="" />
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
+                      <img src="~@/assets/image/half_circle_icon.png"
+                           alt=""
+                           srcset="" />
                       <span>3</span>
                     </div>
                     <div class="_into">
@@ -160,19 +145,15 @@
                 </div>
               </div>
               <div>
-                <img
-                  src="~@/assets/image/home_2nd_slide_pic4.png"
-                  alt=""
-                  srcset=""
-                />
+                <img src="~@/assets/image/home_2nd_slide_pic4.png"
+                     alt=""
+                     srcset="" />
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
+                      <img src="~@/assets/image/half_circle_icon.png"
+                           alt=""
+                           srcset="" />
                       <span>4</span>
                     </div>
                     <div class="_into">
@@ -191,20 +172,16 @@
                 <div class="_box">
                   <div>
                     <div class="_top">
-                      <img
-                        class="pic"
-                        src="~@/assets/image/home_3rd_slide_logo.png"
-                        alt=""
-                        srcset=""
-                      />
+                      <img class="pic"
+                           src="~@/assets/image/home_3rd_slide_logo.png"
+                           alt=""
+                           srcset="" />
                       <div class="more">
                         <span>了解更多</span>
-                        <img
-                          src="~@/assets/image/arrow_right_active.png"
-                          class="arrow_right"
-                          alt=""
-                          srcset=""
-                        />
+                        <img src="~@/assets/image/arrow_right_active.png"
+                             class="arrow_right"
+                             alt=""
+                             srcset="" />
                       </div>
                     </div>
                     <div class="_center">
@@ -272,11 +249,9 @@
         <swiper-slide class="home_4th_slide">
           <div class="_box">
             <div class="_top">
-              <img
-                src="~@/assets/image/home_4th_slide_logo.png"
-                alt=""
-                srcset=""
-              />
+              <img src="~@/assets/image/home_4th_slide_logo.png"
+                   alt=""
+                   srcset="" />
             </div>
             <div class="_bottom">
               <div>
@@ -290,12 +265,10 @@
                 </div>
                 <div class="_into">扩宽投资途径</div>
                 <div class="pic_box">
-                  <img
-                    class="_pic"
-                    src="~@/assets/image/home_3rd_slide_pic1.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img class="_pic"
+                       src="~@/assets/image/home_3rd_slide_pic1.png"
+                       alt=""
+                       srcset="" />
                 </div>
               </div>
               <div>
@@ -309,12 +282,10 @@
                 </div>
                 <div class="_into">专业团队持续跟踪和深入研究</div>
                 <div class="pic_box">
-                  <img
-                    class="_pic"
-                    src="~@/assets/image/home_4th_slide_pic2.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img class="_pic"
+                       src="~@/assets/image/home_4th_slide_pic2.png"
+                       alt=""
+                       srcset="" />
                 </div>
               </div>
               <div>
@@ -328,12 +299,10 @@
                 </div>
                 <div class="_into">专业团队持续跟踪和深入研究</div>
                 <div class="pic_box">
-                  <img
-                    class="_pic"
-                    src="~@/assets/image/home_4th_slide_pic3.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img class="_pic"
+                       src="~@/assets/image/home_4th_slide_pic3.png"
+                       alt=""
+                       srcset="" />
                 </div>
               </div>
             </div>
@@ -342,20 +311,16 @@
         <swiper-slide class="home_5th_slide">
           <div class="_box">
             <div class="_top">
-              <img
-                src="~@/assets/image/home_5th_slide_logo.png"
-                alt=""
-                srcset=""
-              />
+              <img src="~@/assets/image/home_5th_slide_logo.png"
+                   alt=""
+                   srcset="" />
             </div>
             <div class="_bottom">
               <div class="_left">
-                <img
-                  class="topic_img"
-                  src="~@/assets/image/home_5th_slide_pic1.png"
-                  alt=""
-                  srcset=""
-                />
+                <img class="topic_img"
+                     src="~@/assets/image/home_5th_slide_pic1.png"
+                     alt=""
+                     srcset="" />
                 <div class="topic_title">
                   旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
                 </div>
@@ -367,12 +332,10 @@
                 </div>
               </div>
               <div class="_right">
-                <swiper
-                  class="sub_swiper"
-                  ref="subSwiper"
-                  :options="subSwiperOption"
-                  @slideChangeTransitionStart="subSlideChange"
-                >
+                <swiper class="sub_swiper"
+                        ref="subSwiper"
+                        :options="subSwiperOption"
+                        @slideChangeTransitionStart="subSlideChange">
                   <swiper-slide>
                     <div class="left_box">
                       <span class="day">22</span>
@@ -430,26 +393,25 @@
                     </div>
                   </swiper-slide>
                 </swiper>
-                <div @click="subswiperPrev" class="own_swiper_btn_prev">
-                  <img
-                    src="~@/assets/image/own_swiper_btn.png"
-                    alt=""
-                    srcset=""
-                  />
+                <div @click="subswiperPrev"
+                     class="own_swiper_btn_prev">
+                  <img src="~@/assets/image/own_swiper_btn.png"
+                       alt=""
+                       srcset="" />
                 </div>
-                <div @click="subswiperNext" class="own_swiper_btn_next">
-                  <img
-                    src="~@/assets/image/own_swiper_btn.png"
-                    alt=""
-                    srcset=""
-                  />
+                <div @click="subswiperNext"
+                     class="own_swiper_btn_next">
+                  <img src="~@/assets/image/own_swiper_btn.png"
+                       alt=""
+                       srcset="" />
                 </div>
               </div>
             </div>
           </div>
           <Footer :isHome="true"></Footer>
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-pagination"
+             slot="pagination"></div>
       </swiper>
     </div>
   </div>
@@ -459,7 +421,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export default {
-  data() {
+  data () {
     return {
       homeSwiperOption: {
         direction: "vertical",
@@ -472,11 +434,13 @@ export default {
           clickable: false
         }
       },
+      active_slide_indexnum: 0,
       active_slide_index: false,
       subSwiperOption: {
         direction: "vertical",
         slidesPerView: 3,
         loop: true,
+        init: false,
         // loopFillGroupWithBlank: true,
         centeredSlides: true,
         height:
@@ -484,41 +448,43 @@ export default {
           ((document.documentElement.clientWidth > 1920
             ? 1920
             : document.documentElement.clientWidth < 1366
-            ? 1366
-            : document.documentElement.clientWidth * 100) /
+              ? 1366
+              : document.documentElement.clientWidth * 100) /
             1920)
       }
     };
   },
   computed: {
-    swiper() {
+    swiper () {
       return this.$refs.mySwiper.swiper;
     },
-    subSwiper() {
+    subSwiper () {
       return this.$refs.subSwiper.swiper;
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.setActiveSlideIndex();
+      this.subSwiper.init();
     });
   },
   methods: {
-    homeSlideChange() {
+    homeSlideChange () {
       this.setActiveSlideIndex();
     },
-    subSlideChange() {},
-    setActiveSlideIndex() {
+    subSlideChange () { },
+    setActiveSlideIndex () {
+      this.active_slide_indexnum = '0' + (this.swiper.activeIndex + 1)
       if (this.swiper.activeIndex === 0) {
         this.active_slide_index = true;
       } else {
         this.active_slide_index = false;
       }
     },
-    subswiperNext() {
+    subswiperNext () {
       this.subSwiper.slideNext();
     },
-    subswiperPrev() {
+    subswiperPrev () {
       this.subSwiper.slidePrev();
     }
   },
@@ -538,10 +504,33 @@ export default {
     transform: translateX(-50%);
     z-index: 99;
   }
+  .page_index_box {
+    z-index: 999;
+    position: fixed;
+    right: px(110);
+    bottom: px(70);
+    display: flex;
+    align-items: flex-end;
+    &.active {
+      color: #fff;
+    }
+    color: #333333;
+    .active_index {
+      font-size: px(36);
+      line-height: px(58);
+      height: px(50);
+    }
+    .total_index {
+      font-size: px(20);
+      line-height: px(24);
+      height: px(27);
+    }
+  }
   .swiper_box {
     &.home_1st_slide {
       .home_swiper {
         .swiper-pagination-bullet {
+          position: relative;
           border: 1px solid #fff;
           &:active {
             border: 1px solid #fff;
@@ -551,6 +540,18 @@ export default {
             &::after {
               background: url("~@/assets/image/swiper_pagination_bullet_home_1st_icon.png")
                 no-repeat center;
+              // position: absolute;
+              // top: 50%;
+              // left: 50%;
+              // width: px(26);
+              // height: px(26);
+              // background-color: rgba(0, 0, 0, 0);
+              // box-sizing: border-box;
+              // border: px(4) solid #fff;
+              // margin-left: px(-13);
+              // margin-top: px(-13);
+              // border-radius: 50%;
+              // transform: rotate(-36deg) skewY(-54deg);
             }
           }
         }

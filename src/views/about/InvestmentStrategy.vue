@@ -22,7 +22,7 @@
           结合管理团队过去的投资和运营经验以及对未来基金发展的规划，基金的投资理念和投资方式主要是理解全球发展规律，抓住中国独特的结构性机会，坚持独立的价值投资方式并提供后续关键的服务。
         </div>
         <div class="_bottom">
-          <div class="part part1">
+          <div class="part part1" id="TZLN">
             <div class="top_pic">
               <div class="_title">
                 投资理念
@@ -79,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="part part2">
+          <div class="part part2" id="TZCL">
             <div class="top_pic">
               <div class="_title">
                 投资策略
@@ -143,7 +143,7 @@
               </div>
             </div>
           </div>
-          <div class="part part2">
+          <div class="part part2" id="FXKZ">
             <div class="top_pic">
               <div class="_title">
                 风险控制
@@ -202,9 +202,36 @@
 </template>
 
 <script>
+import $ from "jquery";
 export default {
   data() {
     return {};
+  },
+  watch: {
+    $route: {
+      handler(newVal) {
+        if (newVal.params.hasOwnProperty("activeDIV")) {
+          this.$nextTick(() => {
+            let rootHtml = document.documentElement;
+            let deviceWidth =
+              rootHtml.clientWidth > 1920
+                ? 1920
+                : rootHtml.clientWidth < 1024
+                ? 1024
+                : rootHtml.clientWidth;
+            let t_a = $(`#${newVal.params.activeDIV}`).offset();
+            $("html,body").animate(
+              {
+                scrollTop: t_a.top - ((deviceWidth * 100) / 1920) * 1.2 + "px"
+              },
+              500
+            );
+          });
+        }
+      },
+      deep: true,
+      immediate: true
+    }
   }
 };
 </script>

@@ -2,7 +2,8 @@
   <div class="submenu_box">
     <div class="_box">
       <div
-        @click="toPage(menu_path + '/' + item.path)"
+        class="tran-3s"
+        @click="toPage(menu_path, item, index)"
         v-for="(item, index) in submenu_list"
         :key="index"
         v-show="!item.meta.isntShow"
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -47,6 +49,12 @@ export default {
             for (let j = 0; j < element.children.length; j++) {
               const elementj = element.children[j];
               if (newVal.path.includes(elementj.path)) {
+                if (newVal.path.includes("/about/CorporateVision/")) {
+                  let t_a = $(
+                    `#${newVal.path.split("/about/CorporateVision/")[1]}`
+                  ).offset();
+                  $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
+                }
                 this.subactive_index = j;
               }
             }
@@ -58,9 +66,14 @@ export default {
     }
   },
   methods: {
-    toPage(url) {
-      // console.log(url);
-      this.$router.push(url);
+    toPage(path, item, index) {
+      if (item.hasOwnProperty("component")) {
+        this.$router.push(path + "/" + item.path);
+      } else {
+        let t_a = $(`#${item.path}`).offset();
+        $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
+      }
+      this.subactive_index = index;
     }
   }
 };

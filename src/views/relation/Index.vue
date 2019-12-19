@@ -144,6 +144,7 @@ export default {
               overflow: hidden;
             }
             ._more {
+              cursor: pointer;
               padding: 0 px(24);
               display: inline-block;
               height: px(40);

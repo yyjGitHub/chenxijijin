@@ -10,9 +10,12 @@
       alt=""
       srcset=""
     />
-    <div class="menu_list" :class="[is_1st_slide ? 'home_1st_slide' : '']">
+    <div
+      class="menu_list tran-3s"
+      :class="[is_1st_slide ? 'home_1st_slide' : '']"
+    >
       <div
-        class="_item"
+        class="_item tran-3s"
         :class="[index === active_index ? 'active' : '']"
         v-for="(item, index) in menulist"
         :key="index"
@@ -56,7 +59,6 @@ export default {
           const element = this.menulist[i];
           if (newVal.path.includes(element.path)) {
             this.active_index = i;
-            console.log(1);
             // EventBus.$emit("sendSubMenu", {
             //   path: element.path,
             //   children: element.children

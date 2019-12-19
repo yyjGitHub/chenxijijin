@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
-      <div class="part_1">
+      <div class="part_1" id="CXSJ">
         <div class="_c">
           <div class="layout_content_title">
             晨曦视界
@@ -96,7 +96,7 @@
           </div>
         </div>
       </div>
-      <div class="part_2">
+      <div class="part_2" id="QYGG">
         <div class="_c">
           <div class="layout_content_title">
             企业公告
@@ -146,7 +146,7 @@
           </div>
         </div>
       </div>
-      <div class="part_3">
+      <div class="part_3" id="CEOTALK">
         <div class="_c">
           <div class="layout_content_title">
             CEO TALK
@@ -409,6 +409,7 @@ export default {
                 overflow: hidden;
               }
               ._more {
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 span {

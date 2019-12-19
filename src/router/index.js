@@ -48,7 +48,7 @@ const mainroutes = [
         }
       },
       {
-        path: "CorporateVision",
+        path: "CorporateVision/QYYJ",
         name: "CorporateVision",
         component: _import("about/CorporateVision"),
         meta: {
@@ -57,9 +57,9 @@ const mainroutes = [
         }
       },
       {
-        path: "CorporateHonor",
-        name: "CorporateHonor",
-        component: _import("about/CorporateHonor"),
+        path: "CorporateVision/QYRY",
+        name: "CorporateVision",
+        component: _import("about/CorporateVision"),
         meta: {
           label: "企业荣誉",
           title: "企业荣誉-晨曦基金"
@@ -102,6 +102,27 @@ const mainroutes = [
           label: "业务领域",
           title: "业务领域-晨曦基金"
         }
+      },
+      {
+        path: "DCJJ",
+        name: "DCJJ",
+        meta: {
+          label: "地产基金"
+        }
+      },
+      {
+        path: "JGYW",
+        name: "JGYW",
+        meta: {
+          label: "机构业务"
+        }
+      },
+      {
+        path: "CFGL",
+        name: "CFGL",
+        meta: {
+          label: "财富管理"
+        }
       }
     ],
     meta: {
@@ -132,6 +153,27 @@ const mainroutes = [
           title: "新闻资讯-晨曦基金",
           isntShow: true
         }
+      },
+      {
+        path: "CXSJ",
+        name: "CXSJ",
+        meta: {
+          label: "晨曦视界"
+        }
+      },
+      {
+        path: "QYGG",
+        name: "QYGG",
+        meta: {
+          label: "企业公告"
+        }
+      },
+      {
+        path: "CEOTALK",
+        name: "CEOTALK",
+        meta: {
+          label: "CEO TALK"
+        }
       }
     ],
     meta: {
@@ -151,6 +193,27 @@ const mainroutes = [
         meta: {
           label: "投资者关系",
           title: "投资者关系-晨曦基金"
+        }
+      },
+      {
+        path: "2016GG",
+        name: "2016GG",
+        meta: {
+          label: "2016年公告"
+        }
+      },
+      {
+        path: "2017GG",
+        name: "2017GG",
+        meta: {
+          label: "2017年公告"
+        }
+      },
+      {
+        path: "2018GG",
+        name: "2018GG",
+        meta: {
+          label: "2018年公告"
         }
       }
     ],
@@ -172,6 +235,20 @@ const mainroutes = [
           label: "服务中心",
           title: "服务中心-晨曦基金"
         }
+      },
+      {
+        path: "LXWM",
+        name: "LXWM",
+        meta: {
+          label: "联系我们"
+        }
+      },
+      {
+        path: "SHZP",
+        name: "SHZP",
+        meta: {
+          label: "社会招聘"
+        }
       }
     ],
     meta: {
@@ -189,15 +266,21 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   loadingroutes: false,
   isCreateMenu: false,
-  routes: [...baseroutes, ...mainroutes]
+  routes: [...baseroutes, ...mainroutes],
+  scrollBehavior() {
+    // to, from, savedPosition
+    return { x: 0, y: 0 };
+  }
 });
 
 router.beforeEach((to, from, next) => {
   if (router.options.isCreateMenu) {
+    document.getElementsByTagName("title")[0].innerText = to.meta.title;
     next();
   } else {
     store.dispatch("saveMenuList", mainroutes).then(() => {
       router.options.isCreateMenu = true;
+      document.getElementsByTagName("title")[0].innerText = to.meta.title;
       next();
     });
   }
