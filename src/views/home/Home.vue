@@ -1,34 +1,155 @@
 <template>
   <div class="container_box homepage_box">
-    <Header :is_1st_slide="active_slide_index"
-            class="header"></Header>
-    <div class="page_index_box"
-         :class="[active_slide_index ? 'active' : '']">
-      <span class="active_index">{{ active_slide_indexnum }}</span><span class="total_index">/05</span>
+    <Header :is_1st_slide="active_slide_index" class="header"></Header>
+    <div class="page_index__box">
+      <div class="page_index_box" :class="[active_slide_index ? 'active' : '']">
+        <span class="active_index">{{ active_slide_indexnum }}</span
+        ><span class="total_index">/05</span>
+      </div>
     </div>
-    <div class="swiper_box"
-         :class="[active_slide_index ? 'home_1st_slide' : '']">
-      <swiper class="home_swiper"
-              ref="mySwiper"
-              :options="homeSwiperOption"
-              @slideChangeTransitionStart="homeSlideChange">
+    <div 
+      class="main_swiper_pagination" 
+      :class="[active_slide_index ? 'home_1st_slide': '']"
+      >
+      <div class="active" :style="{ top: ((active_slide_indexnum-1)*(24+8)) + 'px' }">
+        <div>
+          <span>
+            <i></i>
+          </span>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="swiper_box">
+      <!-- :class="[active_slide_index ? "home_1st_slide" : ""]" -->
+      <swiper
+        class="home_swiper"
+        ref="mySwiper"
+        :options="homeSwiperOption"
+        @slideChangeTransitionStart="homeSlideChange"
+      >
         <swiper-slide class="home_1st_slide">
           <div class="_box">
             <div>
               <span>忠于所托 成就价值</span>
             </div>
           </div>
-          <img class="home_bg"
-               src="~@/assets/image/home_1st_slide_bg.png"
-               alt=""
-               srcset="" />
+          <img
+            class="home_bg"
+            src="~@/assets/image/home_1st_slide_bg.png"
+            alt=""
+            srcset=""
+          />
         </swiper-slide>
         <swiper-slide class="home_2nd_slide">
           <div class="_box">
+            <div class="left_box">
+              <div class="top_box">
+                <div class="_box">
+                  <div>
+                    <div class="_top">
+                      <img
+                        class="pic"
+                        src="~@/assets/image/home_3rd_slide_logo.png"
+                        alt=""
+                        srcset=""
+                      />
+                      <div class="more">
+                        <span>了解更多</span>
+                        <img
+                          src="~@/assets/image/arrow_right_active.png"
+                          class="arrow_right"
+                          alt=""
+                          srcset=""
+                        />
+                      </div>
+                    </div>
+                    <div class="_center">
+                      上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
+                    </div>
+                    <div class="_bottom">
+                      <div>
+                        <div class="label_title">时间：</div>
+                        <div class="label_value">
+                          成立于<br />
+                          2016-10-28
+                        </div>
+                      </div>
+                      <div>
+                        <div class="label_title">资本：</div>
+                        <div class="label_value">
+                          注册资本<br />
+                          一亿人民币
+                        </div>
+                      </div>
+                      <div>
+                        <div class="label_title">实力：</div>
+                        <div class="label_value">
+                          上海旭辉企业<br />
+                          控股的子公司
+                        </div>
+                      </div>
+                      <div>
+                        <div class="label_title">伙伴：</div>
+                        <div class="label_value">
+                          旭辉“房地产+”<br />
+                          核心成员之一
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom_box">
+                <div class="_other">
+                  <div>
+                    <div class="_title">
+                      企业荣誉
+                    </div>
+                    <div class="_entitle">
+                      COMPANY HONOR
+                    </div>
+                  </div>
+                  <img
+                    class="_img"
+                    src="~@/assets/image/home_3rd_slide_pic1.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="_other">
+                  <div>
+                    <div class="_title">
+                      企业愿景
+                    </div>
+                    <div class="_entitle">
+                      COMPANY VISION
+                    </div>
+                  </div>
+                  <img
+                    class="_img"
+                    src="~@/assets/image/home_3rd_slide_pic2.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="right_box"></div>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="home_3rd_slide">
+          <div class="_box">
             <div class="_top">
-              <img src="~@/assets/image/home_2nd_slide_pic.png"
-                   alt=""
-                   srcset="" />
+              <img
+                src="~@/assets/image/home_2nd_slide_pic.png"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="_center">
               <div>
@@ -91,15 +212,21 @@
             </div>
             <div class="_bottom">
               <div>
-                <img src="~@/assets/image/home_2nd_slide_pic1.png"
-                     alt=""
-                     srcset="" />
+                <div class="img_box">
+                  <img
+                    src="~@/assets/image/home_2nd_slide_pic1.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img src="~@/assets/image/half_circle_icon.png"
-                           alt=""
-                           srcset="" />
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
                       <span>1</span>
                     </div>
                     <div class="_into">
@@ -109,15 +236,21 @@
                 </div>
               </div>
               <div>
-                <img src="~@/assets/image/home_2nd_slide_pic2.png"
-                     alt=""
-                     srcset="" />
+                <div class="img_box">
+                  <img
+                    src="~@/assets/image/home_2nd_slide_pic2.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img src="~@/assets/image/half_circle_icon.png"
-                           alt=""
-                           srcset="" />
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
                       <span>2</span>
                     </div>
                     <div class="_into">
@@ -127,15 +260,21 @@
                 </div>
               </div>
               <div>
-                <img src="~@/assets/image/home_2nd_slide_pic3.png"
-                     alt=""
-                     srcset="" />
+                <div class="img_box">
+                  <img
+                    src="~@/assets/image/home_2nd_slide_pic3.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img src="~@/assets/image/half_circle_icon.png"
-                           alt=""
-                           srcset="" />
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
                       <span>3</span>
                     </div>
                     <div class="_into">
@@ -145,15 +284,21 @@
                 </div>
               </div>
               <div>
-                <img src="~@/assets/image/home_2nd_slide_pic4.png"
-                     alt=""
-                     srcset="" />
+                <div class="img_box">
+                  <img
+                    src="~@/assets/image/home_2nd_slide_pic4.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
                 <div class="_content">
                   <div>
                     <div class="_title">
-                      <img src="~@/assets/image/half_circle_icon.png"
-                           alt=""
-                           srcset="" />
+                      <img
+                        src="~@/assets/image/half_circle_icon.png"
+                        alt=""
+                        srcset=""
+                      />
                       <span>4</span>
                     </div>
                     <div class="_into">
@@ -165,93 +310,14 @@
             </div>
           </div>
         </swiper-slide>
-        <swiper-slide class="home_3rd_slide">
-          <div class="_box">
-            <div class="left_box">
-              <div class="top_box">
-                <div class="_box">
-                  <div>
-                    <div class="_top">
-                      <img class="pic"
-                           src="~@/assets/image/home_3rd_slide_logo.png"
-                           alt=""
-                           srcset="" />
-                      <div class="more">
-                        <span>了解更多</span>
-                        <img src="~@/assets/image/arrow_right_active.png"
-                             class="arrow_right"
-                             alt=""
-                             srcset="" />
-                      </div>
-                    </div>
-                    <div class="_center">
-                      上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
-                    </div>
-                    <div class="_bottom">
-                      <div>
-                        <div class="label_title">时间：</div>
-                        <div class="label_value">
-                          成立于<br />
-                          2016-10-28
-                        </div>
-                      </div>
-                      <div>
-                        <div class="label_title">资本：</div>
-                        <div class="label_value">
-                          注册资本<br />
-                          一亿人民币
-                        </div>
-                      </div>
-                      <div>
-                        <div class="label_title">实力：</div>
-                        <div class="label_value">
-                          上海旭辉企业<br />
-                          控股的子公司
-                        </div>
-                      </div>
-                      <div>
-                        <div class="label_title">伙伴：</div>
-                        <div class="label_value">
-                          旭辉“房地产+”<br />
-                          核心成员之一
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="bottom_box">
-                <div class="_other other1">
-                  <div>
-                    <div class="_title">
-                      企业荣誉
-                    </div>
-                    <div class="_entitle">
-                      COMPANY HONOR
-                    </div>
-                  </div>
-                </div>
-                <div class="_other other2">
-                  <div>
-                    <div class="_title">
-                      企业愿景
-                    </div>
-                    <div class="_entitle">
-                      COMPANY VISION
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="right_box"></div>
-          </div>
-        </swiper-slide>
         <swiper-slide class="home_4th_slide">
           <div class="_box">
             <div class="_top">
-              <img src="~@/assets/image/home_4th_slide_logo.png"
-                   alt=""
-                   srcset="" />
+              <img
+                src="~@/assets/image/home_4th_slide_logo.png"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="_bottom">
               <div>
@@ -265,10 +331,12 @@
                 </div>
                 <div class="_into">扩宽投资途径</div>
                 <div class="pic_box">
-                  <img class="_pic"
-                       src="~@/assets/image/home_3rd_slide_pic1.png"
-                       alt=""
-                       srcset="" />
+                  <img
+                    class="_pic"
+                    src="~@/assets/image/home_3rd_slide_pic1.png"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
               </div>
               <div>
@@ -282,10 +350,12 @@
                 </div>
                 <div class="_into">专业团队持续跟踪和深入研究</div>
                 <div class="pic_box">
-                  <img class="_pic"
-                       src="~@/assets/image/home_4th_slide_pic2.png"
-                       alt=""
-                       srcset="" />
+                  <img
+                    class="_pic"
+                    src="~@/assets/image/home_4th_slide_pic2.png"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
               </div>
               <div>
@@ -299,10 +369,12 @@
                 </div>
                 <div class="_into">专业团队持续跟踪和深入研究</div>
                 <div class="pic_box">
-                  <img class="_pic"
-                       src="~@/assets/image/home_4th_slide_pic3.png"
-                       alt=""
-                       srcset="" />
+                  <img
+                    class="_pic"
+                    src="~@/assets/image/home_4th_slide_pic3.png"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
               </div>
             </div>
@@ -311,16 +383,20 @@
         <swiper-slide class="home_5th_slide">
           <div class="_box">
             <div class="_top">
-              <img src="~@/assets/image/home_5th_slide_logo.png"
-                   alt=""
-                   srcset="" />
+              <img
+                src="~@/assets/image/home_5th_slide_logo.png"
+                alt=""
+                srcset=""
+              />
             </div>
             <div class="_bottom">
               <div class="_left">
-                <img class="topic_img"
-                     src="~@/assets/image/home_5th_slide_pic1.png"
-                     alt=""
-                     srcset="" />
+                <img
+                  class="topic_img"
+                  src="~@/assets/image/home_5th_slide_pic1.png"
+                  alt=""
+                  srcset=""
+                />
                 <div class="topic_title">
                   旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
                 </div>
@@ -332,10 +408,12 @@
                 </div>
               </div>
               <div class="_right">
-                <swiper class="sub_swiper"
-                        ref="subSwiper"
-                        :options="subSwiperOption"
-                        @slideChangeTransitionStart="subSlideChange">
+                <swiper
+                  class="sub_swiper"
+                  ref="subSwiper"
+                  :options="subSwiperOption"
+                  @slideChangeTransitionStart="subSlideChange"
+                >
                   <swiper-slide>
                     <div class="left_box">
                       <span class="day">22</span>
@@ -393,25 +471,25 @@
                     </div>
                   </swiper-slide>
                 </swiper>
-                <div @click="subswiperPrev"
-                     class="own_swiper_btn_prev">
-                  <img src="~@/assets/image/own_swiper_btn.png"
-                       alt=""
-                       srcset="" />
+                <div @click="subswiperPrev" class="own_swiper_btn_prev">
+                  <img
+                    src="~@/assets/image/own_swiper_btn.png"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
-                <div @click="subswiperNext"
-                     class="own_swiper_btn_next">
-                  <img src="~@/assets/image/own_swiper_btn.png"
-                       alt=""
-                       srcset="" />
+                <div @click="subswiperNext" class="own_swiper_btn_next">
+                  <img
+                    src="~@/assets/image/own_swiper_btn.png"
+                    alt=""
+                    srcset=""
+                  />
                 </div>
               </div>
             </div>
           </div>
           <Footer :isHome="true"></Footer>
         </swiper-slide>
-        <div class="swiper-pagination"
-             slot="pagination"></div>
       </swiper>
     </div>
   </div>
@@ -421,7 +499,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export default {
-  data () {
+  data() {
     return {
       homeSwiperOption: {
         direction: "vertical",
@@ -429,10 +507,6 @@ export default {
         mousewheel: true,
         initialSlide: 0,
         simulateTouch: false,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: false
-        }
       },
       active_slide_indexnum: 0,
       active_slide_index: false,
@@ -448,43 +522,43 @@ export default {
           ((document.documentElement.clientWidth > 1920
             ? 1920
             : document.documentElement.clientWidth < 1366
-              ? 1366
-              : document.documentElement.clientWidth * 100) /
+            ? 1366
+            : document.documentElement.clientWidth * 100) /
             1920)
       }
     };
   },
   computed: {
-    swiper () {
+    swiper() {
       return this.$refs.mySwiper.swiper;
     },
-    subSwiper () {
+    subSwiper() {
       return this.$refs.subSwiper.swiper;
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.setActiveSlideIndex();
       this.subSwiper.init();
     });
   },
   methods: {
-    homeSlideChange () {
+    homeSlideChange() {
       this.setActiveSlideIndex();
     },
-    subSlideChange () { },
-    setActiveSlideIndex () {
-      this.active_slide_indexnum = '0' + (this.swiper.activeIndex + 1)
+    subSlideChange() {},
+    setActiveSlideIndex() {
+      this.active_slide_indexnum = "0" + (this.swiper.activeIndex + 1);
       if (this.swiper.activeIndex === 0) {
         this.active_slide_index = true;
       } else {
         this.active_slide_index = false;
       }
     },
-    subswiperNext () {
+    subswiperNext() {
       this.subSwiper.slideNext();
     },
-    subswiperPrev () {
+    subswiperPrev() {
       this.subSwiper.slidePrev();
     }
   },
@@ -493,8 +567,8 @@ export default {
 </script>
 
 <style lang="scss">
-.trs3 {
-  transition: all ease-in-out 0.3s;
+.trs5 {
+  transition: all ease-in-out 0.5s;
 }
 .homepage_box {
   .header {
@@ -504,93 +578,147 @@ export default {
     transform: translateX(-50%);
     z-index: 99;
   }
-  .page_index_box {
+  .page_index__box {
     z-index: 999;
     position: fixed;
-    right: px(110);
-    bottom: px(70);
+    right: px(0);
+    bottom: px(0);
     display: flex;
-    align-items: flex-end;
-    &.active {
-      color: #fff;
-    }
-    color: #333333;
-    .active_index {
-      font-size: px(36);
-      line-height: px(58);
-      height: px(50);
-    }
-    .total_index {
-      font-size: px(20);
-      line-height: px(24);
-      height: px(27);
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 6.4rem);
+    height: px(180);
+    .page_index_box {
+      display: flex;
+      align-items: flex-end;
+      &.active {
+        color: #fff;
+      }
+      color: #333333;
+      .active_index {
+        font-size: px(36);
+        line-height: px(58);
+        height: px(50);
+      }
+      .total_index {
+        font-size: px(20);
+        line-height: px(24);
+        height: px(27);
+      }
     }
   }
-  .swiper_box {
-    &.home_1st_slide {
-      .home_swiper {
-        .swiper-pagination-bullet {
-          position: relative;
-          border: 1px solid #fff;
-          &:active {
-            border: 1px solid #fff;
+  .main_swiper_pagination {
+    width: 8px;
+    height: 136px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: px(91);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 99;
+    &.home_1st_slide{
+      &>div:not(.active){
+        border-color: #fff;
+      }
+      .active{
+        border-color: #fff;
+        background-color: #fff;
+      }
+    }
+    & > div:not(.active) {
+      cursor: pointer;
+      display: block;
+      width: 8px;
+      height: 8px;
+      box-sizing: border-box;
+      border: 1px solid #599AE5;
+      border-radius: 50%;
+      transition: all ease-in-out 0.5s;
+    }
+    .active{
+      cursor: pointer;
+      width: 8px;
+      height: 8px;
+      box-sizing: border-box;
+      border: 1px solid #599AE5;
+      border-radius: 50%;
+      background-color: #599AE5;
+      position: absolute;
+      left: 0;
+      transition: all ease-in-out 0.5s;
+      &>div{
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: transparent;
+        border-radius: 50%;
+        overflow: hidden;
+        span{
+          display: block;
+          width: 26px;
+          height: 26px;
+          position: absolute;
+          top: -10px;
+          left: -10px;
+          background-color: transparent;
+          overflow: hidden;
+          &:first-child{
+            transform: rotate(45deg) skew(2deg);
           }
-          &.swiper-pagination-bullet-active {
-            background: #fff !important;
-            &::after {
-              background: url("~@/assets/image/swiper_pagination_bullet_home_1st_icon.png")
-                no-repeat center;
-              // position: absolute;
-              // top: 50%;
-              // left: 50%;
-              // width: px(26);
-              // height: px(26);
-              // background-color: rgba(0, 0, 0, 0);
-              // box-sizing: border-box;
-              // border: px(4) solid #fff;
-              // margin-left: px(-13);
-              // margin-top: px(-13);
-              // border-radius: 50%;
-              // transform: rotate(-36deg) skewY(-54deg);
-            }
+          i{
+            display: block;
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            transform: skew(-22deg) rotate(-60deg) scale(1);
+            background: radial-gradient(transparent 28%, #599AE5 33%);
           }
         }
       }
     }
+  }
+  .swiper_box {
     .home_swiper {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
       background-size: cover;
-      &.swiper-container-vertical > .swiper-pagination-bullets {
-        right: px(91) !important;
-      }
-      .swiper-pagination-bullet {
-        width: 0.06rem !important;
-        height: 0.06rem !important;
-        position: relative;
-        background: rgba(0, 0, 0, 0) !important;
-        opacity: 1 !important;
-        border: 1px solid #599ae5;
-        margin: px(24) 0 !important;
-        &:active {
-          border: 1px solid #599ae5;
-        }
-        &.swiper-pagination-bullet-active {
-          background: #599ae5 !important;
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: px(-15);
-            left: px(-7);
-            width: px(27);
-            height: px(27);
-            background: url("~@/assets/image/swiper_pagination_bullet_home_icon.png")
-              no-repeat center;
-            background-size: cover;
-          }
-        }
-      }
+      // &.swiper-container-vertical > .swiper-pagination-bullets {
+      //   right: px(91) !important;
+      // }
+      // .swiper-pagination-bullet {
+      //   width: 0.06rem !important;
+      //   height: 0.06rem !important;
+      //   position: relative;
+      //   background: rgba(0, 0, 0, 0) !important;
+      //   opacity: 1 !important;
+      //   border: 1px solid #599ae5;
+      //   margin: px(24) 0 !important;
+      //   &:active {
+      //     border: 1px solid #599ae5;
+      //   }
+      //   &.swiper-pagination-bullet-active {
+      //     background: #599ae5 !important;
+      //     &::after {
+      //       content: "";
+      //       display: block;
+      //       position: absolute;
+      //       top: px(-15);
+      //       left: px(-7);
+      //       width: px(27);
+      //       height: px(27);
+      //       background: url("~@/assets/image/swiper_pagination_bullet_home_icon.png")
+      //         no-repeat center;
+      //       background-size: cover;
+      //     }
+      //   }
+      // }
       .swiper-slide {
         position: relative;
         &.home_1st_slide {
@@ -634,7 +762,7 @@ export default {
             }
           }
         }
-        &.home_2nd_slide {
+        &.home_3rd_slide {
           ._box {
             background: url("~@/assets/image/home_2nd_slide_bg.png") no-repeat
               center;
@@ -750,13 +878,27 @@ export default {
               & > div {
                 width: px(280);
                 height: px(320);
+                cursor: pointer;
                 background: rgba(255, 255, 255, 1);
-                & > img {
+                & > .img_box {
                   display: block;
                   width: px(280);
                   height: px(168);
+                  overflow: hidden;
+                  &:hover {
+                    img {
+                      transform: scale(1.2);
+                    }
+                  }
+                  img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    transition: all ease-in-out 0.5s;
+                  }
                 }
                 & > div._content {
+                  box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
                   height: px(152);
                   display: flex;
                   align-items: center;
@@ -793,7 +935,7 @@ export default {
             }
           }
         }
-        &.home_3rd_slide {
+        &.home_2nd_slide {
           & > ._box {
             width: px(1280);
             height: px(600);
@@ -903,37 +1045,61 @@ export default {
                 ._other {
                   width: px(320);
                   height: px(148);
+                  overflow: hidden;
                   margin-right: px(40);
                   background-color: #c7e3f1;
                   display: flex;
                   align-items: center;
+                  cursor: pointer;
+                  position: relative;
+                  &:hover {
+                    ._title,
+                    ._entitle {
+                      color: #5b9be4;
+                    }
+                    ._img {
+                      transform: scale(1.2);
+                    }
+                  }
                   & > div {
+                    position: relative;
+                    z-index: 2;
                     margin-left: px(60);
                     ._title {
                       height: px(33);
                       font-size: px(24);
-
                       color: #6f777b;
                       line-height: px(29);
+                      transition: all ease-in-out 0.5s;
                     }
                     ._entitle {
                       height: px(22);
                       font-size: px(16);
-
                       color: #b1bfc3;
                       line-height: px(19);
+                      transition: all ease-in-out 0.5s;
                     }
                   }
-                  &.other1 {
-                    background: url("~@/assets/image/home_3rd_slide_pic1.png")
-                      no-repeat center;
-                    background-size: cover;
+                  ._img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    transition: all ease-in-out 0.5s;
                   }
-                  &.other2 {
-                    background: url("~@/assets/image/home_3rd_slide_pic2.png")
-                      no-repeat center;
-                    background-size: cover;
-                  }
+                  // &.other1 {
+                  //   background: url("~@/assets/image/home_3rd_slide_pic1.png")
+                  //     no-repeat center;
+                  //   background-size: cover;
+                  // }
+                  // &.other2 {
+                  //   background: url("~@/assets/image/home_3rd_slide_pic2.png")
+                  //     no-repeat center;
+                  //   background-size: cover;
+                  // }
                 }
               }
             }
@@ -976,9 +1142,10 @@ export default {
                 padding-right: px(32);
                 overflow: hidden;
                 display: flex;
-                transition: all ease-in-out 0.3s;
+                transition: all ease-in-out 0.5s;
                 cursor: pointer;
                 flex-direction: column;
+                justify-content: space-between;
                 &:hover {
                   width: px(544);
                   border-color: #5396e4;
@@ -1001,41 +1168,44 @@ export default {
                       -o-filter: grayscale(0%);
                       filter: grayscale(0%);
                       filter: rgba(0, 0, 0, 0);
+                      transform: scale(1.2);
                     }
                   }
                 }
                 & > ._top {
                   margin-bottom: px(64);
                   .title {
-                    transition: all ease-in-out 0.3s;
+                    transition: all ease-in-out 0.5s;
                     font-size: px(28);
-
                     color: #000;
                     line-height: px(34);
                     margin-bottom: px(4);
                   }
                   .entitle {
-                    transition: all ease-in-out 0.3s;
+                    transition: all ease-in-out 0.5s;
                     font-size: px(18);
-
                     color: #7f7f7f;
                     line-height: px(22);
                   }
                 }
                 & > ._into {
-                  transition: all ease-in-out 0.3s;
+                  transition: all ease-in-out 0.5s;
                   font-size: px(24);
-
                   color: #7f7f7f;
                   line-height: px(29);
                   margin-bottom: px(16);
                 }
                 & > .pic_box {
-                  flex: 1;
                   display: flex;
                   align-items: flex-end;
                   overflow: hidden;
+                  width: 100%;
+                  height: px(200);
+                  position: relative;
                   ._pic {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
                     transition: all ease-in-out 0.3s;
                     display: block;
                     width: px(480);
@@ -1081,7 +1251,7 @@ export default {
                 .topic_title {
                   height: px(27);
                   font-size: px(20);
-
+                  font-weight: bold;
                   color: rgba(0, 0, 0, 1);
                   line-height: px(24);
                   margin-top: px(20);

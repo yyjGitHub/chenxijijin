@@ -37,8 +37,11 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding-left: px(320);
+    width: calc(50% + 6.4rem);
+    display: flex;
+    justify-content: flex-end;
     ._box {
+      margin: 0;
       ._right {
         margin-right: px(120);
       }

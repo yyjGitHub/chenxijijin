@@ -248,21 +248,21 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   methods: {
-    toPage(url, query = "") {
+    toPage(url, query = '') {
       if (query) {
         this.$router.push({
           name: url,
           params: { activeDIV: query }
-        });
+        })
       } else {
-        this.$router.push(url);
+        this.$router.push(url)
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -318,7 +318,7 @@ export default {
                   display: block;
                   width: px(7);
                   height: px(14);
-                  background: url("~@/assets/image/arrow_right.png") no-repeat
+                  background: url('~@/assets/image/arrow_right.png') no-repeat
                     center;
                   background-size: cover;
                 }
@@ -350,6 +350,7 @@ export default {
           height: px(560);
         }
         & > div {
+          flex: 1;
           display: flex;
           align-items: center;
           flex-wrap: wrap;
@@ -401,7 +402,7 @@ export default {
         margin-top: px(60);
         width: px(1600);
         height: px(418);
-        background: url("~@/assets/image/about_index_part3_1.png") no-repeat
+        background: url('~@/assets/image/about_index_part3_1.png') no-repeat
           center;
         background-size: cover;
         ._c {
@@ -452,7 +453,7 @@ export default {
                     display: block;
                     width: px(7);
                     height: px(14);
-                    background: url("~@/assets/image/arrow_right_active_white.png")
+                    background: url('~@/assets/image/arrow_right_active_white.png')
                       no-repeat center;
                     background-size: cover;
                   }
@@ -478,7 +479,7 @@ export default {
                   align-items: center;
                   position: relative;
                   &::before {
-                    content: "";
+                    content: '';
                     display: block;
                     position: absolute;
                     left: px(-43);
@@ -486,7 +487,7 @@ export default {
                     transform: translateY(-50%);
                     width: px(23);
                     height: px(11);
-                    background: url("~@/assets/image/half_circle_icon_1.png")
+                    background: url('~@/assets/image/half_circle_icon_1.png')
                       no-repeat center;
                     background-size: cover;
                   }
@@ -552,7 +553,7 @@ export default {
                 display: block;
                 width: px(7);
                 height: px(14);
-                background: url("~@/assets/image/arrow_right.png") no-repeat
+                background: url('~@/assets/image/arrow_right.png') no-repeat
                   center;
                 background-size: cover;
               }
