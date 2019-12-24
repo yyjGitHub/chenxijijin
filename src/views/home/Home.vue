@@ -7,14 +7,20 @@
         ><span class="total_index">/05</span>
       </div>
     </div>
-    <div 
-      class="main_swiper_pagination" 
-      :class="[active_slide_index ? 'home_1st_slide': '']"
+    <div
+      class="main_swiper_pagination"
+      :class="[active_slide_index ? 'home_1st_slide' : '']"
+    >
+      <div
+        class="active"
+        :style="{ top: (active_slide_indexnum - 1) * (24 + 8) + 'px' }"
       >
-      <div class="active" :style="{ top: ((active_slide_indexnum-1)*(24+8)) + 'px' }">
         <div>
-          <span>
-            <i></i>
+          <span :class="[!isTrans ? 's_active' : '']">
+            <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
+          </span>
+          <span :class="[!isTrans ? 's_active' : '']">
+            <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
           </span>
         </div>
       </div>
@@ -30,7 +36,8 @@
         class="home_swiper"
         ref="mySwiper"
         :options="homeSwiperOption"
-        @slideChangeTransitionStart="homeSlideChange"
+        @slideChangeTransitionStart="homeSlideChangeStart"
+        @slideChangeTransitionEnd="homeSlideChangeEnd"
       >
         <swiper-slide class="home_1st_slide">
           <div class="_box">
@@ -505,9 +512,11 @@ export default {
         direction: "vertical",
         slidesPerView: 1,
         mousewheel: true,
+        // loop: true,
         initialSlide: 0,
-        simulateTouch: false,
+        simulateTouch: false
       },
+      isTrans: false,
       active_slide_indexnum: 0,
       active_slide_index: false,
       subSwiperOption: {
@@ -543,8 +552,12 @@ export default {
     });
   },
   methods: {
-    homeSlideChange() {
+    homeSlideChangeStart() {
+      this.isTrans = true;
       this.setActiveSlideIndex();
+    },
+    homeSlideChangeEnd() {
+      this.isTrans = false;
     },
     subSlideChange() {},
     setActiveSlideIndex() {
@@ -567,6 +580,50 @@ export default {
 </script>
 
 <style lang="scss">
+@-webkit-keyframes circleProgressLoad_right_a {
+  0% {
+    -webkit-transform: rotate(-25deg);
+  }
+  50% {
+    -webkit-transform: rotate(15deg);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+  }
+}
+@-webkit-keyframes circleProgressLoad_left_a {
+  0% {
+    -webkit-transform: rotate(25deg);
+  }
+  50% {
+    -webkit-transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(-45deg);
+  }
+}
+@-webkit-keyframes circleProgressLoad_right_b {
+  0% {
+    -webkit-transform: rotate(45deg);
+  }
+  50% {
+    -webkit-transform: rotate(3deg);
+  }
+  100% {
+    -webkit-transform: rotate(-45deg);
+  }
+}
+@-webkit-keyframes circleProgressLoad_left_b {
+  0% {
+    -webkit-transform: rotate(-45deg);
+  }
+  50% {
+    -webkit-transform: rotate(3deg);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+  }
+}
 .trs5 {
   transition: all ease-in-out 0.5s;
 }
@@ -618,13 +675,29 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     z-index: 99;
-    &.home_1st_slide{
-      &>div:not(.active){
+    &.home_1st_slide {
+      & > div:not(.active) {
         border-color: #fff;
       }
-      .active{
+      .active {
         border-color: #fff;
         background-color: #fff;
+        & > div {
+          & > span {
+            &:first-child {
+              div {
+                border-top: 4px solid #fff;
+                border-right: 4px solid #fff;
+              }
+            }
+            &:last-child {
+              div {
+                border-top: 4px solid #fff;
+                border-left: 4px solid #fff;
+              }
+            }
+          }
+        }
       }
     }
     & > div:not(.active) {
@@ -633,52 +706,78 @@ export default {
       width: 8px;
       height: 8px;
       box-sizing: border-box;
-      border: 1px solid #599AE5;
+      border: 1px solid #599ae5;
       border-radius: 50%;
       transition: all ease-in-out 0.5s;
     }
-    .active{
+    .active {
       cursor: pointer;
       width: 8px;
       height: 8px;
       box-sizing: border-box;
-      border: 1px solid #599AE5;
+      border: 1px solid #599ae5;
       border-radius: 50%;
-      background-color: #599AE5;
+      background-color: #599ae5;
       position: absolute;
       left: 0;
       transition: all ease-in-out 0.5s;
-      &>div{
+      & > div {
         width: 28px;
         height: 28px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%) rotateZ(45deg);
         background: transparent;
         border-radius: 50%;
         overflow: hidden;
-        span{
-          display: block;
-          width: 26px;
-          height: 26px;
+        & > span {
+          width: 14px;
+          height: 28px;
           position: absolute;
-          top: -10px;
-          left: -10px;
-          background-color: transparent;
+          top: 0;
           overflow: hidden;
-          &:first-child{
-            transform: rotate(45deg) skew(2deg);
+          // &.s_active {
+          //   width: 14px;
+          // }
+          &:first-child {
+            left: 0;
+            & > div {
+              // transform: rotate(45deg);
+              border-top: 6px solid #5B9BE4;
+              border-right: 6px solid #5B9BE4;
+              left: 0;
+              &.a_active {
+                -webkit-animation: circleProgressLoad_left_a 0.3s linear forwards;
+              }
+              &.b_active {
+                -webkit-animation: circleProgressLoad_left_b 0.4s linear forwards;
+              }
+            }
           }
-          i{
-            display: block;
-            width: 34px;
-            height: 34px;
+          &:last-child {
+            right: 0;
+            & > div {
+              // transform: rotate(-45deg);
+              border-top: 6px solid #5B9BE4;
+              border-left: 6px solid #5B9BE4;
+              right: 0;
+              &.a_active {
+                -webkit-animation: circleProgressLoad_right_a 0.3s linear forwards;
+              }
+              &.b_active {
+                -webkit-animation: circleProgressLoad_right_b 0.4s linear forwards;
+              }
+            }
+          }
+          & > div {
+            width: 28px;
+            height: 28px;
+            border: 6px solid rgba(0, 0, 0, 0);
+            border-radius: 50%;
             position: absolute;
-            top: 5px;
-            left: 5px;
-            transform: skew(-22deg) rotate(-60deg) scale(1);
-            background: radial-gradient(transparent 28%, #599AE5 33%);
+            top: 0;
+            box-sizing: border-box;
           }
         }
       }

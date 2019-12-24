@@ -23,22 +23,42 @@
       >
         {{ item.meta.label }}
       </div>
+      <div
+        class="trans_item"
+        :style="{ width: trans_width, left: trans_left }"
+      ></div>
     </div>
   </header>
 </template>
 <script>
 // import { EventBus } from "@/bus";
+import $ from "jquery";
 import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      active_index: 0
+      active_index: 0,
+      trans_left: "-8px",
+      trans_width: 0,
+      font_size: 0
+    };
+  },
+  mounted() {
+    let _this = this;
+    this.resetFontsize();
+    window.onresize = () => {
+      return (() => {
+        _this.resetFontsize();
+      })();
     };
   },
   computed: {
     ...mapGetters({
       menulist: "menulist"
     })
+    // transLeft(){
+    //   return this.transLeft
+    // }
   },
   props: {
     is_1st_slide: {
@@ -48,8 +68,19 @@ export default {
   },
   methods: {
     toPage(item, index) {
-      this.active_index = index;
+      console.log(index);
+      // this.active_index = index;
       this.$router.push(item.path);
+    },
+    resetFontsize() {
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      this.font_size = (deviceWidth * 100) / 1920;
     }
   },
   watch: {
@@ -59,6 +90,20 @@ export default {
           const element = this.menulist[i];
           if (newVal.path.includes(element.path)) {
             this.active_index = i;
+            this.$nextTick(() => {
+              let arr = $("header.header .menu_list ._item");
+              let left = 0;
+              for (let j = 0; j < arr.length; j++) {
+                const elementj = arr.eq(j);
+                if (!elementj.hasClass("active")) {
+                  left += elementj.width() + this.font_size * 0.55;
+                } else {
+                  this.trans_width = elementj.width() + 16 + "px";
+                  this.trans_left = left - 6 + "px";
+                  break;
+                }
+              }
+            });
             // EventBus.$emit("sendSubMenu", {
             //   path: element.path,
             //   children: element.children
@@ -89,6 +134,7 @@ header {
   .menu_list {
     display: flex;
     align-items: center;
+    position: relative;
     & > ._item {
       cursor: pointer;
       color: #000000;
@@ -96,19 +142,28 @@ header {
       font-size: px(18);
       font-family: PingFangSC-Regular, PingFang SC;
       position: relative;
+      transition: all ease-in-out 0.6s;
       &.active {
         color: #599ae5;
-        &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          bottom: px(-8);
-          left: 0;
-          width: 100%;
-          height: px(2);
-          background-color: #599ae5;
-        }
+        // &::after {
+        //   content: "";
+        //   display: block;
+        //   position: absolute;
+        //   bottom: px(-8);
+        //   left: 0;
+        //   width: 100%;
+        //   height: px(2);
+        //   background-color: #599ae5;
+        // }
       }
+    }
+    .trans_item {
+      transition: all cubic-bezier(0.08, 0.61, 0.89, 1.36) 0.6s;
+      position: absolute;
+      bottom: -0.08rem;
+      left: 0;
+      height: 0.02rem;
+      background-color: #599ae5;
     }
     &.home_1st_slide {
       & > ._item {
@@ -119,6 +174,9 @@ header {
             background-color: #fff;
           }
         }
+      }
+      .trans_item {
+        background-color: #fff;
       }
     }
   }
