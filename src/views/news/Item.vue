@@ -41,9 +41,7 @@ export default {
   },
   watch: {
     $route: {
-      handler(newVal) {
-        console.log(newVal.params.newsID);
-      },
+      handler(newVal) {},
       deep: true,
       immediate: true
     }

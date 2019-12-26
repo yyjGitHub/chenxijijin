@@ -308,8 +308,8 @@ export default {
               & > span {
                 height: px(33);
                 font-size: px(24);
-
-                color: rgba(0, 0, 0, 1);
+                font-weight: bold;
+                color: #333333;
                 line-height: px(33);
               }
             }

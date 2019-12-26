@@ -91,11 +91,6 @@
                       alt=""
                       srcset=""
                     />
-                    <img
-                      src="~@/assets/image/share_icon.png"
-                      alt=""
-                      srcset=""
-                    />
                   </div>
                   <div class="_submit">提交</div>
                 </div>

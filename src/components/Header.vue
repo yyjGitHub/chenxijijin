@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="[isHome ? 'is_home' : '']">
     <img
       class="logo"
       :src="
@@ -64,11 +64,14 @@ export default {
     is_1st_slide: {
       type: Boolean,
       default: false
+    },
+    isHome: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
-    toPage(item, index) {
-      console.log(index);
+    toPage(item) {
       // this.active_index = index;
       this.$router.push(item.path);
     },
@@ -119,13 +122,26 @@ export default {
 </script>
 <style lang="scss" scoped>
 header {
-  width: px(1760);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 px(80);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: px(60);
   padding-bottom: px(60);
+  background-color: #fff;
+  &.is_home {
+    background: rgba(0, 0, 0, 0);
+    position: relative;
+    z-index: 99;
+    // position: fixed;
+    // left: 50%;
+    // top: 0;
+    // transform: translateX(-50%);
+    z-index: 1001;
+  }
   .logo {
     width: px(235);
     height: px(40);
@@ -158,7 +174,7 @@ header {
       }
     }
     .trans_item {
-      transition: all cubic-bezier(0.08, 0.61, 0.89, 1.36) 0.6s;
+      transition: all cubic-bezier(0.09, 0.31, 0.05, 1.14) 0.6s;
       position: absolute;
       bottom: -0.08rem;
       left: 0;

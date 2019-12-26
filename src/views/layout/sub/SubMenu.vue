@@ -83,12 +83,14 @@ export default {
 .submenu_box {
   width: 100%;
   height: px(57);
-  border-top: 1px solid #979797;
+  border-top: 1px solid #cbcbcb;
   ._box {
     height: px(57);
     display: flex;
     align-items: center;
-    width: px(1760);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 px(80);
     margin: 0 auto;
     & > div {
       height: px(57);

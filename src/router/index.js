@@ -18,7 +18,19 @@ const mainroutes = [
   {
     path: "/home",
     name: "home",
-    component: _import("home/Home"),
+    component: Layout,
+    // _import("home/Home")
+    children: [
+      {
+        path: "",
+        name: "index",
+        component: _import("home/Home"),
+        meta: {
+          label: "首页",
+          title: "首页-晨曦基金"
+        }
+      }
+    ],
     meta: {
       label: "首页",
       title: "首页-晨曦基金"
@@ -48,21 +60,12 @@ const mainroutes = [
         }
       },
       {
-        path: "CorporateVision/QYYJ",
+        path: "CorporateVision/QYFC",
         name: "CorporateVision",
         component: _import("about/CorporateVision"),
         meta: {
-          label: "企业愿景",
-          title: "企业愿景-晨曦基金"
-        }
-      },
-      {
-        path: "CorporateVision/QYRY",
-        name: "CorporateVision",
-        component: _import("about/CorporateVision"),
-        meta: {
-          label: "企业荣誉",
-          title: "企业荣誉-晨曦基金"
+          label: "企业风采",
+          title: "企业风采-晨曦基金"
         }
       },
       {

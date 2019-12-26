@@ -57,7 +57,7 @@ footer {
     ._left {
       display: flex;
       flex-direction: column;
-      color: #7f7f7f;
+      color: #868686;
       font-size: px(14);
       line-height: px(17);
       ._top {

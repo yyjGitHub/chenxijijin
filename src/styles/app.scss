@@ -1,7 +1,7 @@
 html,
 body {
   background-color: #fff;
-  min-width: 100%;
+  // min-width: 100%;
 }
 
 .tran-3s {
@@ -30,7 +30,7 @@ body {
         position: relative;
         margin-bottom: px(42);
         &::after {
-          content: '';
+          content: "";
           display: block;
           position: absolute;
           width: px(120);
@@ -74,7 +74,7 @@ body {
           height: px(11);
           margin-right: px(9);
           position: relative;
-          top: px(-3);
+          top: px(-1);
         }
         span {
           display: block;
@@ -104,7 +104,7 @@ body {
         margin-bottom: px(18);
         z-index: 99;
         &::before {
-          content: 'COMPANY';
+          content: "COMPANY";
           display: block;
           position: absolute;
           z-index: -1;
@@ -128,7 +128,7 @@ body {
         margin-bottom: px(82);
         position: relative;
         &::after {
-          content: '';
+          content: "";
           display: block;
           width: px(120);
           height: 2px;

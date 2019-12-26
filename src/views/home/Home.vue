@@ -1,36 +1,54 @@
 <template>
   <div class="container_box homepage_box">
-    <Header :is_1st_slide="active_slide_index" class="header"></Header>
-    <div class="page_index__box">
-      <div class="page_index_box" :class="[active_slide_index ? 'active' : '']">
-        <span class="active_index">{{ active_slide_indexnum }}</span
-        ><span class="total_index">/05</span>
-      </div>
-    </div>
-    <div
-      class="main_swiper_pagination"
-      :class="[active_slide_index ? 'home_1st_slide' : '']"
-    >
-      <div
-        class="active"
-        :style="{ top: (active_slide_indexnum - 1) * (24 + 8) + 'px' }"
-      >
-        <div>
-          <span :class="[!isTrans ? 's_active' : '']">
-            <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
-          </span>
-          <span :class="[!isTrans ? 's_active' : '']">
-            <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
-          </span>
+    <div class="swiper_box">
+      <div class="page_index__box">
+        <div
+          class="page_index_box"
+          :class="[active_slide_index ? 'active' : '']"
+        >
+          <span class="active_index">
+            <!--{{ active_slide_indexnum }}-->
+            <div
+              class="_box"
+              :style="{
+                transform: `translateY(-${(parseInt(active_slide_indexnum) -
+                  1) *
+                  0.36 *
+                  fz}px)`
+              }"
+            >
+              <div>{{ active_slide_indexnum }}</div>
+              <div>02</div>
+              <div>03</div>
+              <div>04</div>
+              <div>05</div>
+            </div> </span
+          ><span class="total_index">/05</span>
         </div>
       </div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="swiper_box">
+      <div
+        class="main_swiper_pagination"
+        :class="[active_slide_index ? 'home_1st_slide' : '']"
+      >
+        <div
+          class="active"
+          :style="{ top: (active_slide_indexnum - 1) * (24 + 8) + 'px' }"
+        >
+          <div>
+            <span :class="[!isTrans ? 's_active' : '']">
+              <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
+            </span>
+            <span :class="[!isTrans ? 's_active' : '']">
+              <div :class="[!isTrans ? 'a_active' : 'b_active']"></div>
+            </span>
+          </div>
+        </div>
+        <div @click="toSlide(0)"></div>
+        <div @click="toSlide(1)"></div>
+        <div @click="toSlide(2)"></div>
+        <div @click="toSlide(3)"></div>
+        <div @click="toSlide(4)"></div>
+      </div>
       <!-- :class="[active_slide_index ? "home_1st_slide" : ""]" -->
       <swiper
         class="home_swiper"
@@ -503,7 +521,7 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import { EventBus } from "@/bus";
 import Footer from "@/components/Footer";
 export default {
   data() {
@@ -514,7 +532,16 @@ export default {
         mousewheel: true,
         // loop: true,
         initialSlide: 0,
-        simulateTouch: false
+        simulateTouch: false,
+        width:
+          19.2 *
+          ((document.documentElement.clientWidth > 1920
+            ? 1920
+            : document.documentElement.clientWidth < 1366
+            ? 1366
+            : document.documentElement.clientWidth * 100) /
+            1920),
+        height: window.innerHeight
       },
       isTrans: false,
       active_slide_indexnum: 0,
@@ -523,18 +550,9 @@ export default {
         direction: "vertical",
         slidesPerView: 3,
         loop: true,
-        init: false,
-        // loopFillGroupWithBlank: true,
-        centeredSlides: true,
-        height:
-          2.73 *
-          ((document.documentElement.clientWidth > 1920
-            ? 1920
-            : document.documentElement.clientWidth < 1366
-            ? 1366
-            : document.documentElement.clientWidth * 100) /
-            1920)
-      }
+        centeredSlides: true
+      },
+      fz: 0
     };
   },
   computed: {
@@ -545,13 +563,38 @@ export default {
       return this.$refs.subSwiper.swiper;
     }
   },
+  watch: {
+    active_slide_index: {
+      handler(newVal) {
+        EventBus.$emit("sendSlideIndex", newVal);
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   mounted() {
+    let _this = this;
+    this.resetFontsize();
+    window.onresize = () => {
+      return (() => {
+        _this.resetFontsize();
+      })();
+    };
     this.$nextTick(() => {
       this.setActiveSlideIndex();
-      this.subSwiper.init();
     });
   },
   methods: {
+    resetFontsize() {
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      this.fz = (deviceWidth * 100) / 1920;
+    },
     homeSlideChangeStart() {
       this.isTrans = true;
       this.setActiveSlideIndex();
@@ -573,9 +616,12 @@ export default {
     },
     subswiperPrev() {
       this.subSwiper.slidePrev();
+    },
+    toSlide(index) {
+      this.swiper.slideTo(index);
     }
   },
-  components: { Footer, Header }
+  components: { Footer }
 };
 </script>
 
@@ -628,6 +674,14 @@ export default {
   transition: all ease-in-out 0.5s;
 }
 .homepage_box {
+  // position: fixed;
+  position: relative;
+  margin-top: px(-160);
+  top: 0;
+  left: 0;
+  z-index: 98;
+  width: px(1920);
+  height: 100vh;
   .header {
     position: fixed;
     top: 0;
@@ -637,7 +691,7 @@ export default {
   }
   .page_index__box {
     z-index: 999;
-    position: fixed;
+    position: absolute;
     right: px(0);
     bottom: px(0);
     display: flex;
@@ -653,21 +707,30 @@ export default {
       }
       color: #333333;
       .active_index {
-        font-size: px(36);
-        line-height: px(58);
-        height: px(50);
+        font-size: 0.36rem;
+        line-height: 0.36rem;
+        height: 0.36rem;
+        overflow: hidden;
+        ._box {
+          transition: all ease-in-out 0.3s;
+          & > div {
+            line-height: 0.36rem;
+            height: 0.36rem;
+          }
+        }
       }
       .total_index {
-        font-size: px(20);
-        line-height: px(24);
-        height: px(27);
+        transition: all ease-in-out 0.3s;
+        font-size: 0.2rem;
+        height: 0.36rem;
+        line-height: 0.46rem;
       }
     }
   }
   .main_swiper_pagination {
     width: 8px;
     height: 136px;
-    position: fixed;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: px(91);
@@ -744,14 +807,16 @@ export default {
             left: 0;
             & > div {
               // transform: rotate(45deg);
-              border-top: 6px solid #5B9BE4;
-              border-right: 6px solid #5B9BE4;
+              border-top: 6px solid #5b9be4;
+              border-right: 6px solid #5b9be4;
               left: 0;
               &.a_active {
-                -webkit-animation: circleProgressLoad_left_a 0.3s linear forwards;
+                -webkit-animation: circleProgressLoad_left_a 0.3s linear
+                  forwards;
               }
               &.b_active {
-                -webkit-animation: circleProgressLoad_left_b 0.4s linear forwards;
+                -webkit-animation: circleProgressLoad_left_b 0.4s linear
+                  forwards;
               }
             }
           }
@@ -759,14 +824,16 @@ export default {
             right: 0;
             & > div {
               // transform: rotate(-45deg);
-              border-top: 6px solid #5B9BE4;
-              border-left: 6px solid #5B9BE4;
+              border-top: 6px solid #5b9be4;
+              border-left: 6px solid #5b9be4;
               right: 0;
               &.a_active {
-                -webkit-animation: circleProgressLoad_right_a 0.3s linear forwards;
+                -webkit-animation: circleProgressLoad_right_a 0.3s linear
+                  forwards;
               }
               &.b_active {
-                -webkit-animation: circleProgressLoad_right_b 0.4s linear forwards;
+                -webkit-animation: circleProgressLoad_right_b 0.4s linear
+                  forwards;
               }
             }
           }
@@ -784,6 +851,7 @@ export default {
     }
   }
   .swiper_box {
+    width: px(1920);
     .home_swiper {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
@@ -877,7 +945,7 @@ export default {
             ._top {
               img {
                 display: block;
-                width: px(310);
+                width: px(340);
                 height: px(61);
               }
             }

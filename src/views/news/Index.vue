@@ -230,7 +230,8 @@ export default {
               &._title {
                 font-size: px(24);
                 color: #333333;
-                line-height: px(29);
+                line-height: px(33);
+                font-weight: bold;
                 margin-top: px(24);
                 display: -webkit-box;
                 -webkit-box-orient: vertical;

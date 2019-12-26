@@ -65,14 +65,15 @@
               srcset=""
             />
             <div>
-              <div @click="toPage('/about/CorporateVision/QYYJ')">
+              <div @click="toPage('/about/CorporateVision/QYFC')">
                 <img
                   src="~@/assets/image/about_index_part2_icon1.png"
                   alt=""
+                  class="YJ"
                   srcset=""
                 />
-                <span>企业愿景</span>
-                <span>Vision</span>
+                <span class="title">企业愿景</span>
+                <span class="entitle">Vision</span>
               </div>
               <img
                 src="~@/assets/image/about_index_part2_2.png"
@@ -88,10 +89,11 @@
                 <img
                   src="~@/assets/image/about_index_part2_icon2.png"
                   alt=""
+                  class="RY"
                   srcset=""
                 />
-                <span>企业荣誉</span>
-                <span>Honor</span>
+                <span class="title">企业荣誉</span>
+                <span class="entitle">Honor</span>
               </div>
             </div>
           </div>
@@ -248,21 +250,21 @@
 <script>
 export default {
   data() {
-    return {}
+    return {};
   },
   methods: {
-    toPage(url, query = '') {
+    toPage(url, query = "") {
       if (query) {
         this.$router.push({
           name: url,
           params: { activeDIV: query }
-        })
+        });
       } else {
-        this.$router.push(url)
+        this.$router.push(url);
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -318,7 +320,7 @@ export default {
                   display: block;
                   width: px(7);
                   height: px(14);
-                  background: url('~@/assets/image/arrow_right.png') no-repeat
+                  background: url("~@/assets/image/arrow_right.png") no-repeat
                     center;
                   background-size: cover;
                 }
@@ -368,23 +370,30 @@ export default {
             background-color: #f8f8f8;
             img {
               display: block;
-              width: px(86);
+              width: px(82);
               height: px(80);
               margin-bottom: px(25);
+              &.YJ {
+                width: px(86);
+              }
+              &.RY {
+                width: px(80);
+              }
             }
             span {
-              &:first-child {
+              &.title {
                 height: px(33);
                 font-size: px(24);
-
-                color: rgba(0, 0, 0, 1);
+                font-family: Helvetica;
+                font-weight: bold;
+                color: #313131;
                 line-height: px(29);
               }
-              &:last-child {
+              &.entitle {
                 height: px(22);
                 font-size: px(16);
 
-                color: rgba(0, 0, 0, 1);
+                color: #313131;
                 line-height: px(19);
               }
             }
@@ -402,7 +411,7 @@ export default {
         margin-top: px(60);
         width: px(1600);
         height: px(418);
-        background: url('~@/assets/image/about_index_part3_1.png') no-repeat
+        background: url("~@/assets/image/about_index_part3_1.png") no-repeat
           center;
         background-size: cover;
         ._c {
@@ -453,7 +462,7 @@ export default {
                     display: block;
                     width: px(7);
                     height: px(14);
-                    background: url('~@/assets/image/arrow_right_active_white.png')
+                    background: url("~@/assets/image/arrow_right_active_white.png")
                       no-repeat center;
                     background-size: cover;
                   }
@@ -479,7 +488,7 @@ export default {
                   align-items: center;
                   position: relative;
                   &::before {
-                    content: '';
+                    content: "";
                     display: block;
                     position: absolute;
                     left: px(-43);
@@ -487,7 +496,7 @@ export default {
                     transform: translateY(-50%);
                     width: px(23);
                     height: px(11);
-                    background: url('~@/assets/image/half_circle_icon_1.png')
+                    background: url("~@/assets/image/half_circle_icon_1.png")
                       no-repeat center;
                     background-size: cover;
                   }
@@ -553,7 +562,7 @@ export default {
                 display: block;
                 width: px(7);
                 height: px(14);
-                background: url('~@/assets/image/arrow_right.png') no-repeat
+                background: url("~@/assets/image/arrow_right.png") no-repeat
                   center;
                 background-size: cover;
               }

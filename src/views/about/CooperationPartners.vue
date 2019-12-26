@@ -127,6 +127,20 @@
               srcset=""
             />
           </div>
+          <div>
+            <img
+              src="~@/assets/image/about_cooperationpartners_pic16.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div>
+            <img
+              src="~@/assets/image/about_cooperationpartners_pic17.png"
+              alt=""
+              srcset=""
+            />
+          </div>
         </div>
       </div>
     </div>
