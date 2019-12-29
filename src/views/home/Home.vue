@@ -1123,6 +1123,7 @@ export default {
               & > .top_box {
                 width: 100%;
                 height: px(372);
+                margin-top: px(40);
                 & > ._box {
                   width: px(900);
                   height: px(372);
