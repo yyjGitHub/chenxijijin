@@ -4,9 +4,9 @@ import router from "./router";
 import VueAMap from "vue-amap";
 import store from "./store";
 import "normalize.css";
+import animated from "animate.css";
+
 import { Pagination, Input } from "element-ui";
-// import ElementUI from "element-ui";
-// import "element-ui/lib/theme-chalk/index.css";
 import "./styles/app.scss";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 
@@ -16,6 +16,8 @@ import "swiper/dist/css/swiper.css";
 Vue.use(VueAwesomeSwiper /* { default global options } */);
 
 Vue.use(VueAMap);
+
+Vue.use(animated);
 
 VueAMap.initAMapApiLoader({
   key: "1787da644b789c9eb13218cc6b404a26",

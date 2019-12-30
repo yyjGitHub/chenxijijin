@@ -30,10 +30,13 @@
               <div class="_into">
                 上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
               </div>
-              <div class="_more" @click="toPage('/about/CompanyProfile')">
+              <div
+                class="_more more_hover"
+                @click="toPage('/about/CompanyProfile')"
+              >
                 <div>
                   <span>了解更多</span>
-                  <i></i>
+                  <i class="arrow_right"></i>
                 </div>
               </div>
             </div>
@@ -65,13 +68,11 @@
               srcset=""
             />
             <div>
-              <div @click="toPage('/about/CorporateVision/QYFC')">
-                <img
-                  src="~@/assets/image/about_index_part2_icon1.png"
-                  alt=""
-                  class="YJ"
-                  srcset=""
-                />
+              <div
+                class="more_hover big left"
+                @click="toPage('/about/CorporateVision/QYFC')"
+              >
+                <div class="YJ"></div>
                 <span class="title">企业愿景</span>
                 <span class="entitle">Vision</span>
               </div>
@@ -85,13 +86,11 @@
                 alt=""
                 srcset=""
               />
-              <div @click="toPage('/about/CorporateVision/QYRY')">
-                <img
-                  src="~@/assets/image/about_index_part2_icon2.png"
-                  alt=""
-                  class="RY"
-                  srcset=""
-                />
+              <div
+                class="more_hover big right"
+                @click="toPage('/about/CorporateVision/QYRY')"
+              >
+                <div class="RY"></div>
                 <span class="title">企业荣誉</span>
                 <span class="entitle">Honor</span>
               </div>
@@ -120,7 +119,7 @@
                 <div class="_more" @click="toPage('/about/InvestmentStrategy')">
                   <div>
                     <span>了解更多</span>
-                    <i></i>
+                    <i class="arrow_right"></i>
                   </div>
                 </div>
               </div>
@@ -169,10 +168,13 @@
                 <span>PARTNERS</span>
               </div>
             </div>
-            <div class="_more" @click="toPage('/about/CooperationPartners')">
+            <div
+              class="_more more_hover"
+              @click="toPage('/about/CooperationPartners')"
+            >
               <div>
                 <span>了解更多</span>
-                <i></i>
+                <i class="arrow_right"></i>
               </div>
             </div>
           </div>
@@ -304,7 +306,7 @@ export default {
               padding: 0 px(24);
               display: inline-block;
               height: px(40);
-              border: px(2) solid rgba(116, 116, 116, 1);
+              border: 1px solid rgba(116, 116, 116, 1);
               & > div {
                 height: 100%;
                 display: flex;
@@ -368,17 +370,24 @@ export default {
             align-items: center;
             justify-content: center;
             background-color: #f8f8f8;
-            img {
+            div {
               display: block;
               width: px(82);
               height: px(80);
               margin-bottom: px(25);
               &.YJ {
                 width: px(86);
+                background: url("~@/assets/image/about_index_part2_icon1.png")
+                  no-repeat center;
+                background-size: cover;
               }
               &.RY {
                 width: px(80);
+                background: url("~@/assets/image/about_index_part2_icon2.png")
+                  no-repeat center;
+                background-size: cover;
               }
+              transition: all ease-in-out 0.3s;
             }
             span {
               &.title {
@@ -476,6 +485,13 @@ export default {
               flex-direction: column;
               justify-content: space-between;
               & > div {
+                &:hover {
+                  .top {
+                    span {
+                      color: #5b9be4 !important;
+                    }
+                  }
+                }
                 cursor: pointer;
                 width: px(560);
                 height: px(160);
@@ -501,6 +517,7 @@ export default {
                     background-size: cover;
                   }
                   span {
+                    transition: all ease-in-out 0.3s;
                     &:first-child {
                       height: px(33);
                       font-size: px(24);
@@ -546,7 +563,7 @@ export default {
             padding: 0 px(24);
             display: inline-block;
             height: px(40);
-            border: px(2) solid rgba(116, 116, 116, 1);
+            border: 1px solid rgba(116, 116, 116, 1);
             & > div {
               height: 100%;
               display: flex;

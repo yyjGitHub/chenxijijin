@@ -7,6 +7,118 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+.more_hover {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.more_hover * {
+  position: relative;
+  z-index: 99;
+  transition: all ease-in-out 0.5s;
+}
+
+.more_hover._more::before {
+  left: px(-60);
+}
+
+.more_hover._more::after {
+  left: px(-80);
+}
+
+.more_hover::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #599ae5;
+  position: absolute;
+  bottom: px(-60);
+  z-index: 1;
+  transition: all ease-in-out 0.8s;
+}
+
+.more_hover::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #902028;
+  position: absolute;
+  bottom: px(-80);
+  z-index: 0;
+  transition: all ease-in-out 0.8s;
+}
+
+.more_hover:hover {
+  transition: all ease-in-out 0.8s;
+  border-color: #599ae5 !important;
+}
+
+.more_hover:hover::before {
+  width: px(240);
+  height: px(240);
+}
+
+.more_hover:hover::after {
+  width: px(360);
+  height: px(360);
+}
+
+.more_hover:hover span {
+  color: #fff !important;
+}
+
+.more_hover:hover .arrow_right {
+  background: url("~@/assets/image/arrow_right_active_white.png") no-repeat center !important;
+  background-size: cover !important;
+}
+
+.more_hover.big.left::before {
+  left: px(-100);
+  bottom: px(-100);
+}
+
+.more_hover.big.left::after {
+  left: px(-140);
+  bottom: px(-140);
+}
+
+.more_hover.big.right::before {
+  right: px(-110);
+  bottom: px(-100);
+}
+
+.more_hover.big.right::after {
+  right: px(-140);
+  bottom: px(-140);
+  transform: rotateY(180deg);
+}
+
+.more_hover.big:hover::before {
+  width: px(480);
+  height: px(480);
+}
+
+.more_hover.big:hover::after {
+  width: px(960);
+  height: px(960);
+}
+
+.more_hover.big:hover.left .YJ {
+  background: url("~@/assets/image/about_index_part2_icon1_white.png") no-repeat center !important;
+  background-size: cover !important;
+}
+
+.more_hover.big:hover.right .RY {
+  background: url("~@/assets/image/about_index_part2_icon2_white.png") no-repeat center !important;
+  background-size: cover !important;
+}
+
 .layout_content_box .page_top_box {
   position: relative;
 }

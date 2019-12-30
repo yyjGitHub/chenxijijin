@@ -58,7 +58,15 @@
         @slideChangeTransitionEnd="homeSlideChangeEnd"
       >
         <swiper-slide class="home_1st_slide">
-          <div class="_box">
+          <div
+            class="_box animated"
+            :class="[
+              active_slide_tonext && active_slide_indexnum !== '01'
+                ? 'fadeOutUp'
+                : '',
+              active_slide_indexnum === '01' ? 'fadeInUp' : ''
+            ]"
+          >
             <div>
               <span>忠于所托 成就价值</span>
             </div>
@@ -70,8 +78,16 @@
             srcset=""
           />
         </swiper-slide>
-        <swiper-slide class="home_2nd_slide">
-          <div class="_box">
+        <swiper-slide class="home_2nd_slide animated">
+          <div
+            class="_box animated"
+            :class="[
+              active_slide_tonext && active_slide_indexnum !== '02'
+                ? 'fadeOutUp'
+                : '',
+              active_slide_indexnum === '02' ? 'fadeInUp' : ''
+            ]"
+          >
             <div class="left_box">
               <div class="top_box">
                 <div class="_box">
@@ -83,14 +99,15 @@
                         alt=""
                         srcset=""
                       />
-                      <div class="more">
+                      <div class="more more_hover">
                         <span>了解更多</span>
-                        <img
+                        <div class="arrow_right"></div>
+                        <!-- <img
                           src="~@/assets/image/arrow_right_active.png"
                           class="arrow_right"
                           alt=""
                           srcset=""
-                        />
+                        /> -->
                       </div>
                     </div>
                     <div class="_center">
@@ -168,7 +185,15 @@
           </div>
         </swiper-slide>
         <swiper-slide class="home_3rd_slide">
-          <div class="_box">
+          <div
+            class="_box animated"
+            :class="[
+              active_slide_tonext && active_slide_indexnum !== '03'
+                ? 'fadeOutUp'
+                : '',
+              active_slide_indexnum === '03' ? 'fadeInUp' : ''
+            ]"
+          >
             <div class="_top">
               <img
                 src="~@/assets/image/home_2nd_slide_pic.png"
@@ -177,7 +202,7 @@
               />
             </div>
             <div class="_center">
-              <div>
+              <div class="active1">
                 <div class="_circle">
                   <div class="_into">
                     <div class="_title">
@@ -189,7 +214,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active2">
                 <div class="_circle">
                   <div class="_into">
                     <div class="_title">
@@ -200,7 +225,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active3">
                 <div class="_circle">
                   <div class="_into">
                     <div class="_title">
@@ -210,7 +235,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active4">
                 <div class="_circle">
                   <div class="_into">
                     <div class="_title">
@@ -221,7 +246,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active5">
                 <div class="_circle">
                   <div class="_into">
                     <div class="_title">
@@ -233,10 +258,10 @@
                   </div>
                 </div>
               </div>
-              <div></div>
+              <div class="active6"></div>
             </div>
             <div class="_bottom">
-              <div>
+              <div class="active1">
                 <div class="img_box">
                   <img
                     src="~@/assets/image/home_2nd_slide_pic1.png"
@@ -260,7 +285,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active2">
                 <div class="img_box">
                   <img
                     src="~@/assets/image/home_2nd_slide_pic2.png"
@@ -284,7 +309,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active3">
                 <div class="img_box">
                   <img
                     src="~@/assets/image/home_2nd_slide_pic3.png"
@@ -308,7 +333,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div class="active4">
                 <div class="img_box">
                   <img
                     src="~@/assets/image/home_2nd_slide_pic4.png"
@@ -336,7 +361,15 @@
           </div>
         </swiper-slide>
         <swiper-slide class="home_4th_slide">
-          <div class="_box">
+          <div
+            class="_box animated"
+            :class="[
+              active_slide_tonext && active_slide_indexnum !== '04'
+                ? 'fadeOutUp'
+                : '',
+              active_slide_indexnum === '04' ? 'fadeInUp' : ''
+            ]"
+          >
             <div class="_top">
               <img
                 src="~@/assets/image/home_4th_slide_logo.png"
@@ -406,7 +439,15 @@
           </div>
         </swiper-slide>
         <swiper-slide class="home_5th_slide">
-          <div class="_box">
+          <div
+            class="_box animated"
+            :class="[
+              active_slide_tonext && active_slide_indexnum !== '05'
+                ? 'fadeOutUp'
+                : '',
+              active_slide_indexnum === '05' ? 'fadeInUp' : ''
+            ]"
+          >
             <div class="_top">
               <img
                 src="~@/assets/image/home_5th_slide_logo.png"
@@ -533,6 +574,8 @@ export default {
         // loop: true,
         initialSlide: 0,
         simulateTouch: false,
+        speed: 800,
+        effect: "fade",
         width:
           19.2 *
           ((document.documentElement.clientWidth > 1920
@@ -545,6 +588,8 @@ export default {
       },
       isTrans: false,
       active_slide_indexnum: 0,
+      active_slide_tonext: false,
+      active_slide_to3: false,
       active_slide_index: false,
       subSwiperOption: {
         direction: "vertical",
@@ -596,12 +641,17 @@ export default {
       this.fz = (deviceWidth * 100) / 1920;
     },
     homeSlideChangeStart() {
+      this.active_slide_tonext = true;
       this.isTrans = true;
       this.setActiveSlideIndex();
+      setTimeout(() => {
+        this.isTrans = false;
+      }, 300);
+      setTimeout(() => {
+        this.active_slide_tonext = false;
+      }, 500);
     },
-    homeSlideChangeEnd() {
-      this.isTrans = false;
-    },
+    homeSlideChangeEnd() {},
     subSlideChange() {},
     setActiveSlideIndex() {
       this.active_slide_indexnum = "0" + (this.swiper.activeIndex + 1);
@@ -856,38 +906,14 @@ export default {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
       background-size: cover;
-      // &.swiper-container-vertical > .swiper-pagination-bullets {
-      //   right: px(91) !important;
-      // }
-      // .swiper-pagination-bullet {
-      //   width: 0.06rem !important;
-      //   height: 0.06rem !important;
-      //   position: relative;
-      //   background: rgba(0, 0, 0, 0) !important;
-      //   opacity: 1 !important;
-      //   border: 1px solid #599ae5;
-      //   margin: px(24) 0 !important;
-      //   &:active {
-      //     border: 1px solid #599ae5;
-      //   }
-      //   &.swiper-pagination-bullet-active {
-      //     background: #599ae5 !important;
-      //     &::after {
-      //       content: "";
-      //       display: block;
-      //       position: absolute;
-      //       top: px(-15);
-      //       left: px(-7);
-      //       width: px(27);
-      //       height: px(27);
-      //       background: url("~@/assets/image/swiper_pagination_bullet_home_icon.png")
-      //         no-repeat center;
-      //       background-size: cover;
-      //     }
-      //   }
-      // }
       .swiper-slide {
         position: relative;
+        background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
+        background-size: cover;
+        background-color: #fff;
+        & > ._box {
+          opacity: 0;
+        }
         &.home_1st_slide {
           .home_bg {
             position: absolute;
@@ -931,6 +957,7 @@ export default {
         }
         &.home_3rd_slide {
           ._box {
+            opacity: 0;
             background: url("~@/assets/image/home_2nd_slide_bg.png") no-repeat
               center;
             background-size: cover;
@@ -939,9 +966,58 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            // transform: translate(-50%, -50%);
+            margin-left: px(-760);
+            margin-top: px(-280);
             box-sizing: border-box;
             padding: px(60) px(120) px(0) px(120);
+            &.fadeInUp {
+              ._center,
+              ._bottom {
+                & > div {
+                  transition: all ease-in 0.8s;
+                  &.active1 {
+                    opacity: 1;
+                    transition-delay: 0;
+                    .line1 {
+                      height: px(20)!important;
+                    }
+                  }
+                  &.active2 {
+                    opacity: 1;
+                    transition-delay: 0.2s;
+                    .line2 {
+                      height: px(60)!important;
+                    }
+                  }
+                  &.active3 {
+                    opacity: 1;
+                    transition-delay: 0.4s;
+                    .line3 {
+                      height: px(100)!important;
+                    }
+                  }
+                  &.active4 {
+                    opacity: 1;
+                    transition-delay: 0.6s;
+                    .line2 {
+                      height: px(60)!important;
+                    }
+                  }
+                  &.active5 {
+                    opacity: 1;
+                    transition-delay: 0.8s;
+                    .line1 {
+                      height: px(20)!important;
+                    }
+                  }
+                  &.active6 {
+                    opacity: 1;
+                    transition-delay: 1s;
+                  }
+                }
+              }
+            }
             ._top {
               img {
                 display: block;
@@ -978,6 +1054,7 @@ export default {
               }
               & > div {
                 display: block;
+                opacity: 0;
                 flex: 1;
                 height: 1px;
                 background-color: #fff;
@@ -1023,16 +1100,9 @@ export default {
                     }
                     ._line {
                       width: 2px;
+                      height: 0;
+                      transition: all 1.2s ease-in;
                       background-color: rgba(255, 255, 255, 0.6);
-                      &.line1 {
-                        height: px(20);
-                      }
-                      &.line2 {
-                        height: px(60);
-                      }
-                      &.line3 {
-                        height: px(100);
-                      }
                     }
                   }
                 }
@@ -1043,6 +1113,7 @@ export default {
               align-items: center;
               justify-content: space-between;
               & > div {
+                opacity: 0;
                 width: px(280);
                 height: px(320);
                 cursor: pointer;
@@ -1103,13 +1174,21 @@ export default {
           }
         }
         &.home_2nd_slide {
+          opacity: 0;
+          // &.leave {
+          //   opacity: 0;
+          //   transform: translateY(-30px) !important;
+          // }
+          // transition: all ease-out 0.8s;
           & > ._box {
+            transition: all 0.3s ease-out;
             width: px(1280);
             height: px(600);
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            margin-left: px(-640);
+            margin-top: px(-300);
             display: flex;
             align-items: flex-end;
             .left_box {
@@ -1165,6 +1244,8 @@ export default {
                           display: block;
                           width: px(7);
                           height: px(14);
+                          background: url('~@/assets/image/arrow_right_active.png') no-repeat center;
+                          background-size: cover;
                         }
                       }
                     }
@@ -1289,7 +1370,8 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            margin-left: px(-640);
+            margin-top: px(-236.5);
             & > ._top {
               margin-bottom: px(60);
               img {
@@ -1397,7 +1479,8 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            margin-left: px(-640);
+            margin-top: px(-220.5);
             ._top {
               img {
                 display: block;
