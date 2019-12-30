@@ -99,7 +99,7 @@
                         alt=""
                         srcset=""
                       />
-                      <div class="more more_hover">
+                      <div class="more _more more_hover">
                         <span>了解更多</span>
                         <div class="arrow_right"></div>
                         <!-- <img
@@ -730,7 +730,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 98;
-  width: px(1920);
+  width: 100%;
   height: 100vh;
   .header {
     position: fixed;
@@ -901,7 +901,7 @@ export default {
     }
   }
   .swiper_box {
-    width: px(1920);
+    width: 100%;
     .home_swiper {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
