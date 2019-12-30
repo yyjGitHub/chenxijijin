@@ -5,6 +5,8 @@ import VueAMap from "vue-amap";
 import store from "./store";
 import "normalize.css";
 import animated from "animate.css";
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 import { Pagination, Input } from "element-ui";
 import "./styles/app.scss";
@@ -19,6 +21,11 @@ Vue.use(VueAMap);
 
 Vue.use(animated);
 
+Vue.use(VueAxios, axios);
+
+Vue.prototype.$baseUrl = "http://fund.xjcode.top/Home/index/";
+Vue.prototype.$basePicUrl = "http://admin.ukcec.com/Public/Uploads/";
+
 VueAMap.initAMapApiLoader({
   key: "1787da644b789c9eb13218cc6b404a26",
   plugin: ["AMap.Scale"],
@@ -32,6 +39,7 @@ Vue.config.productionTip = false;
 // Vue.use(ElementUI);
 Vue.use(Pagination);
 Vue.use(Input);
+Vue.pro;
 
 new Vue({
   router,

@@ -626,10 +626,21 @@ export default {
       })();
     };
     this.$nextTick(() => {
+      this.getData();
       this.setActiveSlideIndex();
     });
   },
   methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/0`)
+        .then(({ data }) => {
+          console.log(data);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    },
     resetFontsize() {
       let rootHtml = document.documentElement;
       let deviceWidth =
@@ -980,35 +991,35 @@ export default {
                     opacity: 1;
                     transition-delay: 0;
                     .line1 {
-                      height: px(20)!important;
+                      height: px(20) !important;
                     }
                   }
                   &.active2 {
                     opacity: 1;
                     transition-delay: 0.2s;
                     .line2 {
-                      height: px(60)!important;
+                      height: px(60) !important;
                     }
                   }
                   &.active3 {
                     opacity: 1;
                     transition-delay: 0.4s;
                     .line3 {
-                      height: px(100)!important;
+                      height: px(100) !important;
                     }
                   }
                   &.active4 {
                     opacity: 1;
                     transition-delay: 0.6s;
                     .line2 {
-                      height: px(60)!important;
+                      height: px(60) !important;
                     }
                   }
                   &.active5 {
                     opacity: 1;
                     transition-delay: 0.8s;
                     .line1 {
-                      height: px(20)!important;
+                      height: px(20) !important;
                     }
                   }
                   &.active6 {
@@ -1244,7 +1255,8 @@ export default {
                           display: block;
                           width: px(7);
                           height: px(14);
-                          background: url('~@/assets/image/arrow_right_active.png') no-repeat center;
+                          background: url("~@/assets/image/arrow_right_active.png")
+                            no-repeat center;
                           background-size: cover;
                         }
                       }
