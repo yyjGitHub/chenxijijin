@@ -20,7 +20,7 @@
         </div>
         <div class="_bottom">
           <div v-for="(item, index) in pageList" :key="index">
-            <img :src="`${$basePicUrl}${topInfo.sm_logo}`" alt="" />
+            <img :src="`${$basePicUrl}${item.sm_logo}`" alt="" />
             <div>
               <span>{{ item.title }}</span>
               <div v-html="item.content"></div>
