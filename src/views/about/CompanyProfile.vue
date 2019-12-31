@@ -72,6 +72,21 @@
 export default {
   data() {
     return {};
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/3`)
+        .then(({ data }) => {
+          console.log(data);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    }
   }
 };
 </script>
