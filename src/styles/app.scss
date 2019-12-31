@@ -159,6 +159,15 @@ body {
 
         color: rgba(255, 255, 255, 1);
         line-height: px(23);
+        p {
+          margin: 0;
+          max-width: px(600);
+          text-align: center;
+          font-size: px(16);
+
+          color: rgba(255, 255, 255, 1);
+          line-height: px(23);
+        }
       }
     }
   }
@@ -171,7 +180,6 @@ body {
       .title {
         height: px(50);
         font-size: px(36);
-
         color: rgba(89, 154, 229, 1);
         line-height: px(43);
         margin-bottom: px(10);
@@ -204,6 +212,11 @@ body {
       flex-direction: column;
       align-items: center;
       padding-top: px(223);
+      & > ._top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       .layout_content_title {
         height: px(80);
         font-size: px(80);
@@ -258,6 +271,14 @@ body {
         color: #7f7f7f;
         line-height: px(32);
         margin-bottom: px(120);
+        p {
+          margin: 0;
+          text-align: center;
+          width: px(665);
+          font-size: px(18);
+          color: #7f7f7f;
+          line-height: px(32);
+        }
       }
     }
   }
