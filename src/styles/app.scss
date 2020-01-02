@@ -3,7 +3,9 @@ body {
   background-color: #fff;
   // min-width: 100%;
 }
-
+p {
+  margin: 0;
+}
 .tran-3s {
   transition: all 0.3s ease-in-out;
 }

@@ -1,13 +1,10 @@
 <template>
   <div class="investmentstrategy_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/about_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">面向未来 注重成效</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -16,11 +13,10 @@
           晨曦策略
         </div>
         <div class="layout_content_into">
-          灵活配置 专业投资
+          {{ pageInfo.title }}
         </div>
-        <div class="layout_content_intro">
-          结合管理团队过去的投资和运营经验以及对未来基金发展的规划，基金的投资理念和投资方式主要是理解全球发展规律，抓住中国独特的结构性机会，坚持独立的价值投资方式并提供后续关键的服务。
-        </div>
+        <div class="layout_content_intro" v-html="pageInfo.content"></div>
+        <!-- 未完成 -->
         <div class="_bottom">
           <div class="part part1" id="TZLN">
             <div class="top_pic">
@@ -205,7 +201,23 @@
 import $ from "jquery";
 export default {
   data() {
-    return {};
+    return {
+      topInfo: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      pageInfo: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      TZLN_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      }
+    };
   },
   watch: {
     $route: {
@@ -231,6 +243,38 @@ export default {
       },
       deep: true,
       immediate: true
+    }
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/2`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+
+      this.axios
+        .get(`${this.$baseUrl}content/id/6`)
+        .then(({ data }) => {
+          this.pageInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // this.axios
+      //   .get(`${this.$baseUrl}contentext/id/4`)
+      //   .then(({ data }) => {
+      //     this.QYYJ_INFO = data.data[0];
+      //   })
+      //   .catch(response => {
+      //     console.log(response);
+      //   });
     }
   }
 };

@@ -41,25 +41,27 @@ export default {
         if (activePath === "/home") {
           return;
         }
-        for (let i = 0; i < this.menulist.length; i++) {
-          const element = this.menulist[i];
-          if (element.path === activePath) {
-            this.menu_path = activePath;
-            this.submenu_list = element.children;
-            for (let j = 0; j < element.children.length; j++) {
-              const elementj = element.children[j];
-              if (newVal.path.includes(elementj.path)) {
-                if (newVal.path.includes("/about/CorporateVision/")) {
-                  let t_a = $(
-                    `#${newVal.path.split("/about/CorporateVision/")[1]}`
-                  ).offset();
-                  $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
+        this.$nextTick(() => {
+          for (let i = 0; i < this.menulist.length; i++) {
+            const element = this.menulist[i];
+            if (element.path === activePath) {
+              this.menu_path = activePath;
+              this.submenu_list = element.children;
+              for (let j = 0; j < element.children.length; j++) {
+                const elementj = element.children[j];
+                if (newVal.path.includes(elementj.path)) {
+                  if (newVal.path.includes("/about/CorporateVision/")) {
+                    let t_a = $(
+                      `#${newVal.path.split("/about/CorporateVision/")[1]}`
+                    ).offset();
+                    $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
+                  }
+                  this.subactive_index = j;
                 }
-                this.subactive_index = j;
               }
             }
           }
-        }
+        });
       },
       deep: true,
       immediate: true

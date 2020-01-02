@@ -1,13 +1,10 @@
 <template>
   <div class="about_index_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/about_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">面向未来 注重成效</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box">
@@ -27,9 +24,7 @@
               <div class="_title">
                 晨曦基金
               </div>
-              <div class="_into">
-                上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
-              </div>
+              <div class="_into" v-html="part_1Info.content"></div>
               <div
                 class="_more more_hover"
                 @click="toPage('/about/CompanyProfile')"
@@ -42,11 +37,7 @@
             </div>
           </div>
           <div class="_right">
-            <img
-              src="~@/assets/image/about_index_part1_1.png"
-              alt=""
-              srcset=""
-            />
+            <img :src="`${$basePicUrl}${part_1Info.logo}`" alt="" srcset="" />
           </div>
         </div>
       </div>
@@ -62,11 +53,7 @@
             </div>
           </div>
           <div class="_box">
-            <img
-              src="~@/assets/image/about_index_part2_1.png"
-              alt=""
-              srcset=""
-            />
+            <img :src="`${$basePicUrl}${part_2Info.logo}`" alt="" srcset="" />
             <div>
               <div
                 class="more_hover big left"
@@ -77,12 +64,9 @@
                 <span class="entitle">Vision</span>
               </div>
               <img
-                src="~@/assets/image/about_index_part2_2.png"
-                alt=""
-                srcset=""
-              />
-              <img
-                src="~@/assets/image/about_index_part2_3.png"
+                v-for="(item, index) in part_2List"
+                :key="index"
+                :src="`${$basePicUrl}${item.logo}`"
                 alt=""
                 srcset=""
               />
@@ -110,12 +94,17 @@
             </div>
           </div>
         </div>
-        <div class="_box">
+        <div
+          class="_box"
+          :style="{
+            'background-image': `url(${$basePicUrl}${part_3Info.logo})`
+          }"
+        >
           <div class="_c">
             <div>
               <div class="_left">
-                <span>灵活配置 专业投资</span>
-                <span>Flexible configuration, professional investment</span>
+                <span>{{ part_3Info.title }}</span>
+                <span>{{ part_3Info.entitle }}</span>
                 <div class="_more" @click="toPage('/about/InvestmentStrategy')">
                   <div>
                     <span>了解更多</span>
@@ -179,68 +168,8 @@
             </div>
           </div>
           <div class="_bottom">
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_1.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_2.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_3.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_4.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_5.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_6.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_7.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-
-            <div>
-              <img
-                src="~@/assets/image/about_index_part4_8.png"
-                alt=""
-                srcset=""
-              />
+            <div v-for="(item, index) in part_4List" :key="index">
+              <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
             </div>
           </div>
         </div>
@@ -252,7 +181,34 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      topInfo: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      part_1Info: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      part_2Info: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      part_3Info: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      part_4List: [],
+      part_2List: [],
+      pageList: []
+    };
+  },
+  mounted() {
+    this.getData();
   },
   methods: {
     toPage(url, query = "") {
@@ -264,6 +220,72 @@ export default {
       } else {
         this.$router.push(url);
       }
+    },
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/2`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}content/id/3`)
+        .then(({ data }) => {
+          this.part_1Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}content/id/19`)
+        .then(({ data }) => {
+          this.part_2Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}content/id/4`)
+        .then(({ data }) => {
+          this.part_2List.push(data.data);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}content/id/5`)
+        .then(({ data }) => {
+          this.part_2List.push(data.data);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}content/id/6`)
+        .then(({ data }) => {
+          this.part_3Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/7`)
+        .then(({ data }) => {
+          this.part_4List = data.data.slice(0, 8);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // this.axios
+      //   .get(`${this.$baseUrl}contentext/id/7`)
+      //   .then(({ data }) => {
+      //     this.pageList = data.data;
+      //   })
+      //   .catch(response => {
+      //     console.log(response);
+      //   });
     }
   }
 };

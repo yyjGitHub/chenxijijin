@@ -1,13 +1,10 @@
 <template>
   <div class="corporatevision_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/about_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">面向未来 注重成效</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -16,12 +13,9 @@
           晨曦愿景
         </div>
         <div class="layout_content_into">
-          成为中国房地产私募基金领军者
+          {{ pageInfo.title }}
         </div>
-        <div class="layout_content_intro">
-          公司于2017年4月12日在基金业协会完成私募基金管理人备案登记，私募投资基金管理人登记号为
-          P1062335，公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于成为集项目研判、结构化产品定制、投资运营、风险控制、资产管理于一体的房地产综合服务提供商和独具特色的股权投资机构，跻身业内一流的综合基金平台行列。
-        </div>
+        <div class="layout_content_intro" v-html="pageInfo.content"></div>
         <div class="_bottom">
           <div class="top_part" id="QYFC">
             <div class="_left">
@@ -32,50 +26,19 @@
                   alt=""
                   srcset=""
                 />
-                <span>忠于所托 成就价值</span>
+                <span>{{ QYYJ_INFO.title }}</span>
               </div>
-              <div class="_into">
-                公司于2017年4月12日在基金业协会完成私募基金管理人备案登记，私募投资基金管理人登记号为
-                P1062335，公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于成为集项目研判、结构化产品定制、投资运营、风险控制、资产管理于一体的房地产综合服务提供商和独具特色的股权投资机构，跻身业内一流的综合基金平台行列。
-              </div>
+              <div class="_into" v-html="QYYJ_INFO.content"></div>
             </div>
             <div class="_right">
-              <img
-                src="~@/assets/image/about_corporatevision_pic1.png"
-                alt=""
-                srcset=""
-              />
+              <img :src="`${$basePicUrl}${QYYJ_INFO.logo}`" alt="" srcset="" />
             </div>
           </div>
           <div class="bottom_part" id="QYRY">
-            <div>
-              <img
-                src="~@/assets/image/about_corporatevision_pic2.png"
-                alt=""
-                srcset=""
-              />
+            <div v-for="(item, index) in pageList" :key="index">
+              <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
               <div>
-                <span>2018《博鳌房地产论坛》房地产基金品牌TOP10</span>
-              </div>
-            </div>
-            <div>
-              <img
-                src="~@/assets/image/about_corporatevision_pic3.png"
-                alt=""
-                srcset=""
-              />
-              <div>
-                <span>2018《财视中国》最具市场影响力产品私募房地产基金</span>
-              </div>
-            </div>
-            <div>
-              <img
-                src="~@/assets/image/about_corporatevision_pic4.png"
-                alt=""
-                srcset=""
-              />
-              <div>
-                <span>2017年度TOP10房地产股权投资基金</span>
+                <span>{{ item.title }}</span>
               </div>
             </div>
           </div>
@@ -88,7 +51,64 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      topInfo: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      pageInfo: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      QYYJ_INFO: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      pageList: []
+    };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/2`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+
+      this.axios
+        .get(`${this.$baseUrl}content/id/19`)
+        .then(({ data }) => {
+          this.pageInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/4`)
+        .then(({ data }) => {
+          this.QYYJ_INFO = data.data[0];
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/5`)
+        .then(({ data }) => {
+          this.pageList = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    }
   }
 };
 </script>
