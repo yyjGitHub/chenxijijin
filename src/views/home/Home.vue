@@ -110,9 +110,7 @@
                         /> -->
                       </div>
                     </div>
-                    <div class="_center">
-                      上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿人民币，为上海旭辉企业发展有限公司控股的子公司，是旭辉集团一体两翼“房地产+”板块的核心成员之一。
-                    </div>
+                    <div class="_center" v-html="QYJJ_Info.content"></div>
                     <div class="_bottom">
                       <div>
                         <div class="label_title">时间：</div>
@@ -597,7 +595,12 @@ export default {
         loop: true,
         centeredSlides: true
       },
-      fz: 0
+      fz: 0,
+      QYJJ_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      }
     };
   },
   computed: {
@@ -632,10 +635,11 @@ export default {
   },
   methods: {
     getData() {
+      // 企业简介
       this.axios
-        .get(`${this.$baseUrl}content/id/0`)
+        .get(`${this.$baseUrl}content/id/3`)
         .then(({ data }) => {
-          console.log(data);
+          this.QYJJ_Info = data.data;
         })
         .catch(response => {
           console.log(response);

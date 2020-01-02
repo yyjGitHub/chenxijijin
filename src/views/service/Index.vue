@@ -1,13 +1,10 @@
 <template>
   <div class="service_index_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/service_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">高效及时 用心服务</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -17,7 +14,7 @@
             联系我们
           </div>
           <div class="layout_content_into">
-            发现价值 协同合作
+            {{ LXWM_Info.title }}
           </div>
           <div class="_bottom">
             <div class="_box">
@@ -200,8 +197,43 @@ export default {
       mapStyle: "fresh",
       name: "",
       contact: "",
-      content: ""
+      content: "",
+      topInfo: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: ""
+      },
+      LXWM_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      }
     };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/16`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      //  联系我们
+      this.axios
+        .get(`${this.$baseUrl}content/id/17`)
+        .then(({ data }) => {
+          this.LXWM_Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    }
   }
 };
 </script>

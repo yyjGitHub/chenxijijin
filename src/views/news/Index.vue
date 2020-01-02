@@ -1,13 +1,10 @@
 <template>
   <div class="news_index_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/about_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">共享成长 互利共赢</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -17,78 +14,15 @@
             晨曦视界
           </div>
           <div class="layout_content_into">
-            发现价值 协同合作
+            {{ CXSJ_Info.title }}
           </div>
-          <div class="layout_content_intro">
-            结合管理团队过去的投资和运营经验以及对未来基金发展的规划，基金的投资理念和投资方式主要是理解全球发展规律，抓住中国独特的结构性机会
-          </div>
+          <div class="layout_content_intro" v-html="CXSJ_Info.content"></div>
           <div class="_bottom">
             <div class="_box">
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic1.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic2.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic3.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic4.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic5.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic6.png"
-                  alt=""
-                  srcset=""
-                />
-                <span class="_title"
-                  >旭辉晨曦斩获中国最佳房地产股权投资机构TOP10</span
-                >
-                <span class="_tiem">2019/07/18</span>
+              <div v-for="(item, index) in CXSJ_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+                <span class="_title">{{ item.title }}</span>
+                <span class="_tiem" v-html="item.content"></span>
               </div>
             </div>
             <el-pagination background layout="prev, pager, next" :total="1000">
@@ -104,40 +38,16 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic7.png"
-                  alt=""
-                  srcset=""
-                />
+              <div v-for="(item, index) in QYGG_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_time">
-                    2018/03/30
+                    {{ item.entitle }}
                   </span>
                   <span class="_title">
-                    曦盛1号私募投资基金备案成功
+                    {{ item.title }}
                   </span>
-                  <span class="_into">
-                    晨曦基金发起的第一支纯股基金——曦盛1号私募投资基金于2018年3月29日通过中国基金业协会备案，备案编号为SCN301。该基金采用双管理人的模式，历时3个多月的谈判，最终与项目方、资方大成一致合作意向。
-                  </span>
-                </div>
-              </div>
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic8.png"
-                  alt=""
-                  srcset=""
-                />
-                <div>
-                  <span class="_time">
-                    2017/12/28
-                  </span>
-                  <span class="_title">
-                    中国首单民企长租公寓储架式权益类REITs获批
-                  </span>
-                  <span class="_into">
-                    旭辉晨曦作为私募基金管理人及交易安排人，于2017年12月25日在上交所获批领寓长租公寓储架式REITs30亿额度。旭辉领寓类REITs储架注册规模30亿，涉及10-15个项目，获准在2年内分期完成发行，首期发行底标项目为已实现经营现金流入阿斯顿发送到
-                  </span>
+                  <span class="_into" v-html="item.content"> </span>
                 </div>
               </div>
             </div>
@@ -154,20 +64,14 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div>
-                <img
-                  src="~@/assets/image/news_index_pic9.png"
-                  alt=""
-                  srcset=""
-                />
+              <div v-for="(item, index) in CEOTALK_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_title">
-                    以最佳状态决必应之战
+                    {{ item.title }}
                   </span>
                   <span class="_line"></span>
-                  <span class="_into">
-                    一上班，桌上的一堆文件、邮箱里的各类邮件、领导的临时布置和同事的求救呼叫……一天的时间很快就在忙忙碌碌中过掉了。相信很多同事都会有这样的经历，但忙碌是否就代表有效率？
-                  </span>
+                  <span class="_into" v-html="item.content"> </span>
                   <span class="_more">
                     <span>查看详情</span>
                     <img
@@ -178,7 +82,6 @@
                   </span>
                 </div>
               </div>
-              <div></div>
             </div>
             <el-pagination background layout="prev, pager, next" :total="1000">
             </el-pagination>
@@ -192,7 +95,74 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      topInfo: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: ""
+      },
+      CXSJ_Info: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: ""
+      },
+      CXSJ_List: [],
+      QYGG_List: [],
+      CEOTALK_List: []
+    };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/12`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      //  晨曦视界
+      this.axios
+        .get(`${this.$baseUrl}content/id/23`)
+        .then(({ data }) => {
+          this.CXSJ_Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // 晨曦世界
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/23`)
+        .then(({ data }) => {
+          this.CXSJ_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // 企业公告
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/13`)
+        .then(({ data }) => {
+          this.QYGG_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // CEOTALK
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/14`)
+        .then(({ data }) => {
+          this.CEOTALK_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    }
   }
 };
 </script>

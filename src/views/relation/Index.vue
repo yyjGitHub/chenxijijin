@@ -1,13 +1,10 @@
 <template>
   <div class="relation_index_box layout_content_box">
     <div class="page_top_box">
-      <img src="~@/assets/image/relation_index_toppic.png" alt="" srcset="" />
+      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
-        <div class="_title">发现价值 协同合作</div>
-        <div class="_into">
-          公司以“轻资产运营”为导向，多元发展地产基金和股权投资等多个业务板块，致力于
-          成为房地产综合服务提供商和独具特色的股权投资机构
-        </div>
+        <div class="_title">{{ topInfo.title }}</div>
+        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -16,62 +13,14 @@
           晨曦通函
         </div>
         <div class="layout_content_into">
-          发现价值 协同合作
+          {{ topInfo.title }}
         </div>
         <div class="_bottom">
           <div class="_box">
-            <div>
-              <div class="_date">2018/03/30</div>
+            <div v-for="(item, index) in TZZGX_List" :key="index">
+              <div class="_date">{{ item.entitle }}</div>
               <div class="_b">
-                <div class="_title">曦盛1号私募投资基金备案成功</div>
-                <div class="_more">
-                  <div>
-                    <span>查看PDF</span>
-                    <i></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="_date">2018/03/30</div>
-              <div class="_b">
-                <div class="_title">收购资产的公告</div>
-                <div class="_more">
-                  <div>
-                    <span>查看PDF</span>
-                    <i></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="_date">2018/03/30</div>
-              <div class="_b">
-                <div class="_title">第三次监事会第二次会议决议公告</div>
-                <div class="_more">
-                  <div>
-                    <span>查看PDF</span>
-                    <i></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="_date">2018/03/30</div>
-              <div class="_b">
-                <div class="_title">曦盛1号私募投资基金备案成功</div>
-                <div class="_more">
-                  <div>
-                    <span>查看PDF</span>
-                    <i></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="_date">2018/03/30</div>
-              <div class="_b">
-                <div class="_title">收购资产的公告</div>
+                <div class="_title">{{ item.title }}</div>
                 <div class="_more">
                   <div>
                     <span>查看PDF</span>
@@ -92,7 +41,39 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      topInfo: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: ""
+      },
+      TZZGX_List: []
+    };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.axios
+        .get(`${this.$baseUrl}content/id/15`)
+        .then(({ data }) => {
+          this.topInfo = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      //  投资者关系
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/15`)
+        .then(({ data }) => {
+          this.TZZGX_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    }
   }
 };
 </script>

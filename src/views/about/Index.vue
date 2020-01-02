@@ -115,30 +115,24 @@
               <div class="_right">
                 <div @click="toPage('InvestmentStrategy', 'TZLN')">
                   <div class="top">
-                    <span>投资理念</span>
-                    <span>Investment philosophy</span>
+                    <span>{{ TZLN_Info.ctitle }}</span>
+                    <span>{{ TZLN_Info.entitle }}</span>
                   </div>
-                  <div class="bottom">
-                    以房地产投融资业务为主导，同时关注房地产行业衍生业务的股权投资机会。
-                  </div>
+                  <div class="bottom" v-html="TZLN_Info.content"></div>
                 </div>
                 <div @click="toPage('InvestmentStrategy', 'TZCL')">
                   <div class="top">
-                    <span>投资策略</span>
-                    <span>Investment strategy</span>
+                    <span>{{ TZCL_Info.ctitle }}</span>
+                    <span>{{ TZCL_Info.entitle }}</span>
                   </div>
-                  <div class="bottom">
-                    以房地产投融资业务为主导，同时关注房地产行业衍生业务的股权投资机会。
-                  </div>
+                  <div class="bottom" v-html="TZCL_Info.content"></div>
                 </div>
                 <div @click="toPage('InvestmentStrategy', 'FXKZ')">
                   <div class="top">
-                    <span>风险控制</span>
-                    <span>Risk control</span>
+                    <span>{{ FXKZ_Info.ctitle }}</span>
+                    <span>{{ FXKZ_Info.entitle }}</span>
                   </div>
-                  <div class="bottom">
-                    以房地产投融资业务为主导，同时关注房地产行业衍生业务的股权投资机会。
-                  </div>
+                  <div class="bottom" v-html="FXKZ_Info.content"></div>
                 </div>
               </div>
             </div>
@@ -204,7 +198,22 @@ export default {
       },
       part_4List: [],
       part_2List: [],
-      pageList: []
+      pageList: [],
+      TZLN_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      TZCL_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      },
+      FXKZ_Info: {
+        title: "",
+        content: "",
+        logo: ""
+      }
     };
   },
   mounted() {
@@ -274,6 +283,33 @@ export default {
         .get(`${this.$baseUrl}contentext/id/7`)
         .then(({ data }) => {
           this.part_4List = data.data.slice(0, 8);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // 投资理念
+      this.axios
+        .get(`${this.$baseUrl}content/id/20`)
+        .then(({ data }) => {
+          this.TZLN_Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      //投资策略
+      this.axios
+        .get(`${this.$baseUrl}content/id/21`)
+        .then(({ data }) => {
+          this.TZCL_Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      //风险控制
+      this.axios
+        .get(`${this.$baseUrl}content/id/22`)
+        .then(({ data }) => {
+          this.FXKZ_Info = data.data;
         })
         .catch(response => {
           console.log(response);
