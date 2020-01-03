@@ -89,7 +89,7 @@
                       srcset=""
                     />
                   </div>
-                  <div class="_submit">提交</div>
+                  <div class="_submit" @click="postData">提交</div>
                 </div>
               </div>
             </div>
@@ -229,6 +229,21 @@ export default {
         .get(`${this.$baseUrl}content/id/17`)
         .then(({ data }) => {
           this.LXWM_Info = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    },
+    postData() {
+      this.axios
+        .post(`${this.$baseUrl}contact`, {
+          name: this.name,
+          tel: this.contact,
+          content: this.content
+        })
+        .then(({ data }) => {
+          console.log(data);
+          // this.LXWM_Info = data.data;
         })
         .catch(response => {
           console.log(response);
