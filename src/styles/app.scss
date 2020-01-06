@@ -9,6 +9,9 @@ p {
 .tran-3s {
   transition: all 0.3s ease-in-out;
 }
+.el-message .el-icon-success {
+  font-size: px(16);
+}
 .more_hover {
   position: relative;
   overflow: hidden;

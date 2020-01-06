@@ -112,62 +112,33 @@
                 <span>申请职位</span>
               </div>
               <div class="_bottom">
-                <div class="_item">
+                <div
+                  class="_item"
+                  v-for="(item, index) in SHZP_List"
+                  :key="index"
+                >
                   <div class="_left">
                     <span class="_title">
-                      资产管理经理/总监（投后）
+                      {{ item.title }}
                     </span>
                     <span class="_into">
-                      财务背景
+                      {{ item.name }}
                     </span>
                   </div>
                   <div class="_right">
                     <div class="_top">
-                      <span>上海</span>
+                      <span>{{ item.attr }}</span>
                       <span>查看详情</span>
                       <span>2018-04-02</span>
                       <span>
                         <div class="apply">APPLY</div>
                       </span>
                     </div>
-                  </div>
-                </div>
-                <div class="_item">
-                  <div class="_left">
-                    <span class="_title">
-                      资产管理经理/总监（投后）
-                    </span>
-                    <span class="_into">
-                      财务背景
-                    </span>
-                  </div>
-                  <div class="_right">
-                    <div class="_top">
-                      <span>上海</span>
-                      <span>查看详情</span>
-                      <span>2018-04-02</span>
-                      <span>
-                        <div class="apply">APPLY</div>
-                      </span>
-                    </div>
-                    <div class="_into">
-                      <div>
-                        <b>工作职责：</b>
-                        <span>1、全日制本科以上学历；</span>
-                        <span
-                          >2、5年以上工作经验，需在TOP50地产公司有过财务、运营、投资方面从业经历；</span
-                        >
-                        <span>3、有过项目完整开发周期经验的优先</span>
-                      </div>
-                      <div>
-                        <b>工作职责：</b>
-                        <span>1、全日制本科以上学历；</span>
-                        <span
-                          >2、5年以上工作经验，需在TOP50地产公司有过财务、运营、投资方面从业经历；</span
-                        >
-                        <span>3、有过项目完整开发周期经验的优先</span>
-                      </div>
-                    </div>
+                    <div
+                      class="_into"
+                      v-if="item.content !== '<p>无</p>'"
+                      v-html="item.content"
+                    ></div>
                   </div>
                 </div>
                 <div class="show_more">
@@ -183,6 +154,7 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 import { AMapManager } from "vue-amap";
 let amapManager = new AMapManager();
 export default {
@@ -208,7 +180,8 @@ export default {
         title: "",
         content: "",
         logo: ""
-      }
+      },
+      SHZP_List: []
     };
   },
   mounted() {
@@ -233,6 +206,15 @@ export default {
         .catch(response => {
           console.log(response);
         });
+      //  社会招聘
+      this.axios
+        .get(`${this.$baseUrl}contentjob/id/18`)
+        .then(({ data }) => {
+          this.SHZP_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
     },
     postData() {
       this.axios
@@ -243,7 +225,12 @@ export default {
         })
         .then(({ data }) => {
           console.log(data);
-          // this.LXWM_Info = data.data;
+          if (data.status === "1") {
+            Message({
+              message: "添加成功",
+              type: "success"
+            });
+          }
         })
         .catch(response => {
           console.log(response);
@@ -481,19 +468,21 @@ export default {
                 ._into {
                   padding: px(24) px(98);
                   background-color: #f9f9f9;
-                  & > div {
+                  div {
                     margin-bottom: px(16);
                     &:last-child {
                       margin-bottom: 0;
                     }
                     b,
-                    span {
+                    span,
+                    strong {
                       color: #828282;
                       display: block;
                       font-size: px(16);
                       line-height: px(23);
                     }
-                    b {
+                    b,
+                    strong {
                       margin-bottom: px(4);
                     }
                   }

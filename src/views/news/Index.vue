@@ -22,7 +22,7 @@
               <div v-for="(item, index) in CXSJ_List" :key="index">
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
-                <span class="_tiem" v-html="item.content"></span>
+                <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
               </div>
             </div>
             <el-pagination background layout="prev, pager, next" :total="1000">

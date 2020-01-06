@@ -7,7 +7,6 @@
           :class="[active_slide_index ? 'active' : '']"
         >
           <span class="active_index">
-            <!--{{ active_slide_indexnum }}-->
             <div
               class="_box"
               :style="{
@@ -259,13 +258,14 @@
               <div class="active6"></div>
             </div>
             <div class="_bottom">
-              <div class="active1">
+              <div
+                class="active1"
+                :class="'active' + (index + 1)"
+                v-for="(item, index) in ZYGLR_List"
+                :key="index"
+              >
                 <div class="img_box">
-                  <img
-                    src="~@/assets/image/home_2nd_slide_pic1.png"
-                    alt=""
-                    srcset=""
-                  />
+                  <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 </div>
                 <div class="_content">
                   <div>
@@ -275,82 +275,10 @@
                         alt=""
                         srcset=""
                       />
-                      <span>1</span>
+                      <span>{{ index + 1 }}</span>
                     </div>
                     <div class="_into">
-                      优选百强房企
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="active2">
-                <div class="img_box">
-                  <img
-                    src="~@/assets/image/home_2nd_slide_pic2.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div class="_content">
-                  <div>
-                    <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
-                      <span>2</span>
-                    </div>
-                    <div class="_into">
-                      项目素质优质
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="active3">
-                <div class="img_box">
-                  <img
-                    src="~@/assets/image/home_2nd_slide_pic3.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div class="_content">
-                  <div>
-                    <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
-                      <span>3</span>
-                    </div>
-                    <div class="_into">
-                      优选核心城市
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="active4">
-                <div class="img_box">
-                  <img
-                    src="~@/assets/image/home_2nd_slide_pic4.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div class="_content">
-                  <div>
-                    <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon.png"
-                        alt=""
-                        srcset=""
-                      />
-                      <span>4</span>
-                    </div>
-                    <div class="_into">
-                      交易条件优质
+                      {{ item.title }}
                     </div>
                   </div>
                 </div>
@@ -376,58 +304,20 @@
               />
             </div>
             <div class="_bottom">
-              <div>
+              <div v-for="(item, index) in YWLY_List" :key="index">
                 <div class="_top">
                   <div class="title">
-                    地产基金
+                    {{ item.title }}
                   </div>
                   <div class="entitle">
-                    REAL ESTATE FUNDS
+                    {{ item.entitle }}
                   </div>
                 </div>
-                <div class="_into">扩宽投资途径</div>
+                <div class="_into" v-html="item.content"></div>
                 <div class="pic_box">
                   <img
                     class="_pic"
-                    src="~@/assets/image/home_3rd_slide_pic1.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <div>
-                <div class="_top">
-                  <div class="title">
-                    机构业务
-                  </div>
-                  <div class="entitle">
-                    AGENCY BUSINESS
-                  </div>
-                </div>
-                <div class="_into">专业团队持续跟踪和深入研究</div>
-                <div class="pic_box">
-                  <img
-                    class="_pic"
-                    src="~@/assets/image/home_4th_slide_pic2.png"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <div>
-                <div class="_top">
-                  <div class="title">
-                    财富管理
-                  </div>
-                  <div class="entitle">
-                    WEALTH MANAGEMENT
-                  </div>
-                </div>
-                <div class="_into">专业团队持续跟踪和深入研究</div>
-                <div class="pic_box">
-                  <img
-                    class="_pic"
-                    src="~@/assets/image/home_4th_slide_pic3.png"
+                    :src="`${$basePicUrl}${item.logo}`"
                     alt=""
                     srcset=""
                   />
@@ -457,18 +347,19 @@
               <div class="_left">
                 <img
                   class="topic_img"
-                  src="~@/assets/image/home_5th_slide_pic1.png"
+                  :src="`${$basePicUrl}${XWZX_List[subActiveIndex].logo}`"
                   alt=""
                   srcset=""
                 />
                 <div class="topic_title">
-                  旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
+                  {{ XWZX_List[subActiveIndex].title }}
                 </div>
-                <div class="topic_into">
-                  由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权投资产业峰会，于2019年7月17-18日在北京四季酒店举行……
-                </div>
+                <div
+                  class="topic_into"
+                  v-html="XWZX_List[subActiveIndex].content"
+                ></div>
                 <div class="topic_time">
-                  2019-07-18
+                  {{ XWZX_List[subActiveIndex].time.split(" ")[0] }}
                 </div>
               </div>
               <div class="_right">
@@ -478,60 +369,20 @@
                   :options="subSwiperOption"
                   @slideChangeTransitionStart="subSlideChange"
                 >
-                  <swiper-slide>
+                  <swiper-slide v-for="(item, index) in XWZX_List" :key="index">
                     <div class="left_box">
-                      <span class="day">22</span>
-                      <span class="year">2019-07</span>
+                      <span class="day">{{
+                        item.time.split(" ")[0].substring(8, 10)
+                      }}</span>
+                      <span class="year">{{
+                        item.time.split(" ")[0].substring(0, 7)
+                      }}</span>
                     </div>
                     <div class="right_box">
                       <div class="_title">
-                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
+                        {{ item.title }}
                       </div>
-                      <div class="_into">
-                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
-                      </div>
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="left_box">
-                      <span class="day">22</span>
-                      <span class="year">2019-07</span>
-                    </div>
-                    <div class="right_box">
-                      <div class="_title">
-                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
-                      </div>
-                      <div class="_into">
-                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
-                      </div>
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="left_box">
-                      <span class="day">22</span>
-                      <span class="year">2019-07</span>
-                    </div>
-                    <div class="right_box">
-                      <div class="_title">
-                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
-                      </div>
-                      <div class="_into">
-                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
-                      </div>
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="left_box">
-                      <span class="day">22</span>
-                      <span class="year">2019-07</span>
-                    </div>
-                    <div class="right_box">
-                      <div class="_title">
-                        旭辉晨曦斩获中国最佳房地产股权投资机构TOP10
-                      </div>
-                      <div class="_into">
-                        由融资中国、中国风投委联合主办的“产业投资的2.0时代”第五届融资中国2019股权……
-                      </div>
+                      <div class="_into" v-html="item.content"></div>
                     </div>
                   </swiper-slide>
                 </swiper>
@@ -592,15 +443,27 @@ export default {
       subSwiperOption: {
         direction: "vertical",
         slidesPerView: 3,
-        loop: true,
+        // loop: true
+        // init: false,
         centeredSlides: true
       },
+      subActiveIndex: 0,
       fz: 0,
       QYJJ_Info: {
         title: "",
         content: "",
         logo: ""
-      }
+      },
+      ZYGLR_List: [],
+      YWLY_List: [],
+      XWZX_List: [
+        {
+          title: "",
+          content: "",
+          logo: "",
+          time: ""
+        }
+      ]
     };
   },
   computed: {
@@ -644,6 +507,35 @@ export default {
         .catch(response => {
           console.log(response);
         });
+      // 专业私募管理人
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/24`)
+        .then(({ data }) => {
+          this.ZYGLR_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // 业务领域
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/25`)
+        .then(({ data }) => {
+          this.YWLY_List = data.data;
+        })
+        .catch(response => {
+          console.log(response);
+        });
+      // 新闻资讯
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/23`)
+        .then(({ data }) => {
+          this.XWZX_List = data.data;
+          this.subSwiper.update();
+          this.subSwiper.slideNext();
+        })
+        .catch(response => {
+          console.log(response);
+        });
     },
     resetFontsize() {
       let rootHtml = document.documentElement;
@@ -667,7 +559,9 @@ export default {
       }, 500);
     },
     homeSlideChangeEnd() {},
-    subSlideChange() {},
+    subSlideChange() {
+      this.subActiveIndex = this.subSwiper.realIndex;
+    },
     setActiveSlideIndex() {
       this.active_slide_indexnum = "0" + (this.swiper.activeIndex + 1);
       if (this.swiper.activeIndex === 0) {
@@ -741,6 +635,7 @@ export default {
 .homepage_box {
   // position: fixed;
   position: relative;
+  // overflow: hidden;
   margin-top: px(-160);
   top: 0;
   left: 0;
@@ -917,6 +812,8 @@ export default {
   }
   .swiper_box {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
     .home_swiper {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
@@ -1653,6 +1550,11 @@ export default {
                           text-overflow: ellipsis;
                           overflow: hidden;
                           white-space: nowrap;
+                          p {
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                          }
                         }
                       }
                     }
