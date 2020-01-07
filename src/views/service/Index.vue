@@ -129,7 +129,7 @@
                     <div class="_top">
                       <span>{{ item.attr }}</span>
                       <span>查看详情</span>
-                      <span>2018-04-02</span>
+                      <span>{{ item.time.split(" ")[0] }}</span>
                       <span>
                         <div class="apply">APPLY</div>
                       </span>
@@ -230,6 +230,9 @@ export default {
               message: "添加成功",
               type: "success"
             });
+            this.name = "";
+            this.contact = "";
+            this.content = "";
           }
         })
         .catch(response => {
