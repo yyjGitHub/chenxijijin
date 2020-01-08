@@ -19,13 +19,23 @@
           <div class="layout_content_intro" v-html="CXSJ_Info.content"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in CXSJ_List" :key="index">
+              <div
+                v-for="(item, index) in CXSJ_List"
+                :key="index"
+                @click="toitem(item.id)"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
                 <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
               </div>
             </div>
-            <el-pagination background layout="prev, pager, next" :total="1000">
+            <el-pagination
+              background
+              @current-change="CXSJ_change"
+              :page-size="6"
+              layout="prev, pager, next"
+              :total="CXSJ_total"
+            >
             </el-pagination>
           </div>
         </div>
@@ -51,7 +61,13 @@
                 </div>
               </div>
             </div>
-            <el-pagination background layout="prev, pager, next" :total="1000">
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :page-size="6"
+              @current-change="QYGG_change"
+              :total="QYGG_total"
+            >
             </el-pagination>
           </div>
         </div>
@@ -83,7 +99,13 @@
                 </div>
               </div>
             </div>
-            <el-pagination background layout="prev, pager, next" :total="1000">
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :page-size="6"
+              @current-change="CEOTALK_change"
+              :total="CEOTALK_total"
+            >
             </el-pagination>
           </div>
         </div>
@@ -110,7 +132,13 @@ export default {
       },
       CXSJ_List: [],
       QYGG_List: [],
-      CEOTALK_List: []
+      CEOTALK_List: [],
+      CXSJ_p: 1,
+      QYGG_p: 1,
+      CEOTALK_p: 1,
+      CXSJ_total: 0,
+      QYGG_total: 0,
+      CEOTALK_total: 0
     };
   },
   mounted() {
@@ -135,29 +163,47 @@ export default {
         .catch(response => {
           console.log(response);
         });
-      // 晨曦世界
-      this.axios
-        .get(`${this.$baseUrl}contentext/id/23`)
-        .then(({ data }) => {
-          this.CXSJ_List = data.data;
-        })
-        .catch(response => {
-          console.log(response);
-        });
-      // 企业公告
-      this.axios
-        .get(`${this.$baseUrl}contentext/id/13`)
-        .then(({ data }) => {
-          this.QYGG_List = data.data;
-        })
-        .catch(response => {
-          console.log(response);
-        });
+      this.CEOTALK_change(1);
+      this.QYGG_change(1);
+      this.CXSJ_change(1);
+    },
+    toitem(index) {
+      this.$router.push(`/news/${index}`);
+    },
+    CEOTALK_change(p) {
+      this.CEOTALK_p = p;
       // CEOTALK
       this.axios
-        .get(`${this.$baseUrl}contentext/id/14`)
+        .get(`${this.$baseUrl}contentext/id/14/p/${this.CEOTALK_p}/count/6`)
         .then(({ data }) => {
           this.CEOTALK_List = data.data;
+          this.CEOTALK_total = parseInt(data.count);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    },
+    CXSJ_change(p) {
+      this.CXSJ_p = p;
+      // 晨曦世界
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/23/p/${this.CXSJ_p}/count/6`)
+        .then(({ data }) => {
+          this.CXSJ_List = data.data;
+          this.CXSJ_total = parseInt(data.count);
+        })
+        .catch(response => {
+          console.log(response);
+        });
+    },
+    QYGG_change(p) {
+      this.QYGG_p = p;
+      // 企业公告
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/13/p/${this.QYGG_p}/count/6`)
+        .then(({ data }) => {
+          this.QYGG_List = data.data;
+          this.QYGG_total = parseInt(data.count);
         })
         .catch(response => {
           console.log(response);
@@ -191,6 +237,7 @@ export default {
             margin-right: px(64);
             width: px(384);
             margin-bottom: px(56);
+            cursor: pointer;
             & > img {
               display: block;
               width: px(384);

@@ -30,7 +30,13 @@
               </div>
             </div>
           </div>
-          <el-pagination background layout="prev, pager, next" :total="1000">
+          <el-pagination
+            background
+            :page-size="10"
+            layout="prev, pager, next"
+            @current-change="size_change"
+            :total="total"
+          >
           </el-pagination>
         </div>
       </div>
@@ -48,7 +54,9 @@ export default {
         logo: "",
         contentext: ""
       },
-      TZZGX_List: []
+      TZZGX_List: [],
+      page: 1,
+      total: 0
     };
   },
   mounted() {
@@ -65,10 +73,15 @@ export default {
           console.log(response);
         });
       //  投资者关系
+      this.size_change(1);
+    },
+    size_change(p) {
+      this.page = p;
       this.axios
-        .get(`${this.$baseUrl}contentext/id/15`)
+        .get(`${this.$baseUrl}contentext/id/15/p/${this.page}/count/10`)
         .then(({ data }) => {
           this.TZZGX_List = data.data;
+          this.total = parseInt(data.count);
         })
         .catch(response => {
           console.log(response);

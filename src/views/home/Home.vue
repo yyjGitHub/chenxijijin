@@ -92,21 +92,24 @@
                 <div class="_box">
                   <div>
                     <div class="_top">
-                      <img
+                      <div class="_cbox">
+                        <img
+                          src="~@/assets/image/half_circle_icon_1.png"
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="_title">企业简介</div>
+                        <div class="_entitle">COMPANY PROFILE</div>
+                      </div>
+                      <!-- <img
                         class="pic"
                         src="~@/assets/image/home_3rd_slide_logo.png"
                         alt=""
                         srcset=""
-                      />
+                      /> -->
                       <div class="more _more more_hover">
                         <span>了解更多</span>
                         <div class="arrow_right"></div>
-                        <!-- <img
-                          src="~@/assets/image/arrow_right_active.png"
-                          class="arrow_right"
-                          alt=""
-                          srcset=""
-                        /> -->
                       </div>
                     </div>
                     <div class="_center" v-html="QYJJ_Info.content"></div>
@@ -197,6 +200,7 @@
                 alt=""
                 srcset=""
               />
+              <!-- <div class="_cbox"></div> -->
             </div>
             <div class="_center">
               <div class="active1">
@@ -297,11 +301,15 @@
             ]"
           >
             <div class="_top">
-              <img
-                src="~@/assets/image/home_4th_slide_logo.png"
-                alt=""
-                srcset=""
-              />
+              <div class="_cbox">
+                <img
+                  src="~@/assets/image/half_circle_icon_1.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_title">企业领域</div>
+                <div class="_entitle">BUSIJNESS DOMAIN</div>
+              </div>
             </div>
             <div class="_bottom">
               <div v-for="(item, index) in YWLY_List" :key="index">
@@ -337,29 +345,33 @@
             ]"
           >
             <div class="_top">
-              <img
-                src="~@/assets/image/home_5th_slide_logo.png"
-                alt=""
-                srcset=""
-              />
+              <div class="_cbox">
+                <img
+                  src="~@/assets/image/half_circle_icon_1.png"
+                  alt=""
+                  srcset=""
+                />
+                <div class="_title">新闻资讯</div>
+                <div class="_entitle">NEWS INFORMATION</div>
+              </div>
             </div>
             <div class="_bottom">
               <div class="_left">
                 <img
                   class="topic_img"
-                  :src="`${$basePicUrl}${XWZX_List[subActiveIndex].logo}`"
+                  :src="`${$basePicUrl}${XWZX_List[subActiveIndex + 1].logo}`"
                   alt=""
                   srcset=""
                 />
                 <div class="topic_title">
-                  {{ XWZX_List[subActiveIndex].title }}
+                  {{ XWZX_List[subActiveIndex + 1].title }}
                 </div>
                 <div
                   class="topic_into"
-                  v-html="XWZX_List[subActiveIndex].content"
+                  v-html="XWZX_List[subActiveIndex + 1].content"
                 ></div>
                 <div class="topic_time">
-                  {{ XWZX_List[subActiveIndex].time.split(" ")[0] }}
+                  {{ XWZX_List[subActiveIndex + 1].time.split(" ")[0] }}
                 </div>
               </div>
               <div class="_right">
@@ -442,10 +454,10 @@ export default {
       active_slide_index: false,
       subSwiperOption: {
         direction: "vertical",
-        slidesPerView: 3,
+        slidesPerView: 3
         // loop: true
         // init: false,
-        centeredSlides: true
+        // centeredSlides: true
       },
       subActiveIndex: 0,
       fz: 0,
@@ -457,6 +469,12 @@ export default {
       ZYGLR_List: [],
       YWLY_List: [],
       XWZX_List: [
+        {
+          title: "",
+          content: "",
+          logo: "",
+          time: ""
+        },
         {
           title: "",
           content: "",
@@ -529,6 +547,18 @@ export default {
       this.axios
         .get(`${this.$baseUrl}contentext/id/23`)
         .then(({ data }) => {
+          // this.XWZX_List = data.data;
+          for (let i = 0; i < data.data.length; i++) {
+            const element = data.data[i];
+            let ar = element.content.split("<p>");
+            for (let j = 0; j < ar.length; j++) {
+              const elementj = ar[j];
+              if (!elementj.includes("<img") && elementj !== "") {
+                data.data[i].content = ar[j];
+                break;
+              }
+            }
+          }
           this.XWZX_List = data.data;
           this.subSwiper.update();
           this.subSwiper.slideNext();
@@ -933,9 +963,16 @@ export default {
             ._top {
               img {
                 display: block;
-                width: px(340);
+                width: px(320);
                 height: px(61);
               }
+              // ._cbox {
+              //   height: px(61);
+              //   .top {
+              //     display: flex;
+              //     align-items: flex-end;
+              //   }
+              // }
             }
             ._center {
               margin-top: px(144);
@@ -1134,10 +1171,30 @@ export default {
                       align-items: center;
                       justify-content: space-between;
                       margin-bottom: px(25);
-                      .pic {
-                        width: px(290);
+                      & > ._cbox {
                         height: px(34);
-                        display: block;
+                        display: flex;
+                        align-items: flex-end;
+                        img {
+                          width: px(29);
+                          height: px(14);
+                          display: block;
+                          position: relative;
+                          top: px(-7);
+                        }
+                        ._title {
+                          height: px(33);
+                          font-size: px(24);
+                          color: #333;
+                          line-height: px(33);
+                          margin-left: px(12);
+                        }
+                        ._entitle {
+                          height: px(22);
+                          font-size: px(16);
+                          line-height: px(22);
+                          margin-left: px(8);
+                        }
                       }
                       & > .more {
                         width: px(120);
@@ -1287,10 +1344,30 @@ export default {
             margin-top: px(-236.5);
             & > ._top {
               margin-bottom: px(60);
-              img {
-                display: block;
-                width: px(295);
-                height: px(33);
+              & > ._cbox {
+                height: px(34);
+                display: flex;
+                align-items: flex-end;
+                img {
+                  width: px(29);
+                  height: px(14);
+                  display: block;
+                  position: relative;
+                  top: px(-7);
+                }
+                ._title {
+                  height: px(33);
+                  font-size: px(24);
+                  color: #333;
+                  line-height: px(33);
+                  margin-left: px(12);
+                }
+                ._entitle {
+                  height: px(22);
+                  font-size: px(16);
+                  line-height: px(22);
+                  margin-left: px(8);
+                }
               }
             }
             & > ._bottom {
@@ -1395,10 +1472,30 @@ export default {
             margin-left: px(-640);
             margin-top: px(-220.5);
             ._top {
-              img {
-                display: block;
-                width: px(316);
-                height: px(33);
+              & > ._cbox {
+                height: px(34);
+                display: flex;
+                align-items: flex-end;
+                img {
+                  width: px(29);
+                  height: px(14);
+                  display: block;
+                  position: relative;
+                  top: px(-7);
+                }
+                ._title {
+                  height: px(33);
+                  font-size: px(24);
+                  color: #333;
+                  line-height: px(33);
+                  margin-left: px(12);
+                }
+                ._entitle {
+                  height: px(22);
+                  font-size: px(16);
+                  line-height: px(22);
+                  margin-left: px(8);
+                }
               }
               margin-bottom: px(40);
             }
@@ -1493,7 +1590,8 @@ export default {
                       color: #7f7f7f;
                       display: flex;
                       align-items: center;
-                      &.swiper-slide-active {
+                      &.swiper-slide-next {
+                        // &.swiper-slide-active {
                         border: 1px #5b9de4 solid;
                         border-left: none;
                         border-right: none;
