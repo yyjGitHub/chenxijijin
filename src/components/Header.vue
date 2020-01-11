@@ -73,6 +73,7 @@ export default {
   methods: {
     toPage(item) {
       // this.active_index = index;
+      console.log(item);
       this.$router.push(item.path);
     },
     resetFontsize() {

@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { EventBus } from "@/bus";
 import $ from "jquery";
 import { mapGetters } from "vuex";
 export default {
@@ -33,6 +34,9 @@ export default {
     ...mapGetters({
       menulist: "menulist"
     })
+  },
+  mounted() {
+    console.log(EventBus);
   },
   watch: {
     $route: {
@@ -72,6 +76,11 @@ export default {
       if (item.hasOwnProperty("component")) {
         this.$router.push(path + "/" + item.path);
       } else {
+        if (path === "/relation") {
+          EventBus.$emit("GG", item.name);
+          this.subactive_index = index;
+          return;
+        }
         let t_a = $(`#${item.path}`).offset();
         $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
       }

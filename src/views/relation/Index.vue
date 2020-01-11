@@ -21,12 +21,12 @@
               <div class="_date">{{ item.entitle }}</div>
               <div class="_b">
                 <div class="_title">{{ item.title }}</div>
-                <div class="_more">
+                <a class="_more" @click="toPdf(item.file)">
                   <div>
                     <span>查看PDF</span>
                     <i></i>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { EventBus } from "@/bus";
 export default {
   data() {
     return {
@@ -60,6 +61,18 @@ export default {
     };
   },
   mounted() {
+    EventBus.$on("GG", res => {
+      this.page = 1;
+      if (res === "2016GG") {
+        this.size_change(1, "2016");
+      }
+      if (res === "2017GG") {
+        this.size_change(1, "2017");
+      }
+      if (res === "2018GG") {
+        this.size_change(1, "2018");
+      }
+    });
     this.getData();
   },
   methods: {
@@ -75,10 +88,14 @@ export default {
       //  投资者关系
       this.size_change(1);
     },
-    size_change(p) {
+    size_change(p, time = "") {
       this.page = p;
+      let url = `${this.$baseUrl}contentext/id/15/p/${this.page}/count/10`;
+      if (time !== "") {
+        url += `/date/${time}`;
+      }
       this.axios
-        .get(`${this.$baseUrl}contentext/id/15/p/${this.page}/count/10`)
+        .get(`${url}`)
         .then(({ data }) => {
           this.TZZGX_List = data.data;
           this.total = parseInt(data.count);
@@ -86,6 +103,11 @@ export default {
         .catch(response => {
           console.log(response);
         });
+    },
+    toPdf(url) {
+      if (url) {
+        window.open(`${this.$basePicUrl}${url}`, "_blank");
+      }
     }
   }
 };
@@ -139,6 +161,8 @@ export default {
             }
             ._more {
               cursor: pointer;
+              outline: none;
+              text-decoration: none;
               padding: 0 px(24);
               display: inline-block;
               height: px(40);
@@ -147,7 +171,9 @@ export default {
                 height: 100%;
                 display: flex;
                 align-items: center;
-                span {
+                span,
+                a {
+                  display: block;
                   font-size: px(14);
 
                   color: #599ae5;
