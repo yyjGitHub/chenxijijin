@@ -42,7 +42,7 @@
       </div>
       <div class="part_2" id="QYGG">
         <div class="_c">
-          <div class="layout_content_title">
+          <div class="layout_content_title _special">
             企业公告
           </div>
           <div class="layout_content_line"></div>
@@ -278,8 +278,11 @@ export default {
       background-color: #f8f8f8;
       padding-bottom: px(120);
       .layout_content_title {
-        &::before {
-          content: "NOTICE";
+        &._special {
+          &::before {
+            content: "NOTICE";
+            color: #f1eff2;
+          }
         }
       }
       .layout_content_line {

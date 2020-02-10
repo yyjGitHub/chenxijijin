@@ -24,7 +24,7 @@ p {
 
 .more_hover * {
   position: relative;
-  z-index: 99;
+  z-index: 97;
   transition: all ease-in-out 0.5s;
 }
 
@@ -238,7 +238,7 @@ p {
   font-weight: bold;
   position: relative;
   margin-bottom: px(18);
-  z-index: 99;
+  z-index: 97;
 }
 
 .layout_content_box .layout_content_innerbox ._c .layout_content_title::before {
@@ -361,4 +361,8 @@ p {
 .el-textarea__inner:-moz-placeholder {
   /* Firefox 18- */
   color: #fff;
+}
+
+.sub_routerview {
+  padding-top: px(217);
 }

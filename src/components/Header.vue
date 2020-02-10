@@ -133,6 +133,8 @@ header {
   padding-top: px(60);
   padding-bottom: px(60);
   background-color: #fff;
+  position: fixed;
+  z-index: 999;
   &.is_home {
     background: rgba(0, 0, 0, 0);
     position: relative;

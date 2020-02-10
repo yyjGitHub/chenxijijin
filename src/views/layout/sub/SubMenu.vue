@@ -92,8 +92,13 @@ export default {
 
 <style lang="scss" scoped>
 .submenu_box {
+  position: fixed;
+  top: px(160);
+  left: 0;
   width: 100%;
   height: px(57);
+  z-index: 98;
+  background-color: #fff;
   border-top: 1px solid #cbcbcb;
   ._box {
     height: px(57);

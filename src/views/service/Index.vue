@@ -8,6 +8,59 @@
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
+      <div class="part2" id="SHZP">
+        <div class="_c">
+          <div class="layout_content_title">
+            人才招聘
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div class="_box">
+              <div class="_top">
+                <span>职位名称</span>
+                <span>工作地点</span>
+                <span>查看详情</span>
+                <span>发布时间</span>
+                <span>申请职位</span>
+              </div>
+              <div class="_bottom">
+                <div
+                  class="_item"
+                  v-for="(item, index) in SHZP_List"
+                  :key="index"
+                >
+                  <div class="_left">
+                    <span class="_title">
+                      {{ item.title }}
+                    </span>
+                    <span class="_into">
+                      {{ item.name }}
+                    </span>
+                  </div>
+                  <div class="_right">
+                    <div class="_top">
+                      <span>{{ item.attr }}</span>
+                      <span>查看详情</span>
+                      <span>{{ item.time.split(" ")[0] }}</span>
+                      <span>
+                        <div class="apply">APPLY</div>
+                      </span>
+                    </div>
+                    <div
+                      class="_into"
+                      v-if="item.content !== '<p>无</p>'"
+                      v-html="item.content"
+                    ></div>
+                  </div>
+                </div>
+                <div class="show_more" v-if="!get_more" @click="getMore">
+                  展开更多
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="part1" id="LXWM">
         <div class="_c">
           <div class="layout_content_title">
@@ -90,59 +143,6 @@
                     />
                   </div>
                   <div class="_submit" @click="postData">提交</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="part2" id="SHZP">
-        <div class="_c">
-          <div class="layout_content_title">
-            人才招聘
-          </div>
-          <div class="layout_content_line"></div>
-          <div class="_bottom">
-            <div class="_box">
-              <div class="_top">
-                <span>职位名称</span>
-                <span>工作地点</span>
-                <span>查看详情</span>
-                <span>发布时间</span>
-                <span>申请职位</span>
-              </div>
-              <div class="_bottom">
-                <div
-                  class="_item"
-                  v-for="(item, index) in SHZP_List"
-                  :key="index"
-                >
-                  <div class="_left">
-                    <span class="_title">
-                      {{ item.title }}
-                    </span>
-                    <span class="_into">
-                      {{ item.name }}
-                    </span>
-                  </div>
-                  <div class="_right">
-                    <div class="_top">
-                      <span>{{ item.attr }}</span>
-                      <span>查看详情</span>
-                      <span>{{ item.time.split(" ")[0] }}</span>
-                      <span>
-                        <div class="apply">APPLY</div>
-                      </span>
-                    </div>
-                    <div
-                      class="_into"
-                      v-if="item.content !== '<p>无</p>'"
-                      v-html="item.content"
-                    ></div>
-                  </div>
-                </div>
-                <div class="show_more" v-if="!get_more" @click="getMore">
-                  展开更多
                 </div>
               </div>
             </div>
@@ -270,6 +270,7 @@ export default {
         ._box {
           display: flex;
           padding-top: px(40);
+          padding-bottom: px(120);
           .map_wrapper {
             width: px(760);
             margin-left: px(16);
@@ -295,7 +296,7 @@ export default {
               }
               span {
                 display: block;
-                font-size: px(20);
+                font-size: px(16);
                 color: rgba(255, 255, 255, 1);
                 &._address {
                   width: px(396);
@@ -415,7 +416,7 @@ export default {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: px(120);
+            // padding-bottom: px(120);
             ._item {
               width: px(1280);
               display: flex;

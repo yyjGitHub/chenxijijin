@@ -559,7 +559,7 @@ export default {
                 padding: px(32) px(60) 0 px(101);
                 .top {
                   display: flex;
-                  align-items: center;
+                  align-items: flex-end;
                   position: relative;
                   &::before {
                     content: "";

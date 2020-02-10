@@ -240,17 +240,17 @@ const mainroutes = [
         }
       },
       {
-        path: "LXWM",
-        name: "LXWM",
-        meta: {
-          label: "联系我们"
-        }
-      },
-      {
         path: "SHZP",
         name: "SHZP",
         meta: {
           label: "社会招聘"
+        }
+      },
+      {
+        path: "LXWM",
+        name: "LXWM",
+        meta: {
+          label: "联系我们"
         }
       }
     ],

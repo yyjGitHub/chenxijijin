@@ -695,6 +695,7 @@ export default {
       &.active {
         color: #fff;
       }
+      font-family: Helvetica;
       color: #333333;
       .active_index {
         font-size: 0.36rem;
@@ -1640,6 +1641,7 @@ export default {
                           overflow: hidden;
                           white-space: nowrap;
                           line-height: px(22);
+                          margin-bottom: px(6);
                         }
                         ._into {
                           height: px(20);

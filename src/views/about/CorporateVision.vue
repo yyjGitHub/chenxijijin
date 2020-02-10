@@ -9,10 +9,10 @@
     </div>
     <div class="page_bottom_box layout_content_innerbox">
       <div class="_c">
-        <div class="layout_content_title">
+        <div class="layout_content_title _special">
           晨曦愿景
         </div>
-        <div class="layout_content_into">
+        <div class="layout_content_into _special">
           {{ pageInfo.title }}
         </div>
         <div class="layout_content_intro" v-html="pageInfo.content"></div>
@@ -116,8 +116,21 @@ export default {
 .corporatevision_box {
   .layout_content_innerbox {
     .layout_content_title {
+      &._special {
+        margin-bottom: 0;
+      }
       &::before {
         content: "VISION" !important;
+      }
+    }
+    .layout_content_into {
+      &._special {
+        margin-bottom: px(24);
+        margin-top: px(82);
+        font-weight: bold;
+        &::after {
+          top: px(-40);
+        }
       }
     }
     ._bottom {
