@@ -86,6 +86,11 @@ p {
   background-size: cover !important;
 }
 
+.more_hover:hover i {
+  background: url("~@/assets/image/arrow_right_active_white.png") no-repeat center !important;
+  background-size: cover !important;
+}
+
 .more_hover.big.left::before {
   left: px(-100);
   bottom: px(-100);
@@ -365,4 +370,8 @@ p {
 
 .sub_routerview {
   padding-top: px(217);
+}
+
+.sub_routerview.is_home {
+  padding-top: 0;
 }

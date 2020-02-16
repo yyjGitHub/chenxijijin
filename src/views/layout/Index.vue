@@ -6,7 +6,7 @@
       class="header"
     ></Header>
     <sub-menu v-if="!isHome"></sub-menu>
-    <div class="sub_routerview">
+    <div class="sub_routerview" :class="[isHome ? 'is_home' : '']">
       <router-view></router-view>
     </div>
     <Footer v-if="!isHome"></Footer>

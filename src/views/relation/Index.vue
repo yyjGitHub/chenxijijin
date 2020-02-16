@@ -20,8 +20,8 @@
             <div v-for="(item, index) in TZZGX_List" :key="index">
               <div class="_date">{{ item.entitle }}</div>
               <div class="_b">
-                <div class="_title">{{ item.title }}</div>``
-                <a class="_more" @click="toPdf(item.file)">
+                <div class="_title">{{ item.title }}</div>
+                <a class="_more more_hover" @click="toPdf(item.file)">
                   <div>
                     <span>查看PDF</span>
                     <i></i>

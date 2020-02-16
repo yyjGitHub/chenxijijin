@@ -1569,33 +1569,32 @@ export default {
                 .sub_swiper {
                   height: px(273);
                   position: relative;
-                  // &::after,
-                  // &::before {
-                  //   content: "";
-                  //   display: block;
-                  //   height: 2px;
-                  //   width: 100%;
-                  //   position: absolute;
-                  //   background-color: #5b9be4;
-                  //   left: 0;
-                  // }
-                  // &::after {
-                  //   bottom: px(89);
-                  // }
-                  // &::before {
-                  //   top: px(89);
-                  // }
+                  &::after,
+                  &::before {
+                    content: "";
+                    display: block;
+                    height: 1px;
+                    width: 100%;
+                    position: absolute;
+                    background-color: #5b9be4;
+                    left: 0;
+                    z-index: 55;
+                  }
+                  &::after {
+                    bottom: px(91);
+                  }
+                  &::before {
+                    top: px(91);
+                  }
                   .swiper-wrapper {
                     height: px(273);
                     .swiper-slide {
                       color: #7f7f7f;
                       display: flex;
                       align-items: center;
+                      cursor: pointer;
                       &.swiper-slide-next {
                         // &.swiper-slide-active {
-                        border: 1px #5b9de4 solid;
-                        border-left: none;
-                        border-right: none;
                         .left_box {
                           span {
                             &.day {
@@ -1607,7 +1606,9 @@ export default {
                           }
                         }
                         .right_box {
-                          color: #333;
+                          ._title {
+                            color: #5b9be4;
+                          }
                         }
                       }
                       .left_box {
@@ -1636,7 +1637,7 @@ export default {
                         ._title {
                           height: px(25);
                           font-size: px(18);
-
+                          transition: all ease-in-out 0.5s;
                           text-overflow: ellipsis;
                           overflow: hidden;
                           white-space: nowrap;
@@ -1657,6 +1658,22 @@ export default {
                           }
                         }
                       }
+                      // &.swiper-slide-active {
+                      //   &:hover {
+                      //     .right_box {
+                      //       ._title {
+                      //         color: #5b9be4 !important;
+                      //       }
+                      //     }
+                      //   }
+                      // }
+                      // &:hover {
+                      //   .right_box {
+                      //     ._title {
+                      //       color: #5b9be4 !important;
+                      //     }
+                      //   }
+                      // }
                     }
                   }
                 }

@@ -74,6 +74,11 @@ p {
         center !important;
       background-size: cover !important;
     }
+    i {
+      background: url("~@/assets/image/arrow_right_active_white.png") no-repeat
+        center !important;
+      background-size: cover !important;
+    }
   }
   &.big {
     &.left {
@@ -371,4 +376,7 @@ p {
 }
 .sub_routerview {
   padding-top: px(217);
+  &.is_home {
+    padding-top: 0;
+  }
 }

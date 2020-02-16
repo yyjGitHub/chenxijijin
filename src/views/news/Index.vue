@@ -238,6 +238,13 @@ export default {
             width: px(384);
             margin-bottom: px(56);
             cursor: pointer;
+            &:hover {
+              & > span {
+                &._title {
+                  color: #599ae5;
+                }
+              }
+            }
             & > img {
               display: block;
               width: px(384);
@@ -255,6 +262,7 @@ export default {
                 -webkit-line-clamp: 2;
                 overflow: hidden;
                 margin-bottom: px(8);
+                transition: all ease-in-out 0.3s;
               }
               &._tiem {
                 height: px(24);
@@ -309,6 +317,7 @@ export default {
             display: flex;
             background: rgba(255, 255, 255, 1);
             box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
             & > img {
               display: block;
               width: px(460);
@@ -379,6 +388,7 @@ export default {
           padding-bottom: px(56);
           & > div {
             margin-right: px(64);
+            cursor: pointer;
             &:nth-child(2n) {
               margin-right: 0;
             }
