@@ -40,7 +40,9 @@
                   <div class="_right">
                     <div class="_top">
                       <span>{{ item.attr }}</span>
-                      <span @click="setActive(index)">查看详情</span>
+                      <span @click="setActive(index)">{{
+                        active_index === index ? "收起详情" : "查看详情"
+                      }}</span>
                       <span>{{ item.time.split(" ")[0] }}</span>
                       <span>
                         <div class="apply">APPLY</div>
@@ -255,11 +257,11 @@ export default {
         });
     },
     setActive(index) {
-      // if (this.active_index === index) {
-      //   this.active_index = "";
-      // } else {
-      this.active_index = index;
-      // }
+      if (this.active_index === index) {
+        this.active_index = "";
+      } else {
+        this.active_index = index;
+      }
     }
   }
 };
