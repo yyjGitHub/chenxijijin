@@ -107,7 +107,10 @@
                         alt=""
                         srcset=""
                       /> -->
-                      <div class="more _more more_hover">
+                      <div
+                        @click="toPage('/about/CompanyProfile')"
+                        class="more _more more_hover"
+                      >
                         <span>了解更多</span>
                         <div class="arrow_right"></div>
                       </div>
@@ -147,7 +150,10 @@
                 </div>
               </div>
               <div class="bottom_box">
-                <div class="_other">
+                <div
+                  class="_other"
+                  @click="toPage('/about/CorporateVision/QYFC')"
+                >
                   <div>
                     <div class="_title">
                       企业荣誉
@@ -163,7 +169,10 @@
                     srcset=""
                   />
                 </div>
-                <div class="_other">
+                <div
+                  class="_other"
+                  @click="toPage('/about/CorporateVision/QYRY')"
+                >
                   <div>
                     <div class="_title">
                       企业愿景
@@ -363,14 +372,21 @@
                   alt=""
                   srcset=""
                 />
-                <div class="topic_title">
+                <div
+                  class="topic_title"
+                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
+                >
                   {{ XWZX_List[subActiveIndex + 1].title }}
                 </div>
                 <div
+                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
                   class="topic_into"
                   v-html="XWZX_List[subActiveIndex + 1].content"
                 ></div>
-                <div class="topic_time">
+                <div
+                  class="topic_time"
+                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
+                >
                   {{ XWZX_List[subActiveIndex + 1].time.split(" ")[0] }}
                 </div>
               </div>
@@ -381,20 +397,26 @@
                   :options="subSwiperOption"
                   @slideChangeTransitionStart="subSlideChange"
                 >
-                  <swiper-slide v-for="(item, index) in XWZX_List" :key="index">
-                    <div class="left_box">
-                      <span class="day">{{
-                        item.time.split(" ")[0].substring(8, 10)
-                      }}</span>
-                      <span class="year">{{
-                        item.time.split(" ")[0].substring(0, 7)
-                      }}</span>
-                    </div>
-                    <div class="right_box">
-                      <div class="_title">
-                        {{ item.title }}
+                  <swiper-slide
+                    v-for="(item, index) in XWZX_List"
+                    @click.native="toNewItem(item.id)"
+                    :key="index"
+                  >
+                    <div>
+                      <div class="left_box">
+                        <span class="day">{{
+                          item.time.split(" ")[0].substring(8, 10)
+                        }}</span>
+                        <span class="year">{{
+                          item.time.split(" ")[0].substring(0, 7)
+                        }}</span>
                       </div>
-                      <div class="_into" v-html="item.content"></div>
+                      <div class="right_box">
+                        <div class="_title">
+                          {{ item.title }}
+                        </div>
+                        <div class="_into" v-html="item.content"></div>
+                      </div>
                     </div>
                   </swiper-slide>
                 </swiper>
@@ -455,9 +477,6 @@ export default {
       subSwiperOption: {
         direction: "vertical",
         slidesPerView: 3
-        // loop: true
-        // init: false,
-        // centeredSlides: true
       },
       subActiveIndex: 0,
       fz: 0,
@@ -608,6 +627,12 @@ export default {
     },
     toSlide(index) {
       this.swiper.slideTo(index);
+    },
+    toPage(url) {
+      this.$router.push(url);
+    },
+    toNewItem(id) {
+      this.$router.push(`/news/${id}`);
     }
   },
   components: { Footer }
@@ -849,7 +874,7 @@ export default {
       height: 100vh;
       background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
       background-size: cover;
-      .swiper-slide {
+      & > .swiper-wrapper > .swiper-slide {
         position: relative;
         background: url("~@/assets/image/other_slide_bg.png") no-repeat center;
         background-size: cover;
@@ -1509,8 +1534,10 @@ export default {
                   display: block;
                   width: 100%;
                   height: px(245);
+                  cursor: pointer;
                 }
                 .topic_title {
+                  cursor: pointer;
                   height: px(27);
                   font-size: px(20);
                   font-weight: bold;
@@ -1525,7 +1552,7 @@ export default {
                 }
                 .topic_into {
                   font-size: px(16);
-
+                  cursor: pointer;
                   color: #333333;
                   line-height: px(22);
                   display: -webkit-box;
@@ -1537,6 +1564,7 @@ export default {
                 .topic_time {
                   color: #7f7f7f;
                   font-size: px(14);
+                  cursor: pointer;
                 }
               }
               ._right {
@@ -1567,6 +1595,7 @@ export default {
                   bottom: px(-48);
                 }
                 .sub_swiper {
+                  // margin-top: calc(2.73rem / 3);
                   height: px(273);
                   position: relative;
                   &::after,
@@ -1587,12 +1616,62 @@ export default {
                     top: px(91);
                   }
                   .swiper-wrapper {
-                    height: px(273);
                     .swiper-slide {
-                      color: #7f7f7f;
-                      display: flex;
-                      align-items: center;
-                      cursor: pointer;
+                      & > div {
+                        color: #7f7f7f;
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                        height: 100%;
+                        width: 100%;
+                        .left_box {
+                          display: flex;
+                          align-items: center;
+                          flex-direction: column;
+                          margin-right: px(32);
+                          span {
+                            display: block;
+                          }
+                          .day {
+                            height: px(32);
+                            font-size: px(32);
+                            line-height: px(32);
+                          }
+                          .year {
+                            height: px(16);
+                            margin-top: px(1);
+                            font-size: px(16);
+                            line-height: px(16);
+                          }
+                        }
+                        .right_box {
+                          flex: 1;
+                          max-width: px(547);
+                          ._title {
+                            height: px(25);
+                            font-size: px(18);
+                            transition: all ease-in-out 0.5s;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            line-height: px(22);
+                            margin-bottom: px(6);
+                          }
+                          ._into {
+                            height: px(20);
+                            font-size: px(14);
+                            line-height: px(17);
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            p {
+                              text-overflow: ellipsis;
+                              overflow: hidden;
+                              white-space: nowrap;
+                            }
+                          }
+                        }
+                      }
                       &.swiper-slide-next {
                         // &.swiper-slide-active {
                         .left_box {
@@ -1608,53 +1687,6 @@ export default {
                         .right_box {
                           ._title {
                             color: #5b9be4;
-                          }
-                        }
-                      }
-                      .left_box {
-                        display: flex;
-                        align-items: center;
-                        flex-direction: column;
-                        margin-right: px(32);
-                        span {
-                          display: block;
-                        }
-                        .day {
-                          height: px(32);
-                          font-size: px(32);
-                          line-height: px(32);
-                        }
-                        .year {
-                          height: px(16);
-                          margin-top: px(1);
-                          font-size: px(16);
-                          line-height: px(16);
-                        }
-                      }
-                      .right_box {
-                        flex: 1;
-                        max-width: px(547);
-                        ._title {
-                          height: px(25);
-                          font-size: px(18);
-                          transition: all ease-in-out 0.5s;
-                          text-overflow: ellipsis;
-                          overflow: hidden;
-                          white-space: nowrap;
-                          line-height: px(22);
-                          margin-bottom: px(6);
-                        }
-                        ._into {
-                          height: px(20);
-                          font-size: px(14);
-                          line-height: px(17);
-                          text-overflow: ellipsis;
-                          overflow: hidden;
-                          white-space: nowrap;
-                          p {
-                            text-overflow: ellipsis;
-                            overflow: hidden;
-                            white-space: nowrap;
                           }
                         }
                       }

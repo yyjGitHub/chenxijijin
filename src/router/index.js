@@ -60,7 +60,7 @@ const mainroutes = [
         }
       },
       {
-        path: "CorporateVision/QYFC",
+        path: "CorporateVision/:_sign",
         name: "CorporateVision",
         component: _import("about/CorporateVision"),
         meta: {

@@ -40,7 +40,7 @@
                   <div class="_right">
                     <div class="_top">
                       <span>{{ item.attr }}</span>
-                      <span>查看详情</span>
+                      <span @click="setActive(index)">查看详情</span>
                       <span>{{ item.time.split(" ")[0] }}</span>
                       <span>
                         <div class="apply">APPLY</div>
@@ -50,6 +50,7 @@
                       class="_into"
                       v-if="item.content !== '<p>无</p>'"
                       v-html="item.content"
+                      v-show="active_index === index"
                     ></div>
                   </div>
                 </div>
@@ -182,7 +183,8 @@ export default {
         logo: ""
       },
       SHZP_List: [],
-      get_more: false
+      get_more: false,
+      active_index: ""
     };
   },
   mounted() {
@@ -251,6 +253,13 @@ export default {
         .catch(response => {
           console.log(response);
         });
+    },
+    setActive(index) {
+      // if (this.active_index === index) {
+      //   this.active_index = "";
+      // } else {
+      this.active_index = index;
+      // }
     }
   }
 };
@@ -465,6 +474,13 @@ export default {
                     line-height: px(45);
                     flex: 1;
                     position: relative;
+                    &:nth-child(2) {
+                      cursor: pointer;
+                      transition: all ease-in 0.4s;
+                      &:hover {
+                        color: #599ae5;
+                      }
+                    }
                     &:last-child {
                       border: none;
                     }

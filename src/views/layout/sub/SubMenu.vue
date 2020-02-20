@@ -35,9 +35,7 @@ export default {
       menulist: "menulist"
     })
   },
-  mounted() {
-    console.log(EventBus);
-  },
+  mounted() {},
   watch: {
     $route: {
       handler(newVal) {
