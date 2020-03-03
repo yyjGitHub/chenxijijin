@@ -67,7 +67,10 @@
             ]"
           >
             <div>
-              <span>忠于所托 成就价值</span>
+              <div>
+                <div>忠于所托</div>
+                <div>成就价值</div>
+              </div>
             </div>
           </div>
           <img
@@ -928,13 +931,18 @@ export default {
               background: url("~@/assets/image/home_1st_slide_logo.png")
                 no-repeat center;
               background-size: cover;
-              span {
-                display: inline-block;
+              & > div {
                 margin: 0 auto;
-                margin-top: px(130);
-                margin-bottom: px(55);
+                top: px(130);
                 font-size: px(64);
-                color: rgba(255, 255, 255, 1);
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 110%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                letter-spacing: 15px;
               }
             }
           }

@@ -2,18 +2,11 @@
   <header :class="[isHome ? 'is_home' : '']">
     <img
       class="logo"
-      :src="
-        is_1st_slide
-          ? require('@/assets/image/logo_1st_slide.png')
-          : require('@/assets/image/logo.png')
-      "
+      :src="require('@/assets/image/logo.png')"
       alt=""
       srcset=""
     />
-    <div
-      class="menu_list tran-3s"
-      :class="[is_1st_slide ? 'home_1st_slide' : '']"
-    >
+    <div class="menu_list tran-3s">
       <div
         class="_item tran-3s"
         :class="[index === active_index ? 'active' : '']"
