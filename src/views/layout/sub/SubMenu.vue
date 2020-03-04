@@ -51,6 +51,7 @@ export default {
               this.submenu_list = element.children;
               for (let j = 0; j < element.children.length; j++) {
                 const elementj = element.children[j];
+                console.log(newVal.path);
                 if (newVal.path.includes(elementj.path)) {
                   if (newVal.path.includes("/about/CorporateVision/")) {
                     let t_a = $(

@@ -936,6 +936,8 @@ export default {
                 top: px(130);
                 font-size: px(64);
                 position: absolute;
+                color: #1c294b;
+                font-weight: 100;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 110%;
