@@ -44,6 +44,11 @@ Vue.pro;
 new Vue({
   router,
   store,
+  created() {
+    if (!this.IsPC()) {
+      window.location.href = location.protocol + "//" + location.host + "/m/#/";
+    }
+  },
   mounted() {
     let _this = this;
     this.resetFontsize();
@@ -63,6 +68,25 @@ new Vue({
           ? 1024
           : rootHtml.clientWidth;
       rootHtml.style.fontSize = (deviceWidth * 100) / 1920 + "px";
+    },
+    IsPC() {
+      var userAgentInfo = navigator.userAgent;
+      var Agents = [
+        "Android",
+        "iPhone",
+        "SymbianOS",
+        "Windows Phone",
+        "iPad",
+        "iPod"
+      ];
+      var flag = true;
+      for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+          flag = false;
+          break;
+        }
+      }
+      return flag;
     }
   },
   render: h => h(App)
