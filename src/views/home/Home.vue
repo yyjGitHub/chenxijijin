@@ -916,7 +916,6 @@ export default {
             height: 100%;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 77;
             & > div {
