@@ -122,6 +122,15 @@ export default {
   mounted() {
     this.getData();
   },
+  watch: {
+    $route: {
+      handler(newVal) {
+        console.log(newVal);
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   methods: {
     getData() {
       this.axios

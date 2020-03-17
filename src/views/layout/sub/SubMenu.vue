@@ -35,7 +35,14 @@ export default {
       menulist: "menulist"
     })
   },
-  mounted() {},
+  mounted() {
+    EventBus.$on("aaa", data => {
+      console.log(data);
+      this.$nextTick(() => {
+        this.toPage("/business", { path: "DCJJ", name: "DCJJ" }, 1);
+      });
+    });
+  },
   watch: {
     $route: {
       handler(newVal) {
@@ -51,7 +58,6 @@ export default {
               this.submenu_list = element.children;
               for (let j = 0; j < element.children.length; j++) {
                 const elementj = element.children[j];
-                console.log(newVal.path);
                 if (newVal.path.includes(elementj.path)) {
                   if (newVal.path.includes("/about/CorporateVision/")) {
                     let t_a = $(
@@ -72,6 +78,7 @@ export default {
   },
   methods: {
     toPage(path, item, index) {
+      console.log(path, item, index);
       if (item.hasOwnProperty("component")) {
         this.$router.push(path + "/" + item.path);
       } else {

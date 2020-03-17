@@ -324,7 +324,11 @@
               </div>
             </div>
             <div class="_bottom">
-              <div v-for="(item, index) in YWLY_List" :key="index">
+              <div
+                v-for="(item, index) in YWLY_List"
+                @click="tobusiness(index)"
+                :key="index"
+              >
                 <div class="_top">
                   <div class="title">
                     {{ item.title }}
@@ -588,6 +592,35 @@ export default {
         .catch(response => {
           console.log(response);
         });
+    },
+    tobusiness(index) {
+      if (index === 0) {
+        this.$router.push({
+          path: "/business"
+          // params: {
+          //   div: "DCJJ"
+          // }
+        });
+        EventBus.$emit("aaa", "DCJJ");
+      }
+      if (index === 1) {
+        this.$router.push({
+          path: "/business"
+          // params: {
+          //   div: "JGYW"
+          // }
+        });
+        EventBus.$emit("aaa", "JGYW");
+      }
+      if (index === 2) {
+        this.$router.push({
+          path: "/business"
+          // params: {
+          //   div: "CFGL"
+          // }
+        });
+        EventBus.$emit("aaa", "CFGL");
+      }
     },
     resetFontsize() {
       let rootHtml = document.documentElement;
