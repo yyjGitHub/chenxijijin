@@ -23,8 +23,8 @@ Vue.use(animated);
 
 Vue.use(VueAxios, axios);
 
-Vue.prototype.$baseUrl = "http://fund.xjcode.top/Home/index/";
-Vue.prototype.$basePicUrl = "http://fund.xjcode.top/Public/Uploads/";
+Vue.prototype.$baseUrl = "http://taomaidian.cn/Home/index/";
+Vue.prototype.$basePicUrl = "http://taomaidian.cn/Public/Uploads/";
 
 VueAMap.initAMapApiLoader({
   key: "1787da644b789c9eb13218cc6b404a26",

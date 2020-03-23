@@ -37,9 +37,6 @@
           <div class="bottom_part" id="QYRY">
             <div v-for="(item, index) in pageList" :key="index">
               <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
-              <div>
-                <span>{{ item.title }}</span>
-              </div>
             </div>
           </div>
         </div>
@@ -197,17 +194,19 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
         width: 100%;
         & > div {
           width: px(384);
-          height: px(560);
+          height: px(248);
           background: rgba(248, 248, 248, 1);
           display: flex;
           flex-direction: column;
+          margin-top: px(20);
           & > img {
             display: block;
             width: px(384);
-            height: px(409);
+            height: px(248);
           }
           & > div {
             flex: 1;

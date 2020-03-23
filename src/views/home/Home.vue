@@ -118,31 +118,35 @@
                         <div class="arrow_right"></div>
                       </div>
                     </div>
-                    <div class="_center" v-html="QYJJ_Info.content"></div>
+                    <div class="_center">
+                      <p>
+                        上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿元人民币。于2017年4月12日，在中国证券投资基金业协会，完成私募基金管理人备案登记（私募投资基金管理人登记号为P1062335）
+                      </p>
+                    </div>
                     <div class="_bottom">
                       <div>
-                        <div class="label_title">时间：</div>
+                        <div class="label_title"></div>
                         <div class="label_value">
                           成立于<br />
                           2016-10-28
                         </div>
                       </div>
                       <div>
-                        <div class="label_title">资本：</div>
+                        <div class="label_title"></div>
                         <div class="label_value">
                           注册资本<br />
                           一亿人民币
                         </div>
                       </div>
                       <div>
-                        <div class="label_title">实力：</div>
+                        <div class="label_title"></div>
                         <div class="label_value">
                           上海旭辉企业<br />
                           控股的子公司
                         </div>
                       </div>
                       <div>
-                        <div class="label_title">伙伴：</div>
+                        <div class="label_title"></div>
                         <div class="label_value">
                           旭辉“房地产+”<br />
                           核心成员之一
@@ -560,7 +564,7 @@ export default {
         .catch(response => {
           console.log(response);
         });
-      // 业务领域
+      // 战略蓝图
       this.axios
         .get(`${this.$baseUrl}contentext/id/25`)
         .then(({ data }) => {
@@ -569,7 +573,7 @@ export default {
         .catch(response => {
           console.log(response);
         });
-      // 新闻资讯
+      // 晨曦视界
       this.axios
         .get(`${this.$baseUrl}contentext/id/23`)
         .then(({ data }) => {
@@ -963,6 +967,11 @@ export default {
               background: url("~@/assets/image/home_1st_slide_logo.png")
                 no-repeat center;
               background-size: cover;
+              @media screen and (max-width: 1366px) {
+                & > div {
+                  width: 120% !important;
+                }
+              }
               & > div {
                 margin: 0 auto;
                 top: px(130);
@@ -1304,7 +1313,7 @@ export default {
                       }
                     }
                     & > ._center {
-                      font-size: px(14);
+                      font-size: px(15);
 
                       color: rgba(0, 0, 0, 1);
                       line-height: px(23);

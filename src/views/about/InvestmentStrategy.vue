@@ -10,12 +10,11 @@
     <div class="page_bottom_box layout_content_innerbox">
       <div class="_c">
         <div class="layout_content_title">
-          晨曦策略
+          业务介绍
         </div>
         <div class="layout_content_into">
           {{ pageInfo.title }}
         </div>
-        <div class="layout_content_intro" v-html="pageInfo.content"></div>
         <div class="_bottom">
           <div class="part part1" id="TZLN">
             <div
