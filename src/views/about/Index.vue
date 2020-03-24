@@ -24,7 +24,10 @@
               <div class="_title">
                 晨曦基金
               </div>
-              <div class="_into" v-html="part_1Info.content"></div>
+              <!-- <div class="_into" v-html="part_1Info.content"></div> -->
+              <div class="_into">
+                上海晨曦股权投资基金管理有限公司（以下简称“晨曦基金”），成立于2016年10月28日，注册资本1亿元人民币。于2017年4月12日，在中国证券投资基金业协会，完成私募基金管理人备案登记（私募投资基金管理人登记号为P1062335）
+              </div>
               <div
                 class="_more more_hover"
                 @click="toPage('/about/CompanyProfile')"

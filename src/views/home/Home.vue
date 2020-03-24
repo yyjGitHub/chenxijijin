@@ -323,8 +323,8 @@
                   alt=""
                   srcset=""
                 />
-                <div class="_title">企业领域</div>
-                <div class="_entitle">BUSIJNESS DOMAIN</div>
+                <div class="_title">战略蓝图</div>
+                <div class="_entitle">STRATEGIC BLUEPRINT</div>
               </div>
             </div>
             <div class="_bottom">
@@ -371,7 +371,7 @@
                   alt=""
                   srcset=""
                 />
-                <div class="_title">新闻资讯</div>
+                <div class="_title">新闻动态</div>
                 <div class="_entitle">NEWS INFORMATION</div>
               </div>
             </div>
@@ -600,30 +600,30 @@ export default {
     tobusiness(index) {
       if (index === 0) {
         this.$router.push({
-          path: "/business"
+          path: "/news"
           // params: {
           //   div: "DCJJ"
           // }
         });
-        EventBus.$emit("aaa", "DCJJ");
+        EventBus.$emit("aaa", "CXSJ");
       }
       if (index === 1) {
         this.$router.push({
-          path: "/business"
+          path: "/news"
           // params: {
           //   div: "JGYW"
           // }
         });
-        EventBus.$emit("aaa", "JGYW");
+        EventBus.$emit("aaa", "QYGG");
       }
       if (index === 2) {
         this.$router.push({
-          path: "/business"
+          path: "/news"
           // params: {
           //   div: "CFGL"
           // }
         });
-        EventBus.$emit("aaa", "CFGL");
+        EventBus.$emit("aaa", "CEOTALK");
       }
     },
     resetFontsize() {
@@ -1314,7 +1314,7 @@ export default {
                     }
                     & > ._center {
                       font-size: px(15);
-
+                      line-height: px(20);
                       color: rgba(0, 0, 0, 1);
                       line-height: px(23);
                       margin-bottom: px(53);

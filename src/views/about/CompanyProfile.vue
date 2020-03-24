@@ -83,9 +83,15 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .companyprofile_box {
   .layout_content_innerbox {
+    .layout_content_intro {
+      width: px(1280) !important;
+      p {
+        width: px(1280) !important;
+      }
+    }
     ._bottom {
       display: flex;
       width: 100%;

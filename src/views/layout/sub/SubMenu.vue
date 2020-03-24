@@ -35,14 +35,7 @@ export default {
       menulist: "menulist"
     })
   },
-  mounted() {
-    EventBus.$on("aaa", data => {
-      console.log(data);
-      this.$nextTick(() => {
-        this.toPage("/business", { path: "DCJJ", name: "DCJJ" }, 1);
-      });
-    });
-  },
+  mounted() {},
   watch: {
     $route: {
       handler(newVal) {

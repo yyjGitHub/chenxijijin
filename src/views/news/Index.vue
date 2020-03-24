@@ -11,7 +11,7 @@
       <div class="part_1" id="CXSJ">
         <div class="_c">
           <div class="layout_content_title">
-            晨曦视界
+            术有专攻
           </div>
           <div class="layout_content_into">
             {{ CXSJ_Info.title }}
@@ -43,7 +43,7 @@
       <div class="part_2" id="QYGG">
         <div class="_c">
           <div class="layout_content_title _special">
-            企业公告
+            投资经典
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -75,7 +75,7 @@
       <div class="part_3" id="CEOTALK">
         <div class="_c">
           <div class="layout_content_title">
-            CEO TALK
+            深度洞察
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -115,6 +115,8 @@
 </template>
 
 <script>
+import $ from "jquery";
+import { EventBus } from "@/bus";
 export default {
   data() {
     return {
@@ -138,11 +140,25 @@ export default {
       CEOTALK_p: 1,
       CXSJ_total: 0,
       QYGG_total: 0,
-      CEOTALK_total: 0
+      CEOTALK_total: 0,
+      sign: ""
     };
   },
   mounted() {
+    EventBus.$on("aaa", res => {
+      this.sign = res;
+    });
     this.getData();
+  },
+  updated() {
+    console.log(this.sign);
+    if (this.sign) {
+      this.$nextTick(() => {
+        let t_a = $(`#${this.sign}`).offset();
+        console.log(t_a);
+        $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+      });
+    }
   },
   methods: {
     getData() {

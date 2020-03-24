@@ -88,14 +88,6 @@
             </div>
             <div class="bottom_text">
               <div class="item" v-for="(item, index) in FXKZ_List" :key="index">
-                <div class="_title">
-                  <img
-                    src="~@/assets/image/half_circle_icon_1.png"
-                    alt=""
-                    srcset=""
-                  />
-                  <span>{{ item.title }} | {{ item.entitle }}</span>
-                </div>
                 <div class="_into" v-html="item.content"></div>
               </div>
             </div>
