@@ -1331,13 +1331,8 @@ export default {
                         border-left: px(2) solid rgba(91, 155, 228, 0.4);
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
+                        justify-content: center;
                         padding-left: px(16);
-                        .label_title {
-                          font-size: px(18);
-
-                          color: rgba(91, 155, 228, 1);
-                        }
                         .label_value {
                           max-width: px(120);
                           font-size: px(16);

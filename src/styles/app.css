@@ -138,6 +138,7 @@ p {
 
 .layout_content_box .page_top_box {
   position: relative;
+  height: px(560);
 }
 
 .layout_content_box .page_top_box img {

@@ -7,7 +7,7 @@
         <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
-    <div class="page_bottom_box layout_content_innerbox">
+    <div class="page_bottom_box layout_content_innerbox" id="QYFC">
       <div class="_c">
         <div class="layout_content_title _special">
           晨曦愿景
@@ -17,7 +17,7 @@
         </div>
         <div class="layout_content_intro" v-html="pageInfo.content"></div>
         <div class="_bottom">
-          <div class="top_part" id="QYFC">
+          <div class="top_part">
             <div class="_left">
               <div class="_title">晨曦基金</div>
               <div class="_entitle">
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 export default {
   data() {
     return {
@@ -69,6 +70,28 @@ export default {
   },
   mounted() {
     this.getData();
+  },
+  // watch: {
+  //   $route: {
+  //     handler(newVal) {
+  //       this.$nextTick(() => {
+  //         let t_a = $(
+  //           `#${newVal.path.split("/about/CorporateVision/")[1]}`
+  //         ).offset();
+  //         $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+  //       });
+  //     },
+  //     deep: true,
+  //     immediate: true
+  //   }
+  // },
+  updated() {
+    this.$nextTick(() => {
+      let t_a = $(
+        `#${this.$route.path.split("/about/CorporateVision/")[1]}`
+      ).offset();
+      $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+    });
   },
   methods: {
     getData() {
