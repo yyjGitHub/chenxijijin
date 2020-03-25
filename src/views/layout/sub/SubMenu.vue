@@ -52,12 +52,6 @@ export default {
               for (let j = 0; j < element.children.length; j++) {
                 const elementj = element.children[j];
                 if (newVal.path.includes(elementj.path)) {
-                  // if (newVal.path.includes("/about/CorporateVision/")) {
-                  //   let t_a = $(
-                  //     `#${newVal.path.split("/about/CorporateVision/")[1]}`
-                  //   ).offset();
-                  //   $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
-                  // }
                   this.subactive_index = j;
                 }
               }

@@ -107,24 +107,24 @@ const mainroutes = [
         }
       },
       {
-        path: "DCJJ",
-        name: "DCJJ",
+        path: "SYZG",
+        name: "SYZG",
         meta: {
-          label: "地产基金"
+          label: "术有专攻"
         }
       },
       {
-        path: "JGYW",
-        name: "JGYW",
+        path: "TZJD",
+        name: "TZJD",
         meta: {
-          label: "机构业务"
+          label: "投资经典"
         }
       },
       {
-        path: "CFGL",
-        name: "CFGL",
+        path: "SDDC",
+        name: "SDDC",
         meta: {
-          label: "财富管理"
+          label: "深度洞察"
         }
       }
     ],

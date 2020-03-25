@@ -71,20 +71,6 @@ export default {
   mounted() {
     this.getData();
   },
-  // watch: {
-  //   $route: {
-  //     handler(newVal) {
-  //       this.$nextTick(() => {
-  //         let t_a = $(
-  //           `#${newVal.path.split("/about/CorporateVision/")[1]}`
-  //         ).offset();
-  //         $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
-  //       });
-  //     },
-  //     deep: true,
-  //     immediate: true
-  //   }
-  // },
   updated() {
     this.$nextTick(() => {
       let t_a = $(

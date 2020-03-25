@@ -8,89 +8,111 @@
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
-      <div class="part_1" id="DCJJ">
+      <div class="part_1" id="SYZG">
         <div class="_c">
           <div class="layout_content_title">
-            晨曦领域
+            术有专攻
           </div>
           <div class="layout_content_into">
-            {{ topInfo.title }}
+            {{ SYZG_Info.title }}
           </div>
-          <div class="layout_content_intro" v-html="topInfo.contentext"></div>
+          <div class="layout_content_intro" v-html="SYZG_Info.content"></div>
           <div class="_bottom">
             <div class="_box">
-              <div
-                class="title_box"
-                :style="{
-                  'background-image': `url(${$basePicUrl}${DCJJ_Info.logo})`
-                }"
-              >
-                <div class="_title">{{ DCJJ_Info.ctitle }}</div>
-                <div class="_subtitle">
-                  {{ DCJJ_Info.title }}
-                </div>
-              </div>
-              <div class="into_box">
-                <div v-html="DCJJ_Info.content"></div>
-                <div class="column_list">
-                  <div v-for="(item, index) in DCJJ_List" :key="index">
-                    <div class="_title">
-                      <img
-                        src="~@/assets/image/half_circle_icon_1.png"
-                        alt=""
-                        srcset=""
-                      />
-                      <span>{{ item.title }}</span>
-                    </div>
-                    <div class="_into" v-html="item.content"></div>
-                  </div>
-                </div>
+              <div v-for="(item, index) in SYZG_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+                <span class="_title">{{ item.title }}</span>
+                <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
               </div>
             </div>
+            <el-pagination
+              background
+              @current-change="SYZG_change"
+              :page-size="6"
+              layout="prev, pager, next"
+              :total="SYZG_total"
+            >
+            </el-pagination>
           </div>
         </div>
       </div>
-      <div class="part_2" id="JGYW">
+      <div class="part_2" id="TZJD">
         <div class="_c">
-          <div class="_box">
-            <div class="title_box">
-              <div class="_title">{{ JGYW_Info.ctitle }}</div>
-              <div class="_subtitle">
-                {{ JGYW_Info.title }}
+          <div class="layout_content_title _special">
+            投资经典
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div class="_box">
+              <div v-for="(item, index) in TZJD_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+                <div>
+                  <span class="_time">
+                    {{ item.entitle }}
+                  </span>
+                  <span class="_title">
+                    {{ item.title }}
+                  </span>
+                  <span class="_into" v-html="item.content"> </span>
+                </div>
               </div>
             </div>
-            <div class="_bottom">
-              <img
-                class="_left"
-                :src="`${$basePicUrl}${JGYW_Info.logo}`"
-                alt=""
-                srcset=""
-              />
-              <div class="_right" v-html="JGYW_Info.content"></div>
-            </div>
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :page-size="6"
+              @current-change="TZJD_change"
+              :total="TZJD_total"
+            >
+            </el-pagination>
           </div>
         </div>
       </div>
-      <div
-        class="part_3"
-        id="CFGL"
-        :style="{
-          'background-image': `url(${$basePicUrl}${CFGL_Info.logo})`
-        }"
-      >
-        <div class="_title">
-          {{ CFGL_Info.ctitle }}
+      <div class="part_3" id="SDDC">
+        <div class="_c">
+          <div class="layout_content_title">
+            深度洞察
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div class="_box">
+              <div v-for="(item, index) in SDDC_List" :key="index">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+                <div>
+                  <span class="_title">
+                    {{ item.title }}
+                  </span>
+                  <span class="_line"></span>
+                  <span class="_into" v-html="item.content"> </span>
+                  <span class="_more">
+                    <span>查看详情</span>
+                    <img
+                      src="~@/assets/image/arrow_right_active.png"
+                      alt=""
+                      srcset=""
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :page-size="6"
+              @current-change="SDDC_change"
+              :total="SDDC_total"
+            >
+            </el-pagination>
+          </div>
         </div>
-        <div class="_into">
-          {{ CFGL_Info.title }}
-        </div>
-        <div class="_info" v-html="CFGL_Info.content"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from "jquery";
+import { EventBus } from "@/bus";
 export default {
   data() {
     return {
@@ -100,27 +122,37 @@ export default {
         logo: "",
         contentext: ""
       },
-      DCJJ_Info: {
+      SYZG_Info: {
         title: "",
         content: "",
         logo: "",
         contentext: ""
       },
-      DCJJ_List: [],
-      JGYW_Info: {
-        title: "",
-        content: "",
-        logo: ""
-      },
-      CFGL_Info: {
-        title: "",
-        content: "",
-        logo: ""
-      }
+      SYZG_List: [],
+      TZJD_List: [],
+      SDDC_List: [],
+      SYZG_p: 1,
+      TZJD_p: 1,
+      SDDC_p: 1,
+      SYZG_total: 0,
+      TZJD_total: 0,
+      SDDC_total: 0,
+      sign: ""
     };
   },
   mounted() {
+    EventBus.$on("aaa", res => {
+      this.sign = res;
+    });
     this.getData();
+  },
+  updated() {
+    if (this.sign) {
+      this.$nextTick(() => {
+        let t_a = $(`#${this.sign}`).offset();
+        $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+      });
+    }
   },
   watch: {
     $route: {
@@ -136,43 +168,59 @@ export default {
       this.axios
         .get(`${this.$baseUrl}content/id/8`)
         .then(({ data }) => {
+          console.log(data);
           this.topInfo = data.data;
         })
         .catch(response => {
           console.log(response);
         });
-      //  地产基金
+      //  晨曦视界
       this.axios
         .get(`${this.$baseUrl}content/id/9`)
         .then(({ data }) => {
-          this.DCJJ_Info = data.data;
+          this.SYZG_Info = data.data;
         })
         .catch(response => {
           console.log(response);
         });
-      //  地产基金
+      this.SDDC_change(1);
+      this.TZJD_change(1);
+      this.SYZG_change(1);
+    },
+    SDDC_change(p) {
+      this.SDDC_p = p;
+      // SDDC
       this.axios
-        .get(`${this.$baseUrl}contentext/id/9`)
+        .get(`${this.$baseUrl}contentext/id/11/p/${this.SDDC_p}/count/6`)
         .then(({ data }) => {
-          this.DCJJ_List = data.data;
+          this.SDDC_List = data.data;
+          this.SDDC_total = parseInt(data.count);
         })
         .catch(response => {
           console.log(response);
         });
-      // 机构业务
+    },
+    SYZG_change(p) {
+      this.SYZG_p = p;
+      // 晨曦世界
       this.axios
-        .get(`${this.$baseUrl}content/id/10`)
+        .get(`${this.$baseUrl}contentext/id/9/p/${this.SYZG_p}/count/6`)
         .then(({ data }) => {
-          this.JGYW_Info = data.data;
+          this.SYZG_List = data.data;
+          this.SYZG_total = parseInt(data.count);
         })
         .catch(response => {
           console.log(response);
         });
-      // 财富管理
+    },
+    TZJD_change(p) {
+      this.TZJD_p = p;
+      // 企业公告
       this.axios
-        .get(`${this.$baseUrl}content/id/11`)
+        .get(`${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/6`)
         .then(({ data }) => {
-          this.CFGL_Info = data.data;
+          this.TZJD_List = data.data;
+          this.TZJD_total = parseInt(data.count);
         })
         .catch(response => {
           console.log(response);
@@ -189,7 +237,7 @@ export default {
       padding-bottom: px(120);
       .layout_content_title {
         &::before {
-          content: "BUSINESS";
+          content: "NEWS";
         }
       }
       ._bottom {
@@ -198,155 +246,54 @@ export default {
         flex-direction: column;
         align-items: center;
         ._box {
+          display: flex;
+          flex-wrap: wrap;
           width: 100%;
-          .title_box {
-            width: px(1280);
-            height: px(300);
-            background: url("~@/assets/image/business_index_pic1.png") no-repeat
-              center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: px(40);
-            ._title {
-              height: px(60);
-              font-size: px(60);
-              color: rgba(255, 255, 255, 1);
-              line-height: px(60);
-            }
-            ._subtitle {
-              height: px(24);
-              font-size: px(24);
-              color: rgba(255, 255, 255, 1);
-              line-height: px(24);
-              letter-spacing: px(4);
-              margin-top: px(16);
-              position: relative;
-              // &::before{
-              //   display: block;
-              //   content: '';
-              //   position: absolute;
-              //   top: 50%;
-              //   transform: translateY(-50%);
-              //   left: px(-);
-              // }
-            }
-          }
-          .into_box {
-            .__into {
-              font-size: px(20);
-              color: #7f7f7f;
-              line-height: px(40);
-              margin-bottom: px(40);
-            }
-            .row_list {
-              display: flex;
-              margin-bottom: px(40);
-              & > div {
-                width: 50%;
-                display: flex;
-                align-items: center;
-                position: relative;
-                &::after {
-                  display: block;
-                  content: "";
-                  height: px(64);
-                  width: 1px;
-                  background-color: #979797;
-                  position: absolute;
-                  right: 0%;
-                  top: 50%;
-                  transform: translateY(-50%);
-                }
-                &:nth-child(2n-1) {
-                  padding-right: px(71);
-                  ._left {
-                    background: url("~@/assets/image/business_index_icon1.png")
-                      no-repeat center;
-                    background-size: cover;
-                  }
-                }
-                &:nth-child(2n) {
-                  padding-left: px(71);
-                  ._left {
-                    background: url("~@/assets/image/business_index_icon2.png")
-                      no-repeat center;
-                    background-size: cover;
-                  }
-                  &::after {
-                    display: none;
-                  }
-                }
-                ._left {
-                  width: px(96);
-                  height: px(72);
-                  display: block;
-                  margin-right: px(24);
-                }
-                ._right {
-                  ._title {
-                    height: px(33);
-                    font-size: px(24);
-                    color: rgba(0, 0, 0, 1);
-                    line-height: px(29);
-                    margin-bottom: px(8);
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                  }
-                  ._subinto {
-                    font-size: px(18);
-                    color: #7f7f7f;
-                    line-height: px(24);
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
-                  }
+          padding-bottom: px(120);
+          & > div {
+            margin-right: px(64);
+            width: px(384);
+            margin-bottom: px(56);
+            cursor: pointer;
+            &:hover {
+              & > span {
+                &._title {
+                  color: #599ae5;
                 }
               }
             }
-            .column_list {
-              & > div {
-                width: px(1280);
-                background-color: #f8f8f8;
-                margin-bottom: px(40);
-                &:last-child {
-                  margin-bottom: 0;
-                }
-                box-sizing: border-box;
-                padding: px(40);
-                ._title {
-                  display: flex;
-                  align-items: center;
-                  margin-bottom: px(8);
-                  img {
-                    display: block;
-                    width: px(23);
-                    height: px(11);
-                    margin-right: px(13);
-                    position: relative;
-                    top: 0;
-                  }
-                  span {
-                    height: px(33);
-                    font-size: px(24);
-                    font-weight: bold;
-                    color: #333;
-                    line-height: px(33);
-                  }
-                }
-                ._into {
-                  span {
-                    font-size: px(18);
-                    color: #7f7f7f;
-                    line-height: px(32);
-                    display: block;
-                  }
-                }
+            & > img {
+              display: block;
+              width: px(384);
+              height: px(280);
+            }
+            & > span {
+              &._title {
+                font-size: px(24);
+                color: #333333;
+                line-height: px(33);
+                font-weight: bold;
+                margin-top: px(24);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                margin-bottom: px(8);
+                transition: all ease-in-out 0.3s;
               }
+              &._tiem {
+                height: px(24);
+                font-size: px(24);
+
+                color: #7f7f7f;
+                line-height: px(24);
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+            }
+            &:nth-child(3n) {
+              margin-right: 0;
             }
           }
         }
@@ -355,94 +302,181 @@ export default {
     .part_2 {
       background-color: #f8f8f8;
       padding-bottom: px(120);
-      ._c {
-        padding-top: px(80);
-        ._box {
-          .title_box {
-            width: px(1280);
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: px(60);
-            ._title {
-              height: px(60);
-              font-size: px(60);
-              color: #636363;
-              line-height: px(60);
-            }
-            ._subtitle {
-              height: px(24);
-              font-size: px(24);
-              color: #636363;
-              line-height: px(24);
-              letter-spacing: px(4);
-              margin-top: px(16);
-              position: relative;
-              // &::before{
-              //   display: block;
-              //   content: '';
-              //   position: absolute;
-              //   top: 50%;
-              //   transform: translateY(-50%);
-              //   left: px(-);
-              // }
-            }
+      .layout_content_title {
+        &._special {
+          &::before {
+            content: "NOTICE";
+            color: #f1eff2;
           }
-          ._bottom {
+        }
+      }
+      .layout_content_line {
+        width: px(120);
+        height: 2px;
+        background: rgba(0, 0, 0, 0.4);
+        margin-top: px(32);
+        margin-bottom: px(76);
+      }
+      ._bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        ._box {
+          width: 100%;
+          & > div {
+            margin-top: px(4);
+            margin-bottom: px(56);
+            width: px(1280);
+            height: px(327);
+            box-sizing: border-box;
+            padding: px(40) px(60) px(40) px(40);
             display: flex;
-            align-items: center;
-            ._left {
-              width: px(620);
-              height: px(344);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            & > img {
               display: block;
+              width: px(460);
+              height: px(247);
               margin-right: px(60);
             }
-            ._right {
-              font-size: px(20);
-              color: #7f7f7f;
-              line-height: px(40);
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 9;
-              overflow: hidden;
+            & > div {
+              & > span {
+                display: block;
+                &._time {
+                  color: #999999;
+                  height: px(24);
+                  font-size: px(24);
+                  line-height: px(24);
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  margin-top: px(20);
+                  margin-bottom: px(24);
+                }
+                &._title {
+                  height: px(43);
+                  font-size: px(32);
+                  color: rgba(0, 0, 0, 1);
+                  line-height: px(32);
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  margin-bottom: px(8);
+                }
+                &._into {
+                  font-size: px(18);
+                  color: #7f7f7f;
+                  line-height: px(32);
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 3;
+                  overflow: hidden;
+                }
+              }
             }
           }
         }
       }
     }
     .part_3 {
-      width: 100%;
-      height: px(520);
-      background: url("~@/assets/image/business_index_pic3.png") no-repeat
-        center;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      ._title {
-        height: px(60);
-        font-size: px(60);
-        color: rgba(255, 255, 255, 1);
-        line-height: px(60);
-        margin-bottom: px(16);
+      padding-bottom: px(120);
+      .layout_content_title {
+        &::before {
+          content: "NOTICE";
+        }
       }
-      ._into {
-        height: px(24);
-        font-size: px(24);
-        color: rgba(255, 255, 255, 1);
-        line-height: px(24);
-        letter-spacing: px(4);
-        margin-bottom: px(60);
+      .layout_content_line {
+        width: px(120);
+        height: 2px;
+        background: rgba(0, 0, 0, 0.4);
+        margin-top: px(32);
+        margin-bottom: px(76);
       }
-      ._info {
-        width: px(1280);
-        font-size: px(20);
-        color: rgba(255, 255, 255, 1);
-        line-height: px(40);
-        text-align: center;
+      ._bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        ._box {
+          width: 100%;
+          display: flex;
+          padding-bottom: px(56);
+          & > div {
+            margin-right: px(64);
+            cursor: pointer;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+            width: px(608);
+            height: px(350);
+            background: #f8f8f8;
+            box-sizing: border-box;
+            padding: px(40);
+            display: flex;
+            & > img {
+              display: block;
+              width: px(200);
+              height: px(270);
+              margin-right: px(40);
+            }
+            & > div {
+              width: px(288);
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              & > span {
+                display: block;
+              }
+              ._title {
+                height: px(24);
+                font-size: px(24);
+                color: #313131;
+                line-height: px(24);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                position: relative;
+                margin-bottom: px(24);
+                font-weight: bold;
+              }
+              ._line {
+                width: px(60);
+                height: 2px;
+                background-color: rgba(0, 0, 0, 0.4);
+                margin-bottom: px(24);
+              }
+              ._into {
+                font-size: px(18);
+                color: #7f7f7f;
+                line-height: px(24);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 6;
+                overflow: hidden;
+              }
+              ._more {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                span {
+                  display: block;
+                  margin-right: px(8);
+                  height: px(20);
+                  font-size: px(14);
+                  color: rgba(89, 154, 229, 1);
+                  line-height: px(20);
+                }
+                img {
+                  display: block;
+                  width: px(7);
+                  height: px(14);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

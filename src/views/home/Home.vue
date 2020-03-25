@@ -159,7 +159,7 @@
               <div class="bottom_box">
                 <div
                   class="_other"
-                  @click="toPage('/about/CorporateVision/QYFC')"
+                  @click="toPage('/about/CorporateVision/QYRY')"
                 >
                   <div>
                     <div class="_title">
@@ -178,7 +178,7 @@
                 </div>
                 <div
                   class="_other"
-                  @click="toPage('/about/CorporateVision/QYRY')"
+                  @click="toPage('/about/CorporateVision/QYFC')"
                 >
                   <div>
                     <div class="_title">
@@ -602,7 +602,7 @@ export default {
         this.$router.push({
           path: "/news"
           // params: {
-          //   div: "DCJJ"
+          //   div: "SYZG"
           // }
         });
         EventBus.$emit("aaa", "CXSJ");
@@ -611,7 +611,7 @@ export default {
         this.$router.push({
           path: "/news"
           // params: {
-          //   div: "JGYW"
+          //   div: "TZJD"
           // }
         });
         EventBus.$emit("aaa", "QYGG");
@@ -620,7 +620,7 @@ export default {
         this.$router.push({
           path: "/news"
           // params: {
-          //   div: "CFGL"
+          //   div: "SDDC"
           // }
         });
         EventBus.$emit("aaa", "CEOTALK");

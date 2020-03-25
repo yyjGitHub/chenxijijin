@@ -11,7 +11,7 @@
       <div class="part_1" id="CXSJ">
         <div class="_c">
           <div class="layout_content_title">
-            术有专攻
+            新闻动态
           </div>
           <div class="layout_content_into">
             {{ CXSJ_Info.title }}
@@ -43,7 +43,7 @@
       <div class="part_2" id="QYGG">
         <div class="_c">
           <div class="layout_content_title _special">
-            投资经典
+            团队建设
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -75,7 +75,7 @@
       <div class="part_3" id="CEOTALK">
         <div class="_c">
           <div class="layout_content_title">
-            深度洞察
+            CEO TALK
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -151,11 +151,9 @@ export default {
     this.getData();
   },
   updated() {
-    console.log(this.sign);
     if (this.sign) {
       this.$nextTick(() => {
         let t_a = $(`#${this.sign}`).offset();
-        console.log(t_a);
         $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
       });
     }
