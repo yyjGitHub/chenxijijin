@@ -19,7 +19,11 @@
           <div class="layout_content_intro" v-html="SYZG_Info.content"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in SYZG_List" :key="index">
+              <div
+                v-for="(item, index) in SYZG_List"
+                @click="toitem(item.id)"
+                :key="index"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
                 <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
@@ -44,7 +48,11 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in TZJD_List" :key="index">
+              <div
+                v-for="(item, index) in TZJD_List"
+                @click="toitem(item.id)"
+                :key="index"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_time">
@@ -76,7 +84,11 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in SDDC_List" :key="index">
+              <div
+                v-for="(item, index) in SDDC_List"
+                @click="toitem(item.id)"
+                :key="index"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_title">
@@ -212,6 +224,9 @@ export default {
         .catch(response => {
           console.log(response);
         });
+    },
+    toitem(index) {
+      this.$router.push(`/news/${index}`);
     },
     TZJD_change(p) {
       this.TZJD_p = p;

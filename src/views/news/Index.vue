@@ -48,7 +48,11 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in QYGG_List" :key="index">
+              <div
+                v-for="(item, index) in QYGG_List"
+                @click="toitem(item.id)"
+                :key="index"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_time">
@@ -80,7 +84,11 @@
           <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
-              <div v-for="(item, index) in CEOTALK_List" :key="index">
+              <div
+                v-for="(item, index) in CEOTALK_List"
+                @click="toitem(item.id)"
+                :key="index"
+              >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_title">
