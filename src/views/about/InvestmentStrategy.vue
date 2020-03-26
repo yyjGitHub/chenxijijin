@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-          <div class="part part2" id="FXKZ">
+          <div class="part part3" id="FXKZ">
             <div
               class="top_pic"
               :style="{
@@ -88,6 +88,14 @@
             </div>
             <div class="bottom_text">
               <div class="item" v-for="(item, index) in FXKZ_List" :key="index">
+                <div class="_title">
+                  <img
+                    src="~@/assets/image/half_circle_icon_1.png"
+                    alt=""
+                    srcset=""
+                  />
+                  <span>{{ item.title }} | {{ item.entitle }}</span>
+                </div>
                 <div class="_into" v-html="item.content"></div>
               </div>
             </div>
@@ -130,29 +138,15 @@ export default {
         content: "",
         logo: ""
       },
-      FXKZ_List: []
+      FXKZ_List: [],
+      sign: ""
     };
   },
   watch: {
     $route: {
       handler(newVal) {
         if (newVal.params.hasOwnProperty("activeDIV")) {
-          this.$nextTick(() => {
-            let rootHtml = document.documentElement;
-            let deviceWidth =
-              rootHtml.clientWidth > 1920
-                ? 1920
-                : rootHtml.clientWidth < 1024
-                ? 1024
-                : rootHtml.clientWidth;
-            let t_a = $(`#${newVal.params.activeDIV}`).offset();
-            $("html,body").animate(
-              {
-                scrollTop: t_a.top - ((deviceWidth * 100) / 1920) * 1.2 + "px"
-              },
-              500
-            );
-          });
+          this.sign = newVal.params.activeDIV;
         }
       },
       deep: true,
@@ -161,6 +155,24 @@ export default {
   },
   mounted() {
     this.getData();
+  },
+  updated() {
+    this.$nextTick(() => {
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      let t_a = $(`#${this.sign}`).offset();
+      $("html,body").animate(
+        {
+          scrollTop: t_a.top - ((deviceWidth * 220) / 1920) * 1.2 + "px"
+        },
+        500
+      );
+    });
   },
   methods: {
     getData() {

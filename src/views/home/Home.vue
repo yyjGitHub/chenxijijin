@@ -385,18 +385,33 @@
                 />
                 <div
                   class="topic_title"
-                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
+                  @click="
+                    toNewItem(
+                      XWZX_List[subActiveIndex + 1].url,
+                      XWZX_List[subActiveIndex + 1].id
+                    )
+                  "
                 >
                   {{ XWZX_List[subActiveIndex + 1].title }}
                 </div>
                 <div
-                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
+                  @click="
+                    toNewItem(
+                      XWZX_List[subActiveIndex + 1].url,
+                      XWZX_List[subActiveIndex + 1].id
+                    )
+                  "
                   class="topic_into"
                   v-html="XWZX_List[subActiveIndex + 1].content"
                 ></div>
                 <div
                   class="topic_time"
-                  @click="toNewItem(XWZX_List[subActiveIndex + 1].id)"
+                  @click="
+                    toNewItem(
+                      XWZX_List[subActiveIndex + 1].url,
+                      XWZX_List[subActiveIndex + 1].id
+                    )
+                  "
                 >
                   {{ XWZX_List[subActiveIndex + 1].time.split(" ")[0] }}
                 </div>
@@ -410,7 +425,7 @@
                 >
                   <swiper-slide
                     v-for="(item, index) in XWZX_List"
-                    @click.native="toNewItem(item.id)"
+                    @click.native="toNewItem(item.url, item.id)"
                     :key="index"
                   >
                     <div>
@@ -575,7 +590,7 @@ export default {
         });
       // 晨曦视界
       this.axios
-        .get(`${this.$baseUrl}contentext/id/23`)
+        .get(`${this.$baseUrl}contentext/id/23/p/1/count/6/sortTime/desc`)
         .then(({ data }) => {
           // this.XWZX_List = data.data;
           for (let i = 0; i < data.data.length; i++) {
@@ -674,7 +689,11 @@ export default {
     toPage(url) {
       this.$router.push(url);
     },
-    toNewItem(id) {
+    toNewItem(url, id) {
+      if (url) {
+        window.open(url);
+        return;
+      }
       this.$router.push(`/news/${id}`);
     }
   },

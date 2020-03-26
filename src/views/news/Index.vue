@@ -26,7 +26,7 @@
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
-                <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
+                <span class="_tiem">{{ item.update_time.split(" ")[0] }}</span>
               </div>
             </div>
             <el-pagination
@@ -213,7 +213,9 @@ export default {
       this.CXSJ_p = p;
       // 晨曦世界
       this.axios
-        .get(`${this.$baseUrl}contentext/id/23/p/${this.CXSJ_p}/count/6`)
+        .get(
+          `${this.$baseUrl}contentext/id/23/p/${this.CXSJ_p}/count/6/sortTime/desc`
+        )
         .then(({ data }) => {
           this.CXSJ_List = data.data;
           this.CXSJ_total = parseInt(data.count);
