@@ -600,30 +600,33 @@ export default {
     tobusiness(index) {
       if (index === 0) {
         this.$router.push({
-          path: "/news"
+          path: "/business"
           // params: {
           //   div: "SYZG"
           // }
         });
-        EventBus.$emit("aaa", "CXSJ");
+        sessionStorage.setItem("aaa", "SYZG");
+        EventBus.$emit("aaa", "SYZG");
       }
       if (index === 1) {
         this.$router.push({
-          path: "/news"
+          path: "/business"
           // params: {
           //   div: "TZJD"
           // }
         });
-        EventBus.$emit("aaa", "QYGG");
+        sessionStorage.setItem("aaa", "TZJD");
+        EventBus.$emit("aaa", "TZJD");
       }
       if (index === 2) {
         this.$router.push({
-          path: "/news"
+          path: "/business"
           // params: {
           //   div: "SDDC"
           // }
         });
-        EventBus.$emit("aaa", "CEOTALK");
+        sessionStorage.setItem("aaa", "SDDC");
+        EventBus.$emit("aaa", "SDDC");
       }
     },
     resetFontsize() {

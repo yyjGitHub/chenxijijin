@@ -277,6 +277,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (!(to.path === "/business" && from.path === "/home")) {
+    sessionStorage.clear();
+  }
   if (router.options.isCreateMenu) {
     document.getElementsByTagName("title")[0].innerText = to.meta.title;
     next();

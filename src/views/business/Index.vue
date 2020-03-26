@@ -21,7 +21,7 @@
             <div class="_box">
               <div
                 v-for="(item, index) in SYZG_List"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
                 :key="index"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
@@ -50,7 +50,7 @@
             <div class="_box">
               <div
                 v-for="(item, index) in TZJD_List"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
                 :key="index"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
@@ -86,7 +86,7 @@
             <div class="_box">
               <div
                 v-for="(item, index) in SDDC_List"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
                 :key="index"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
@@ -154,14 +154,15 @@ export default {
   },
   mounted() {
     EventBus.$on("aaa", res => {
+      console.log(res);
       this.sign = res;
     });
     this.getData();
   },
   updated() {
-    if (this.sign) {
+    if (sessionStorage.getItem("aaa")) {
       this.$nextTick(() => {
-        let t_a = $(`#${this.sign}`).offset();
+        let t_a = $(`#${sessionStorage.getItem("aaa")}`).offset();
         $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
       });
     }
@@ -225,7 +226,11 @@ export default {
           console.log(response);
         });
     },
-    toitem(index) {
+    toitem(url, index) {
+      if (url) {
+        window.open(url);
+        return;
+      }
       this.$router.push(`/news/${index}`);
     },
     TZJD_change(p) {

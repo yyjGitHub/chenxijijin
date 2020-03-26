@@ -22,7 +22,7 @@
               <div
                 v-for="(item, index) in CXSJ_List"
                 :key="index"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
@@ -50,7 +50,7 @@
             <div class="_box">
               <div
                 v-for="(item, index) in QYGG_List"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
                 :key="index"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
@@ -86,7 +86,7 @@
             <div class="_box">
               <div
                 v-for="(item, index) in CEOTALK_List"
-                @click="toitem(item.id)"
+                @click="toitem(item.url, item.id)"
                 :key="index"
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
@@ -189,7 +189,11 @@ export default {
       this.QYGG_change(1);
       this.CXSJ_change(1);
     },
-    toitem(index) {
+    toitem(url, index) {
+      if (url) {
+        window.open(url);
+        return;
+      }
       this.$router.push(`/news/${index}`);
     },
     CEOTALK_change(p) {
