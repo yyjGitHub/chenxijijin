@@ -92,6 +92,7 @@ export default {
   z-index: 98;
   background-color: #fff;
   border-top: 1px solid #cbcbcb;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
   ._box {
     height: px(57);
     display: flex;

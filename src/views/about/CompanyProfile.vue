@@ -4,7 +4,6 @@
       <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
       <div class="_box">
         <div class="_title">{{ topInfo.title }}</div>
-        <div class="_into" v-html="topInfo.content"></div>
       </div>
     </div>
     <div class="page_bottom_box layout_content_innerbox">
@@ -20,11 +19,7 @@
         </div>
         <div class="_bottom">
           <div v-for="(item, index) in pageList" :key="index">
-            <img :src="`${$basePicUrl}${item.sm_logo}`" alt="" />
-            <div>
-              <span>{{ item.title }}</span>
-              <div v-html="item.content"></div>
-            </div>
+            <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
           </div>
         </div>
       </div>
@@ -59,26 +54,26 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(response => {});
 
       this.axios
         .get(`${this.$baseUrl}content/id/3`)
         .then(({ data }) => {
           this.pageInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(response => {});
       this.axios
         .get(`${this.$baseUrl}contentext/id/3`)
         .then(({ data }) => {
           this.pageList = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
+      // this.axios
+      //   .get(`${this.$baseUrl}contentext/id/3`)
+      //   .then(({ data }) => {
+      //     this.pageList = data.data;
+      //   })
+      //   .catch(response => {});
     }
   }
 };
@@ -93,50 +88,41 @@ export default {
       }
     }
     ._bottom {
+      padding-bottom: px(120);
       display: flex;
-      width: 100%;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: px(120);
+      flex-wrap: wrap;
+      width: 100%;
       & > div {
-        width: px(302);
-        height: px(560);
+        width: px(384);
+        height: px(248);
         background: rgba(248, 248, 248, 1);
         display: flex;
         flex-direction: column;
+        margin-top: px(20);
         & > img {
           display: block;
-          width: px(302);
-          height: px(320);
+          width: px(384);
+          height: px(248);
         }
         & > div {
           flex: 1;
+          min-height: 0;
           display: flex;
-          flex-direction: column;
           align-items: center;
-          justify-content: center;
-          & > span {
-            height: px(42);
-            font-size: px(30);
-
-            color: rgba(0, 0, 0, 1);
-            line-height: px(36);
-            margin-bottom: px(16);
-          }
-          & > div {
+          box-sizing: border-box;
+          padding: 0 px(40);
+          span {
             text-align: center;
-            font-size: px(20);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            font-size: px(24);
 
-            color: #454545;
-            line-height: px(24);
-            p {
-              margin: 0;
-              text-align: center;
-              font-size: px(20);
-
-              color: #454545;
-              line-height: px(24);
-            }
+            color: #363636;
+            line-height: px(34);
           }
         }
       }

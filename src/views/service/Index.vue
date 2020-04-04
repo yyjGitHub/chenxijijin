@@ -1,17 +1,10 @@
 <template>
   <div class="service_index_box layout_content_box">
-    <div class="page_top_box">
-      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
-      <div class="_box">
-        <div class="_title">{{ topInfo.title }}</div>
-        <div class="_into" v-html="topInfo.content"></div>
-      </div>
-    </div>
     <div class="page_bottom_box layout_content_innerbox">
       <div class="part2" id="SHZP">
         <div class="_c">
           <div class="layout_content_title">
-            人才招聘
+            加入我们
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -67,11 +60,9 @@
       <div class="part1" id="LXWM">
         <div class="_c">
           <div class="layout_content_title">
-            联系我们
+            合作洽谈
           </div>
-          <div class="layout_content_into">
-            {{ LXWM_Info.title }}
-          </div>
+          <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
               <div class="map_wrapper">
@@ -88,7 +79,7 @@
                     :position="center"
                   ></el-amap-marker>
                 </el-amap>
-                <div class="_tooltip">
+                <!-- <div class="_tooltip">
                   <img
                     src="~@/assets/image/telphone_icon.png"
                     class="_icon"
@@ -106,46 +97,38 @@
                   <span class="_address"
                     >浦东新区张杨路2389弄置汇旭辉广场C座15楼</span
                   >
-                </div>
+                </div> -->
               </div>
               <div class="_form">
-                <div class="_title">
-                  CONTACT US
+                <div class="_top">
+                  上海晨曦股权投资<br />
+                  基金管理有限公司
                 </div>
-                <div class="_subtitle">
-                  联系我们
-                </div>
-                <el-input
-                  class="name"
-                  v-model="name"
-                  placeholder="用户名"
-                ></el-input>
-                <el-input
-                  class="contact"
-                  v-model="contact"
-                  placeholder="邮箱/手机"
-                ></el-input>
-                <el-input
-                  class="content"
-                  type="textarea"
-                  placeholder="请输入留言信息"
-                  v-model="content"
-                >
-                </el-input>
-                <div class="submit_share">
-                  <div class="_left">
+                <div class="_bottom">
+                  <div>
                     <img
-                      src="~@/assets/image/wechat_icon.png"
+                      src="~@/assets/image/address_icon.png"
                       alt=""
                       srcset=""
                     />
-                    <img
-                      src="~@/assets/image/weibo_icon.png"
-                      alt=""
-                      srcset=""
-                    />
+                    <div>浦东新区张杨路2389弄<br />置汇旭辉广场C座15楼</div>
                   </div>
-                  <div class="_submit" @click="postData">提交</div>
+                  <div>
+                    <img
+                      src="~@/assets/image/telphone_icon.png"
+                      alt=""
+                      srcset=""
+                    />
+                    <div>021-58995866</div>
+                  </div>
+                  <div>
+                    <img
+                      src="~@/assets/image/telphone_icon.png"
+                      alt=""
+                      srcset=""
+                    />
+                    <div>58995866-217</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -199,27 +182,21 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
-      //  联系我们
+        .catch(() => {});
+      //  合作洽谈
       this.axios
         .get(`${this.$baseUrl}content/id/17`)
         .then(({ data }) => {
           this.LXWM_Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
-      //  社会招聘
+        .catch(() => {});
+      //  加入我们
       this.axios
         .get(`${this.$baseUrl}contentjob/id/18/p/1/count/2`)
         .then(({ data }) => {
           this.SHZP_List = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     },
     postData() {
       this.axios
@@ -229,7 +206,6 @@ export default {
           content: this.content
         })
         .then(({ data }) => {
-          console.log(data);
           if (data.status === "1") {
             Message({
               message: "添加成功",
@@ -240,21 +216,17 @@ export default {
             this.content = "";
           }
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     },
     getMore() {
       this.get_more = true;
-      //  社会招聘
+      //  加入我们
       this.axios
         .get(`${this.$baseUrl}contentjob/id/18/p/1/count/99999`)
         .then(({ data }) => {
           this.SHZP_List = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     },
     setActive(index) {
       if (this.active_index === index) {
@@ -271,114 +243,62 @@ export default {
 .service_index_box {
   .layout_content_innerbox {
     .part1 {
-      .layout_content_title {
-        &::before {
-          content: "CONTACT" !important;
-        }
+      .layout_content_line {
+        width: px(120);
+        height: 2px;
+        background: rgba(0, 0, 0, 0.4);
+        margin-top: px(50);
+        margin-bottom: px(80);
       }
       ._bottom {
         width: 100%;
         ._box {
           display: flex;
-          padding-top: px(40);
           padding-bottom: px(120);
           .map_wrapper {
-            width: px(760);
+            width: px(838);
             margin-left: px(16);
             height: px(627);
             margin-right: px(24);
             position: relative;
-            ._tooltip {
-              width: px(720);
-              height: px(64);
-              padding: 0 px(31);
-              background-color: #599ae5;
-              display: flex;
-              align-items: center;
-              position: absolute;
-              left: px(-16);
-              bottom: px(44);
-              box-sizing: border-box;
-              ._icon {
-                display: block;
-                width: px(23);
-                height: px(24);
-                margin-right: px(7);
-              }
-              span {
-                display: block;
-                font-size: px(16);
-                color: rgba(255, 255, 255, 1);
-                &._address {
-                  width: px(396);
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  overflow: hidden;
-                }
-              }
-              .line {
-                width: 1px;
-                height: px(31);
-                background-color: #fff;
-                margin-left: px(28);
-                margin-right: px(36);
-              }
-            }
           }
           ._form {
-            width: px(480);
+            width: px(403);
             height: px(627);
             background-color: #599ae5;
             box-sizing: border-box;
-            padding: px(56);
-            ._title {
-              height: px(48);
-              font-size: px(48);
+            padding: px(77) px(59) px(63) px(60);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            ._top {
+              font-size: px(35);
               color: rgba(255, 255, 255, 1);
-              line-height: px(48);
+              line-height: px(46);
             }
-            ._subtitle {
-              height: px(30);
-              font-size: px(22);
-              color: rgba(255, 255, 255, 1);
-              line-height: px(26);
-              margin-bottom: px(33);
-            }
-            .name,
-            .contact {
-              margin-bottom: px(12);
-            }
-            .content {
-              margin-bottom: px(40);
-              .el-textarea__inner {
-                height: px(220);
-              }
-            }
-            .submit_share {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              ._left {
+            ._bottom {
+              padding: px(26) 0;
+              border: 1px solid #fff;
+              border-left: none;
+              border-right: none;
+              & > div {
                 display: flex;
-                align-items: center;
-                & > img {
-                  display: block;
-                  margin-right: px(16);
-                  &:last-child {
-                    margin-right: 0;
-                  }
-                  width: px(32);
-                  height: px(32);
+                margin-bottom: px(14);
+                &:last-child {
+                  margin-bottom: 0;
                 }
-              }
-              ._submit {
-                width: px(120);
-                height: px(40);
-                line-height: px(40);
-                background-color: #fff;
-                text-align: center;
-                font-size: px(20);
-                color: #5b9be4;
+                img {
+                  margin-top: px(6);
+                  display: block;
+                  width: px(23);
+                  height: px(23);
+                  margin-right: px(11);
+                }
+                div {
+                  font-size: px(23);
+                  color: rgba(255, 255, 255, 1);
+                  line-height: px(30);
+                }
               }
             }
           }
@@ -386,17 +306,12 @@ export default {
       }
     }
     .part2 {
-      .layout_content_title {
-        &::before {
-          content: "TALENT";
-        }
-      }
       .layout_content_line {
         width: px(120);
         height: 2px;
         background: rgba(0, 0, 0, 0.4);
-        margin-top: px(32);
-        margin-bottom: px(76);
+        margin-top: px(50);
+        margin-bottom: px(80);
       }
       ._bottom {
         ._box {
@@ -493,6 +408,7 @@ export default {
                       transform: translate(-50%, -50%);
                       height: px(45);
                       line-height: px(45);
+                      cursor: pointer;
                       padding: 0 px(31);
                       color: #fff;
                       background-color: #599ae5;
@@ -503,23 +419,23 @@ export default {
                 ._into {
                   padding: px(24) px(98);
                   background-color: #f9f9f9;
-                  div {
-                    margin-bottom: px(16);
-                    &:last-child {
-                      margin-bottom: 0;
-                    }
-                    b,
-                    span,
-                    strong {
-                      color: #828282;
-                      display: block;
-                      font-size: px(16);
-                      line-height: px(23);
-                    }
-                    b,
-                    strong {
-                      margin-bottom: px(4);
-                    }
+                  margin-bottom: px(16);
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                  b,
+                  span,
+                  strong,
+                  p {
+                    color: #828282;
+                    display: block;
+                    font-size: px(16);
+                    line-height: px(23);
+                  }
+                  b,
+                  strong,
+                  p {
+                    margin-bottom: px(4);
                   }
                 }
               }

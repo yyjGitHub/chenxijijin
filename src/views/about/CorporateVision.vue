@@ -1,12 +1,5 @@
 <template>
   <div class="corporatevision_box layout_content_box">
-    <div class="page_top_box">
-      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
-      <div class="_box">
-        <div class="_title">{{ topInfo.title }}</div>
-        <div class="_into" v-html="topInfo.content"></div>
-      </div>
-    </div>
     <div class="page_bottom_box layout_content_innerbox" id="QYFC">
       <div class="_c">
         <div class="layout_content_title _special">
@@ -32,11 +25,6 @@
             </div>
             <div class="_right">
               <img :src="`${$basePicUrl}${QYYJ_INFO.logo}`" alt="" srcset="" />
-            </div>
-          </div>
-          <div class="bottom_part" id="QYRY">
-            <div v-for="(item, index) in pageList" :key="index">
-              <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
             </div>
           </div>
         </div>
@@ -86,34 +74,20 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
 
       this.axios
         .get(`${this.$baseUrl}content/id/19`)
         .then(({ data }) => {
           this.pageInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}contentext/id/4`)
         .then(({ data }) => {
           this.QYYJ_INFO = data.data[0];
         })
-        .catch(response => {
-          console.log(response);
-        });
-      this.axios
-        .get(`${this.$baseUrl}contentext/id/5`)
-        .then(({ data }) => {
-          this.pageList = data.data;
-        })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     }
   }
 };

@@ -64,8 +64,8 @@ const mainroutes = [
         name: "CorporateVision",
         component: _import("about/CorporateVision"),
         meta: {
-          label: "企业风采",
-          title: "企业风采-晨曦基金"
+          label: "企业治理",
+          title: "企业治理-晨曦基金"
         }
       },
       {
@@ -235,28 +235,28 @@ const mainroutes = [
         name: "index",
         component: _import("service/Index"),
         meta: {
-          label: "联系我们",
-          title: "联系我们-晨曦基金"
+          label: "合作洽谈",
+          title: "合作洽谈-晨曦基金"
         }
       },
       {
         path: "SHZP",
         name: "SHZP",
         meta: {
-          label: "社会招聘"
+          label: "加入我们"
         }
       },
       {
         path: "LXWM",
         name: "LXWM",
         meta: {
-          label: "联系我们"
+          label: "合作洽谈"
         }
       }
     ],
     meta: {
-      label: "联系我们",
-      title: "联系我们-晨曦基金"
+      label: "合作洽谈",
+      title: "合作洽谈-晨曦基金"
     }
   }
 ];
@@ -277,7 +277,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!(to.path === "/business" && from.path === "/home")) {
+  // if (!(to.path === "/business" && from.path === "/home")) {
+  //   sessionStorage.clear();
+  // }
+  if (from.path === "/") {
     sessionStorage.clear();
   }
   if (router.options.isCreateMenu) {

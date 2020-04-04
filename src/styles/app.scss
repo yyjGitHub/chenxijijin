@@ -152,18 +152,6 @@ p {
         color: rgba(255, 255, 255, 1);
         line-height: px(77);
         position: relative;
-        margin-bottom: px(42);
-        &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          width: px(120);
-          height: 2px;
-          background-color: #fff;
-          bottom: px(-16);
-          left: 50%;
-          transform: translateX(-50%);
-        }
       }
       ._into {
         max-width: px(600);
@@ -190,32 +178,21 @@ p {
       margin: 0 auto;
     }
     .__part_title {
+      display: flex;
+      align-items: flex-end;
+      img {
+        display: block;
+        width: px(29);
+        height: px(14);
+        margin-right: px(16);
+        position: relative;
+        bottom: px(13);
+      }
       .title {
         height: px(50);
         font-size: px(36);
         color: rgba(89, 154, 229, 1);
-        line-height: px(43);
-        margin-bottom: px(10);
-      }
-      .en_title {
-        display: flex;
-        align-items: center;
-        img {
-          display: block;
-          width: px(23);
-          height: px(11);
-          margin-right: px(9);
-          position: relative;
-          top: px(-1);
-        }
-        span {
-          display: block;
-          font-size: px(16);
-
-          color: #333;
-          height: px(22);
-          line-height: px(22);
-        }
+        line-height: px(50);
       }
     }
   }
@@ -224,7 +201,7 @@ p {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: px(223);
+      padding-top: px(163);
       & > ._top {
         display: flex;
         flex-direction: column;
@@ -233,28 +210,12 @@ p {
       .layout_content_title {
         height: px(80);
         font-size: px(80);
-
         color: #666666;
         line-height: px(80);
         font-weight: bold;
         position: relative;
         margin-bottom: px(18);
         z-index: 97;
-        &::before {
-          content: "COMPANY";
-          display: block;
-          position: absolute;
-          z-index: -1;
-          left: 50%;
-          transform: translateX(-50%);
-          top: px(-103);
-          color: #f7f7f7;
-          height: px(144);
-          font-size: px(120);
-          font-family: HelveticaNeue-Bold, HelveticaNeue;
-          font-weight: bolder;
-          line-height: px(144);
-        }
       }
       .layout_content_into {
         // height: px(30);
@@ -279,18 +240,21 @@ p {
       .layout_content_intro {
         text-align: center;
         width: px(665);
-        font-size: px(18);
-
+        font-size: px(30);
         color: #7f7f7f;
-        line-height: px(32);
-        margin-bottom: px(120);
+        line-height: px(46);
+        margin-bottom: px(58);
         p {
           margin: 0;
-          text-align: center;
+          text-align: left;
           width: px(665);
-          font-size: px(18);
+          font-size: px(30);
           color: #7f7f7f;
-          line-height: px(32);
+          line-height: px(46);
+          margin-bottom: px(30);
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }

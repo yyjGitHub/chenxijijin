@@ -66,6 +66,7 @@ export default {
   methods: {
     toPage(item) {
       // this.active_index = index;
+      sessionStorage.clear();
       this.$router.push(item.path);
     },
     resetFontsize() {
@@ -92,7 +93,7 @@ export default {
               for (let j = 0; j < arr.length; j++) {
                 const elementj = arr.eq(j);
                 if (!elementj.hasClass("active")) {
-                  left += elementj.width() + this.font_size * 0.55;
+                  left += elementj.width() + this.font_size * 0.46;
                 } else {
                   this.trans_width = elementj.width() + 16 + "px";
                   this.trans_left = left - 6 + "px";
@@ -149,23 +150,13 @@ header {
     & > ._item {
       cursor: pointer;
       color: #000000;
-      margin-right: px(55);
-      font-size: px(18);
+      margin-right: px(46);
+      font-size: px(24);
       font-family: PingFangSC-Regular, PingFang SC;
       position: relative;
       transition: all ease-in-out 0.6s;
       &.active {
         color: #599ae5;
-        // &::after {
-        //   content: "";
-        //   display: block;
-        //   position: absolute;
-        //   bottom: px(-8);
-        //   left: 0;
-        //   width: 100%;
-        //   height: px(2);
-        //   background-color: #599ae5;
-        // }
       }
     }
     .trans_item {

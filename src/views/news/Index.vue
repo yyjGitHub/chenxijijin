@@ -1,22 +1,12 @@
 <template>
   <div class="news_index_box layout_content_box">
-    <div class="page_top_box">
-      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
-      <div class="_box">
-        <div class="_title">{{ topInfo.title }}</div>
-        <div class="_into" v-html="topInfo.content"></div>
-      </div>
-    </div>
     <div class="page_bottom_box layout_content_innerbox">
       <div class="part_1" id="CXSJ">
         <div class="_c">
           <div class="layout_content_title">
             新闻动态
           </div>
-          <div class="layout_content_into">
-            {{ CXSJ_Info.title }}
-          </div>
-          <div class="layout_content_intro" v-html="CXSJ_Info.content"></div>
+          <div class="layout_content_line"></div>
           <div class="_bottom">
             <div class="_box">
               <div
@@ -91,19 +81,11 @@
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
+                  <div class="_time">{{ item.entitle }}</div>
                   <span class="_title">
                     {{ item.title }}
                   </span>
-                  <span class="_line"></span>
                   <span class="_into" v-html="item.content"> </span>
-                  <span class="_more">
-                    <span>查看详情</span>
-                    <img
-                      src="~@/assets/image/arrow_right_active.png"
-                      alt=""
-                      srcset=""
-                    />
-                  </span>
                 </div>
               </div>
             </div>
@@ -173,18 +155,14 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       //  晨曦视界
       this.axios
         .get(`${this.$baseUrl}content/id/23`)
         .then(({ data }) => {
           this.CXSJ_Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.CEOTALK_change(1);
       this.QYGG_change(1);
       this.CXSJ_change(1);
@@ -205,9 +183,7 @@ export default {
           this.CEOTALK_List = data.data;
           this.CEOTALK_total = parseInt(data.count);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     },
     CXSJ_change(p) {
       this.CXSJ_p = p;
@@ -220,9 +196,7 @@ export default {
           this.CXSJ_List = data.data;
           this.CXSJ_total = parseInt(data.count);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     },
     QYGG_change(p) {
       this.QYGG_p = p;
@@ -233,9 +207,7 @@ export default {
           this.QYGG_List = data.data;
           this.QYGG_total = parseInt(data.count);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
     }
   }
 };
@@ -245,12 +217,14 @@ export default {
 .news_index_box {
   .layout_content_innerbox {
     .part_1 {
-      padding-bottom: px(120);
-      .layout_content_title {
-        &::before {
-          content: "NEWS";
-        }
+      .layout_content_line {
+        margin-top: px(50);
+        width: px(120);
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.4);
+        margin-bottom: px(83);
       }
+      padding-bottom: px(120);
       ._bottom {
         width: 100%;
         display: flex;
@@ -260,7 +234,6 @@ export default {
           display: flex;
           flex-wrap: wrap;
           width: 100%;
-          padding-bottom: px(120);
           & > div {
             margin-right: px(64);
             width: px(384);
@@ -276,26 +249,25 @@ export default {
             & > img {
               display: block;
               width: px(384);
-              height: px(280);
+              height: px(164);
             }
             & > span {
               &._title {
-                font-size: px(24);
+                font-size: px(26);
                 color: #333333;
-                line-height: px(33);
+                line-height: px(35);
                 font-weight: bold;
-                margin-top: px(24);
+                margin-top: px(16);
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
                 overflow: hidden;
-                margin-bottom: px(8);
+                margin-bottom: px(20);
                 transition: all ease-in-out 0.3s;
               }
               &._tiem {
                 height: px(24);
                 font-size: px(24);
-
                 color: #7f7f7f;
                 line-height: px(24);
                 white-space: nowrap;
@@ -312,21 +284,13 @@ export default {
     }
     .part_2 {
       background-color: #f8f8f8;
-      padding-bottom: px(120);
-      .layout_content_title {
-        &._special {
-          &::before {
-            content: "NOTICE";
-            color: #f1eff2;
-          }
-        }
-      }
+      padding-bottom: px(130);
       .layout_content_line {
         width: px(120);
-        height: 2px;
+        height: 1px;
         background: rgba(0, 0, 0, 0.4);
-        margin-top: px(32);
-        margin-bottom: px(76);
+        margin-top: px(50);
+        margin-bottom: px(80);
       }
       ._bottom {
         width: 100%;
@@ -336,21 +300,20 @@ export default {
         ._box {
           width: 100%;
           & > div {
-            margin-top: px(4);
             margin-bottom: px(56);
             width: px(1280);
-            height: px(327);
+            height: px(234);
             box-sizing: border-box;
-            padding: px(40) px(60) px(40) px(40);
+            padding: px(12) px(11);
             display: flex;
             background: rgba(255, 255, 255, 1);
             box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             & > img {
               display: block;
-              width: px(460);
-              height: px(247);
-              margin-right: px(60);
+              width: px(490);
+              height: px(210);
+              margin-right: px(40);
             }
             & > div {
               & > span {
@@ -363,27 +326,31 @@ export default {
                   text-overflow: ellipsis;
                   white-space: nowrap;
                   overflow: hidden;
-                  margin-top: px(20);
-                  margin-bottom: px(24);
+                  margin-top: px(25);
+                  margin-bottom: px(20);
                 }
                 &._title {
-                  height: px(43);
-                  font-size: px(32);
+                  width: px(466);
+                  font-size: px(34);
                   color: rgba(0, 0, 0, 1);
-                  line-height: px(32);
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  margin-bottom: px(8);
-                }
-                &._into {
-                  font-size: px(18);
-                  color: #7f7f7f;
-                  line-height: px(32);
+                  line-height: px(40);
+                  margin-bottom: px(4);
+                  min-height: px(81);
                   display: -webkit-box;
                   -webkit-box-orient: vertical;
-                  -webkit-line-clamp: 3;
+                  -webkit-line-clamp: 2;
                   overflow: hidden;
+                }
+                &._into {
+                  width: 100%;
+                  font-size: px(22);
+                  color: #7f7f7f;
+                  line-height: px(32);
+                  height: px(43);
+                  line-height: px(46);
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
                 }
               }
             }
@@ -392,18 +359,13 @@ export default {
       }
     }
     .part_3 {
-      padding-bottom: px(120);
-      .layout_content_title {
-        &::before {
-          content: "NOTICE";
-        }
-      }
+      padding-bottom: px(150);
       .layout_content_line {
         width: px(120);
-        height: 2px;
+        height: 1px;
         background: rgba(0, 0, 0, 0.4);
-        margin-top: px(32);
-        margin-bottom: px(76);
+        margin-top: px(50);
+        margin-bottom: px(80);
       }
       ._bottom {
         width: 100%;
@@ -421,69 +383,51 @@ export default {
               margin-right: 0;
             }
             width: px(608);
-            height: px(350);
+            height: px(500);
             background: #f8f8f8;
             box-sizing: border-box;
-            padding: px(40);
-            display: flex;
+            padding: px(40) px(38) px(0) px(38);
             & > img {
               display: block;
-              width: px(200);
-              height: px(270);
-              margin-right: px(40);
+              width: px(532);
+              height: px(227);
+              margin-bottom: px(30);
             }
             & > div {
-              width: px(288);
+              width: 100%;
               display: flex;
               flex-direction: column;
               justify-content: space-between;
               & > span {
                 display: block;
               }
-              ._title {
+              ._time {
                 height: px(24);
                 font-size: px(24);
+                line-height: px(24);
+                margin-bottom: px(20);
+              }
+              ._title {
+                width: px(466);
+                min-height: px(81);
+                font-size: px(34);
                 color: #313131;
-                line-height: px(24);
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-                position: relative;
-                margin-bottom: px(24);
-                font-weight: bold;
-              }
-              ._line {
-                width: px(60);
-                height: 2px;
-                background-color: rgba(0, 0, 0, 0.4);
-                margin-bottom: px(24);
-              }
-              ._into {
-                font-size: px(18);
-                color: #7f7f7f;
-                line-height: px(24);
+                line-height: px(40);
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
-                -webkit-line-clamp: 6;
+                -webkit-line-clamp: 2;
                 overflow: hidden;
+                margin-bottom: px(4);
+                font-weight: bold;
               }
-              ._more {
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                span {
-                  display: block;
-                  margin-right: px(8);
-                  height: px(20);
-                  font-size: px(14);
-                  color: rgba(89, 154, 229, 1);
-                  line-height: px(20);
-                }
-                img {
-                  display: block;
-                  width: px(7);
-                  height: px(14);
-                }
+              ._into {
+                height: px(43);
+                font-size: px(22);
+                color: #7f7f7f;
+                line-height: px(46);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
               }
             }
           }

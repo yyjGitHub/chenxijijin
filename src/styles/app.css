@@ -159,19 +159,6 @@ p {
   color: white;
   line-height: px(77);
   position: relative;
-  margin-bottom: px(42);
-}
-
-.layout_content_box .page_top_box ._box ._title::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: px(120);
-  height: 2px;
-  background-color: #fff;
-  bottom: px(-16);
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .layout_content_box .page_top_box ._box ._into {
@@ -196,41 +183,32 @@ p {
   margin: 0 auto;
 }
 
+.layout_content_box .page_bottom_box .__part_title {
+  display: flex;
+  align-items: flex-end;
+}
+
+.layout_content_box .page_bottom_box .__part_title img {
+  display: block;
+  width: px(29);
+  height: px(14);
+  margin-right: px(16);
+  position: relative;
+  bottom: px(13);
+}
+
 .layout_content_box .page_bottom_box .__part_title .title {
   height: px(50);
   font-size: px(36);
   color: #599ae5;
-  line-height: px(43);
-  margin-bottom: px(10);
-}
-
-.layout_content_box .page_bottom_box .__part_title .en_title {
-  display: flex;
-  align-items: center;
-}
-
-.layout_content_box .page_bottom_box .__part_title .en_title img {
-  display: block;
-  width: px(23);
-  height: px(11);
-  margin-right: px(9);
-  position: relative;
-  top: px(-1);
-}
-
-.layout_content_box .page_bottom_box .__part_title .en_title span {
-  display: block;
-  font-size: px(16);
-  color: #333;
-  height: px(22);
-  line-height: px(22);
+  line-height: px(50);
 }
 
 .layout_content_box .layout_content_innerbox ._c {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: px(223);
+  padding-top: px(163);
 }
 
 .layout_content_box .layout_content_innerbox ._c > ._top {
@@ -248,22 +226,6 @@ p {
   position: relative;
   margin-bottom: px(18);
   z-index: 97;
-}
-
-.layout_content_box .layout_content_innerbox ._c .layout_content_title::before {
-  content: "COMPANY";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  left: 50%;
-  transform: translateX(-50%);
-  top: px(-103);
-  color: #f7f7f7;
-  height: px(144);
-  font-size: px(120);
-  font-family: HelveticaNeue-Bold, HelveticaNeue;
-  font-weight: bolder;
-  line-height: px(144);
 }
 
 .layout_content_box .layout_content_innerbox ._c .layout_content_into {
@@ -290,19 +252,24 @@ p {
 .layout_content_box .layout_content_innerbox ._c .layout_content_intro {
   text-align: center;
   width: px(665);
-  font-size: px(18);
+  font-size: px(30);
   color: #7f7f7f;
-  line-height: px(32);
-  margin-bottom: px(120);
+  line-height: px(46);
+  margin-bottom: px(58);
 }
 
 .layout_content_box .layout_content_innerbox ._c .layout_content_intro p {
   margin: 0;
-  text-align: center;
+  text-align: left;
   width: px(665);
-  font-size: px(18);
+  font-size: px(30);
   color: #7f7f7f;
-  line-height: px(32);
+  line-height: px(46);
+  margin-bottom: px(30);
+}
+
+.layout_content_box .layout_content_innerbox ._c .layout_content_intro p:last-child {
+  margin-bottom: 0;
 }
 
 .el-pagination.is-background .btn-next,

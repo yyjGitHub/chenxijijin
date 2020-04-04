@@ -14,11 +14,48 @@
 </template>
 
 <script>
+import $ from "jquery";
 import { EventBus } from "@/bus";
 import Header from "@/components/Header";
 import SubMenu from "./sub/SubMenu.vue";
 import Footer from "@/components/Footer";
+var mixin = {
+  data() {
+    return {
+      sign_: ""
+    };
+  },
+  watch: {
+    $route: {
+      handler() {
+        if (sessionStorage.getItem("GG")) {
+          this.sign_ = sessionStorage.getItem("GG");
+        }
+      },
+      deep: true,
+      immediate: true
+    }
+  },
+  updated() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        if (!this.sign_) {
+          return;
+        }
+        if (!$(`#${this.sign_}`)) {
+          return;
+        }
+        let t_a = $(`#${this.sign_}`).offset();
+        if (!t_a) {
+          return;
+        }
+        $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+      }, 500);
+    });
+  }
+};
 export default {
+  mixins: [mixin],
   name: "layout",
   data() {
     return {

@@ -7,7 +7,7 @@
 <style lang="scss">
 @import "@/styles/fun.scss";
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: AlibabaPuHuiTiR;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

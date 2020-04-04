@@ -1,23 +1,13 @@
 <template>
   <div class="about_index_box layout_content_box">
-    <div class="page_top_box">
-      <img :src="`${$basePicUrl}${topInfo.logo}`" alt="" srcset="" />
-      <div class="_box">
-        <div class="_title">{{ topInfo.title }}</div>
-        <div class="_into" v-html="topInfo.content"></div>
-      </div>
-    </div>
     <div class="page_bottom_box">
       <div class="part_1">
         <div class="_c">
           <div class="_left">
             <div class="__part_title">
+              <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
               <div class="title">
                 企业简介
-              </div>
-              <div class="en_title">
-                <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
-                <span>COMPANY PROFILE</span>
               </div>
             </div>
             <div class="part_into">
@@ -47,12 +37,9 @@
       <div class="part_2">
         <div class="_c">
           <div class="__part_title">
+            <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
             <div class="title">
-              企业风采
-            </div>
-            <div class="en_title">
-              <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
-              <span>ENTERPRISE STYLE</span>
+              企业治理
             </div>
           </div>
           <div class="_box">
@@ -63,8 +50,7 @@
                 @click="toPage('/about/CorporateVision/QYFC')"
               >
                 <div class="YJ"></div>
-                <span class="title">企业愿景</span>
-                <span class="entitle">Vision</span>
+                <span class="title">企业文化</span>
               </div>
               <img
                 v-for="(item, index) in part_2List"
@@ -79,24 +65,12 @@
               >
                 <div class="RY"></div>
                 <span class="title">企业荣誉</span>
-                <span class="entitle">Honor</span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="part_3">
-        <div class="_c">
-          <div class="__part_title">
-            <div class="title">
-              投资策略
-            </div>
-            <div class="en_title">
-              <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
-              <span>INVESTMENT STRATEGY</span>
-            </div>
-          </div>
-        </div>
         <div
           class="_box"
           :style="{
@@ -106,8 +80,7 @@
           <div class="_c">
             <div>
               <div class="_left">
-                <span>{{ part_3Info.title }}</span>
-                <span>{{ part_3Info.entitle }}</span>
+                <span>业务介绍</span>
                 <div class="_more" @click="toPage('/about/InvestmentStrategy')">
                   <div>
                     <span>了解更多</span>
@@ -119,21 +92,18 @@
                 <div @click="toPage('InvestmentStrategy', 'TZLN')">
                   <div class="top">
                     <span>{{ TZLN_Info.ctitle }}</span>
-                    <span>{{ TZLN_Info.entitle }}</span>
                   </div>
                   <div class="bottom" v-html="TZLN_Info.content"></div>
                 </div>
                 <div @click="toPage('InvestmentStrategy', 'TZCL')">
                   <div class="top">
                     <span>{{ TZCL_Info.ctitle }}</span>
-                    <span>{{ TZCL_Info.entitle }}</span>
                   </div>
                   <div class="bottom" v-html="TZCL_Info.content"></div>
                 </div>
                 <div @click="toPage('InvestmentStrategy', 'FXKZ')">
                   <div class="top">
                     <span>{{ FXKZ_Info.ctitle }}</span>
-                    <span>{{ FXKZ_Info.entitle }}</span>
                   </div>
                   <div class="bottom" v-html="FXKZ_Info.content"></div>
                 </div>
@@ -146,12 +116,9 @@
         <div class="_c">
           <div class="_top">
             <div class="__part_title">
+              <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
               <div class="title">
                 合作伙伴
-              </div>
-              <div class="en_title">
-                <img src="~@/assets/image/half_circle_icon_1.png" alt="" />
-                <span>PARTNERS</span>
               </div>
             </div>
             <div
@@ -239,92 +206,64 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}content/id/3`)
         .then(({ data }) => {
           this.part_1Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}content/id/19`)
         .then(({ data }) => {
           this.part_2Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}content/id/4`)
         .then(({ data }) => {
           this.part_2List.push(data.data);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}content/id/5`)
         .then(({ data }) => {
           this.part_2List.push(data.data);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}content/id/6`)
         .then(({ data }) => {
           this.part_3Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}contentext/id/7`)
         .then(({ data }) => {
           this.part_4List = data.data.slice(0, 8);
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       // 投资理念
       this.axios
         .get(`${this.$baseUrl}content/id/20`)
         .then(({ data }) => {
           this.TZLN_Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       //投资策略
       this.axios
         .get(`${this.$baseUrl}content/id/21`)
         .then(({ data }) => {
           this.TZCL_Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
+        .catch(() => {});
       //风险控制
       this.axios
         .get(`${this.$baseUrl}content/id/22`)
         .then(({ data }) => {
           this.FXKZ_Info = data.data;
         })
-        .catch(response => {
-          console.log(response);
-        });
-      // this.axios
-      //   .get(`${this.$baseUrl}contentext/id/7`)
-      //   .then(({ data }) => {
-      //     this.pageList = data.data;
-      //   })
-      //   .catch(response => {
-      //     console.log(response);
-      //   });
+        .catch(() => {});
     }
   }
 };
@@ -334,7 +273,7 @@ export default {
 .about_index_box {
   .page_bottom_box {
     .part_1 {
-      border-bottom: 1px solid #979797;
+      background-color: #f8f8f8;
       ._c {
         padding-top: px(80);
         display: flex;
@@ -356,10 +295,10 @@ export default {
             }
             ._into {
               width: px(479);
-              font-size: px(18);
+              font-size: px(20);
 
               color: #7f7f7f;
-              line-height: px(25);
+              line-height: px(32);
               margin-bottom: px(24);
             }
             ._more {
@@ -459,20 +398,13 @@ export default {
                 color: #313131;
                 line-height: px(29);
               }
-              &.entitle {
-                height: px(22);
-                font-size: px(16);
-
-                color: #313131;
-                line-height: px(19);
-              }
             }
           }
         }
       }
     }
     .part_3 {
-      height: px(791);
+      height: px(707);
       background: rgba(248, 248, 248, 1);
       box-sizing: border-box;
       padding-top: px(80);
@@ -494,28 +426,20 @@ export default {
             & > ._left {
               & > span {
                 display: block;
-
                 color: rgba(255, 255, 255, 1);
                 &:first-child {
-                  height: px(65);
-                  font-size: px(48);
-
-                  line-height: px(58);
-                  margin-bottom: px(6);
-                }
-                &:last-child {
-                  height: px(26);
-                  font-size: px(18);
-                  line-height: px(22);
-                  margin-bottom: px(40);
+                  height: px(72);
+                  font-size: px(52);
+                  line-height: px(72);
+                  margin-bottom: px(22);
                 }
               }
               ._more {
                 cursor: pointer;
-                margin-top: px(50);
                 padding: 0 px(24);
                 display: inline-block;
                 height: px(40);
+                margin-bottom: px(80);
                 background: #5b9be4;
                 & > div {
                   height: 100%;
@@ -555,7 +479,7 @@ export default {
                 }
                 cursor: pointer;
                 width: px(560);
-                height: px(160);
+                height: px(140);
                 background: rgba(255, 255, 255, 1);
                 box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
                 box-sizing: border-box;
@@ -582,23 +506,13 @@ export default {
                     &:first-child {
                       height: px(33);
                       font-size: px(24);
-
                       color: rgba(0, 0, 0, 1);
                       line-height: px(33);
-                      margin-right: px(12);
-                    }
-                    &:last-child {
-                      height: px(22);
-                      font-size: px(16);
-
-                      color: #7f7f7f;
-                      line-height: px(22);
                     }
                   }
                 }
                 .bottom {
                   font-size: px(18);
-
                   color: #7f7f7f;
                   line-height: px(24);
                   margin-top: px(13);

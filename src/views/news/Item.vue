@@ -32,9 +32,7 @@ export default {
           .then(({ data }) => {
             this.page_Info = data.data;
           })
-          .catch(response => {
-            console.log(response);
-          });
+          .catch(() => {});
       },
       deep: true,
       immediate: true
