@@ -316,6 +316,7 @@
           </div>
         </swiper-slide>
         <swiper-slide class="home_5th_slide">
+          <div style="height:100vh;width:100vw;"></div>
           <div
             class="_box animated"
             :class="[
@@ -410,7 +411,7 @@
               </div>
             </div>
           </div>
-          <Footer :isHome="true"></Footer>
+          <Footer id="home_footer" :isHome="true"></Footer>
         </swiper-slide>
       </swiper>
     </div>
@@ -419,6 +420,7 @@
 
 <script>
 import { EventBus } from "@/bus";
+import $ from "jquery";
 import Footer from "@/components/Footer";
 export default {
   data() {
@@ -426,7 +428,10 @@ export default {
       homeSwiperOption: {
         direction: "vertical",
         slidesPerView: 1,
-        mousewheel: true,
+        mousewheel: {
+          releaseOnEdges: true,
+          forceToAxis: false,
+        },
         // loop: true,
         initialSlide: 0,
         simulateTouch: false,
@@ -504,6 +509,19 @@ export default {
     this.$nextTick(() => {
       this.getData();
       this.setActiveSlideIndex();
+    });
+  },
+  updated() {
+    let _this = this;
+    $(document).on("mousewheel DOMMouseScroll", function(e) {
+      if ($("#home_footer").offset().top < 969) {
+        _this.swiper.mousewheel.disable();
+        _this.swiper.update();
+        e.stopPropagation();
+      } else {
+        _this.swiper.mousewheel.enable();
+        _this.swiper.update();
+      }
     });
   },
   methods: {
@@ -1485,6 +1503,8 @@ export default {
           }
         }
         &.home_5th_slide {
+          overflow-y: auto;
+          overflow-x: hidden;
           & > ._box {
             width: px(1280);
             height: px(441);

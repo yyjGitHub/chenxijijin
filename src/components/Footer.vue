@@ -36,17 +36,17 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      menulist: this.$store.getters.menulist.filter(item => {
+      menulist: this.$store.getters.menulist.filter((item) => {
         return item.name !== "home";
-      })
+      }),
     };
   },
   created() {},
   props: {
     isHome: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     toPage(path, item) {
@@ -70,27 +70,13 @@ export default {
         sessionStorage.setItem("GG", item.name);
         this.$router.push(path);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 footer {
   background-color: #f8f8f8;
-  &.isHome {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: calc(50% + 6.4rem);
-    display: none;
-    justify-content: flex-end;
-    ._box {
-      margin: 0;
-      ._right {
-        margin-right: px(120);
-      }
-    }
-  }
   ._box {
     width: px(1280);
     height: px(281);
