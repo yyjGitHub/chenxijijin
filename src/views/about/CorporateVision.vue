@@ -1,31 +1,51 @@
 <template>
   <div class="corporatevision_box layout_content_box">
     <div class="page_bottom_box layout_content_innerbox" id="QYFC">
-      <div class="_c">
-        <div class="layout_content_title _special">
-          晨曦愿景
+      <div class="part part1">
+        <div class="_c">
+          <div class="layout_content_title">
+            {{ ZZJG_Info.ctitle }}
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div
+              v-for="(item, index) in ZZJG_List"
+              :key="index"
+              v-html="item.content"
+            ></div>
+          </div>
         </div>
-        <div class="layout_content_into _special">
-          {{ pageInfo.title }}
-        </div>
-        <div class="layout_content_intro" v-html="pageInfo.content"></div>
-        <div class="_bottom">
-          <div class="top_part">
-            <div class="_left">
-              <div class="_title">晨曦基金</div>
-              <div class="_entitle">
-                <img
-                  src="~@/assets/image/half_circle_icon_1.png"
-                  alt=""
-                  srcset=""
-                />
-                <span>{{ QYYJ_INFO.title }}</span>
+      </div>
+      <div class="part part2">
+        <div class="_c">
+          <div class="layout_content_title">
+            {{ GLTD_Info.ctitle }}
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div v-for="(item, index) in GLTD_List" :key="index">
+              <div class="_left">
+                <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+                <div class="_name">{{ item.title }}</div>
+                <div class="_zhiwei">{{ item.entitle }}</div>
               </div>
-              <div class="_into" v-html="QYYJ_INFO.content"></div>
+              <div class="_right" v-html="item.content"></div>
             </div>
-            <div class="_right">
-              <img :src="`${$basePicUrl}${QYYJ_INFO.logo}`" alt="" srcset="" />
-            </div>
+          </div>
+        </div>
+      </div>
+      <div class="part part3">
+        <div class="_c">
+          <div class="layout_content_title">
+            {{ QYWH_Info.ctitle }}
+          </div>
+          <div class="layout_content_line"></div>
+          <div class="_bottom">
+            <div
+              v-for="(item, index) in QYWH_List"
+              :key="index"
+              v-html="item.content"
+            ></div>
           </div>
         </div>
       </div>
@@ -38,22 +58,24 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      topInfo: {
+      ZZJG_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      pageInfo: {
+      ZZJG_List: [],
+      GLTD_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      QYYJ_INFO: {
+      GLTD_List: [],
+      QYWH_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      pageList: []
+      QYWH_List: [],
     };
   },
   mounted() {
@@ -61,6 +83,9 @@ export default {
   },
   updated() {
     this.$nextTick(() => {
+      if (this.$route.path.split("/about/CorporateVision/")[1] === ":_sign") {
+        return;
+      }
       let t_a = $(
         `#${this.$route.path.split("/about/CorporateVision/")[1]}`
       ).offset();
@@ -70,39 +95,137 @@ export default {
   methods: {
     getData() {
       this.axios
-        .get(`${this.$baseUrl}content/id/2`)
+        .get(`${this.$baseUrl}content/id/26`)
         .then(({ data }) => {
-          this.topInfo = data.data;
+          this.ZZJG_Info = data.data;
         })
         .catch(() => {});
-
       this.axios
-        .get(`${this.$baseUrl}content/id/19`)
+        .get(`${this.$baseUrl}contentext/id/26`)
         .then(({ data }) => {
-          this.pageInfo = data.data;
+          this.ZZJG_List = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/27`)
+        .then(({ data }) => {
+          this.GLTD_Info = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}contentext/id/27`)
+        .then(({ data }) => {
+          this.GLTD_List = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/4`)
+        .then(({ data }) => {
+          this.QYWH_Info = data.data;
         })
         .catch(() => {});
       this.axios
         .get(`${this.$baseUrl}contentext/id/4`)
         .then(({ data }) => {
-          this.QYYJ_INFO = data.data[0];
+          this.QYWH_List = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .corporatevision_box {
-  .layout_content_innerbox {
-    .layout_content_title {
-      &._special {
-        margin-bottom: 0;
+  .layout_content_line {
+    margin-top: px(50);
+    width: px(120);
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: px(83);
+  }
+  .part1,
+  .part3 {
+    ._bottom {
+      position: relative;
+      padding-bottom: px(100);
+      img {
+        display: block;
+        width: px(1773);
       }
-      &::before {
-        content: "VISION" !important;
+      p {
+        display: block;
       }
     }
+  }
+  .part2 {
+    background-color: #f8f8f8;
+    padding-bottom: px(168);
+    ._bottom {
+      & > div {
+        width: px(1280);
+        display: flex;
+        min-height: px(594);
+        margin-bottom: px(127);
+        &:last-child {
+          margin-bottom: 0;
+        }
+        ._left {
+          height: 100%;
+          min-height: px(594);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: px(466);
+          margin-right: px(18);
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0px 0px 36px 0px rgba(246, 246, 246, 1);
+          border-radius: px(11);
+          & > * {
+            position: relative;
+            top: px(-52);
+          }
+          img {
+            display: block;
+            width: px(438);
+            height: px(438);
+            border-radius: 50%;
+          }
+          ._name {
+            height: px(80);
+            font-size: px(56);
+            line-height: px(80);
+          }
+          ._zhiwei {
+            font-size: px(32);
+          }
+        }
+        ._right {
+          flex: 1;
+          min-height: px(594);
+          height: 100%;
+          box-sizing: border-box;
+          padding: px(89) px(74) px(75) px(77);
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0px 0px 36px 0px rgba(246, 246, 246, 1);
+          border-radius: px(11);
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          p {
+            display: block;
+            font-size: px(26);
+            line-height: px(40);
+            margin-bottom: px(20);
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .layout_content_innerbox {
     .layout_content_into {
       &._special {
         margin-bottom: px(24);

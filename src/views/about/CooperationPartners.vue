@@ -3,7 +3,7 @@
     <div class="page_bottom_box layout_content_innerbox">
       <div class="_c">
         <div class="layout_content_title">
-          合作伙伴
+          {{ pageInfo.ctitle }}
         </div>
         <div class="layout_content_line"></div>
         <div class="_bottom">
@@ -23,14 +23,14 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      pageList: []
+      pageList: [],
     };
   },
   mounted() {
@@ -56,8 +56,8 @@ export default {
           this.pageList = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

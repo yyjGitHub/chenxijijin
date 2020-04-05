@@ -10,7 +10,7 @@
       <div class="_c">
         <div class="_top">
           <div class="layout_content_title">
-            晨曦基金
+            {{ pageInfo.ctitle }}
           </div>
           <div class="layout_content_into">
             {{ pageInfo.title }}
@@ -34,14 +34,14 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      pageList: []
+      pageList: [],
     };
   },
   mounted() {
@@ -54,14 +54,14 @@ export default {
         .then(({ data }) => {
           this.topInfo = data.data;
         })
-        .catch(response => {});
+        .catch((response) => {});
 
       this.axios
         .get(`${this.$baseUrl}content/id/3`)
         .then(({ data }) => {
           this.pageInfo = data.data;
         })
-        .catch(response => {});
+        .catch((response) => {});
       this.axios
         .get(`${this.$baseUrl}contentext/id/3`)
         .then(({ data }) => {
@@ -74,8 +74,8 @@ export default {
       //     this.pageList = data.data;
       //   })
       //   .catch(response => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

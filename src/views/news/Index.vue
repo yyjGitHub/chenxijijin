@@ -4,7 +4,7 @@
       <div class="part_1" id="CXSJ">
         <div class="_c">
           <div class="layout_content_title">
-            新闻动态
+            {{ CXSJ_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -33,7 +33,7 @@
       <div class="part_2" id="QYGG">
         <div class="_c">
           <div class="layout_content_title _special">
-            团队建设
+            {{ QYGG_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -51,7 +51,7 @@
                   <span class="_title">
                     {{ item.title }}
                   </span>
-                  <span class="_into" v-html="item.content"> </span>
+                  <span class="_into">{{ item.category }}</span>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
       <div class="part_3" id="CEOTALK">
         <div class="_c">
           <div class="layout_content_title">
-            CEO TALK
+            {{ CEOTALK_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -85,7 +85,7 @@
                   <span class="_title">
                     {{ item.title }}
                   </span>
-                  <span class="_into" v-html="item.content"> </span>
+                  <span class="_into">{{ item.category }}</span>
                 </div>
               </div>
             </div>
@@ -114,13 +114,25 @@ export default {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       CXSJ_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
+      },
+      QYGG_Info: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: "",
+      },
+      CEOTALK_Info: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: "",
       },
       CXSJ_List: [],
       QYGG_List: [],
@@ -131,11 +143,11 @@ export default {
       CXSJ_total: 0,
       QYGG_total: 0,
       CEOTALK_total: 0,
-      sign: ""
+      sign: "",
     };
   },
   mounted() {
-    EventBus.$on("aaa", res => {
+    EventBus.$on("aaa", (res) => {
       this.sign = res;
     });
     this.getData();
@@ -150,17 +162,23 @@ export default {
   },
   methods: {
     getData() {
-      this.axios
-        .get(`${this.$baseUrl}content/id/12`)
-        .then(({ data }) => {
-          this.topInfo = data.data;
-        })
-        .catch(() => {});
       //  晨曦视界
       this.axios
         .get(`${this.$baseUrl}content/id/23`)
         .then(({ data }) => {
           this.CXSJ_Info = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/13`)
+        .then(({ data }) => {
+          this.QYGG_Info = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/14`)
+        .then(({ data }) => {
+          this.CEOTALK_Info = data.data;
         })
         .catch(() => {});
       this.CEOTALK_change(1);
@@ -208,8 +226,8 @@ export default {
           this.QYGG_total = parseInt(data.count);
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 

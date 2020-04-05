@@ -4,7 +4,7 @@
       <div class="part2" id="SHZP">
         <div class="_c">
           <div class="layout_content_title">
-            加入我们
+            {{ SHZP_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -60,7 +60,7 @@
       <div class="part1" id="LXWM">
         <div class="_c">
           <div class="layout_content_title">
-            合作洽谈
+            {{ HZQT_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -156,20 +156,19 @@ export default {
       name: "",
       contact: "",
       content: "",
-      topInfo: {
+      SHZP_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
       },
-      LXWM_Info: {
+      HZQT_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       SHZP_List: [],
       get_more: false,
-      active_index: ""
+      active_index: "",
     };
   },
   mounted() {
@@ -177,17 +176,17 @@ export default {
   },
   methods: {
     getData() {
-      this.axios
-        .get(`${this.$baseUrl}content/id/16`)
-        .then(({ data }) => {
-          this.topInfo = data.data;
-        })
-        .catch(() => {});
       //  合作洽谈
       this.axios
         .get(`${this.$baseUrl}content/id/17`)
         .then(({ data }) => {
-          this.LXWM_Info = data.data;
+          this.SHZP_Info = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/18`)
+        .then(({ data }) => {
+          this.HZQT_Info = data.data;
         })
         .catch(() => {});
       //  加入我们
@@ -203,13 +202,13 @@ export default {
         .post(`${this.$baseUrl}contact`, {
           name: this.name,
           tel: this.contact,
-          content: this.content
+          content: this.content,
         })
         .then(({ data }) => {
           if (data.status === "1") {
             Message({
               message: "添加成功",
-              type: "success"
+              type: "success",
             });
             this.name = "";
             this.contact = "";
@@ -234,8 +233,8 @@ export default {
       } else {
         this.active_index = index;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

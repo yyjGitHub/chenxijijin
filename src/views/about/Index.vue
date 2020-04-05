@@ -45,10 +45,7 @@
           <div class="_box">
             <img :src="`${$basePicUrl}${part_2Info.logo}`" alt="" srcset="" />
             <div>
-              <div
-                class="more_hover big left"
-                @click="toPage('/about/CorporateVision/QYFC')"
-              >
+              <div class="more_hover big left">
                 <div class="YJ"></div>
                 <span class="title">企业文化</span>
               </div>
@@ -59,10 +56,7 @@
                 alt=""
                 srcset=""
               />
-              <div
-                class="more_hover big right"
-                @click="toPage('/about/CorporateVision/QYRY')"
-              >
+              <div class="more_hover big right">
                 <div class="RY"></div>
                 <span class="title">企业荣誉</span>
               </div>
@@ -74,7 +68,7 @@
         <div
           class="_box"
           :style="{
-            'background-image': `url(${$basePicUrl}${part_3Info.logo})`
+            'background-image': `url(${$basePicUrl}${part_3Info.logo})`,
           }"
         >
           <div class="_c">
@@ -149,22 +143,22 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       part_1Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       part_2Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       part_3Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       part_4List: [],
       part_2List: [],
@@ -172,18 +166,18 @@ export default {
       TZLN_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZCL_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       FXKZ_Info: {
         title: "",
         content: "",
-        logo: ""
-      }
+        logo: "",
+      },
     };
   },
   mounted() {
@@ -194,7 +188,7 @@ export default {
       if (query) {
         this.$router.push({
           name: url,
-          params: { activeDIV: query }
+          params: { activeDIV: query },
         });
       } else {
         this.$router.push(url);
@@ -264,8 +258,8 @@ export default {
           this.FXKZ_Info = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 

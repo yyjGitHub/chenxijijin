@@ -4,7 +4,7 @@
       <div class="part_1" id="SYZG">
         <div class="_c">
           <div class="layout_content_title">
-            术有专攻
+            {{ SYZG_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -33,7 +33,7 @@
       <div class="part_2" id="TZJD">
         <div class="_c">
           <div class="layout_content_title _special">
-            投资经典
+            {{ TZJD_Info.ctitle }}
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
@@ -51,7 +51,7 @@
                   <div class="_title">
                     {{ item.title }}
                   </div>
-                  <span class="_into" v-html="item.content"> </span>
+                  <span class="_into">{{ item.category }}</span>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
                   <div class="_title">
                     {{ item.title }}
                   </div>
-                  <span class="_into" v-html="item.content"> </span>
+                  <span class="_into">{{ item.category }}</span>
                 </div>
               </div>
             </div>
@@ -116,13 +116,25 @@ export default {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       SYZG_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
+      },
+      TZJD_Info: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: "",
+      },
+      SDDC_Info: {
+        title: "",
+        content: "",
+        logo: "",
+        contentext: "",
       },
       SYZG_List: [],
       TZJD_List: [],
@@ -133,11 +145,11 @@ export default {
       SYZG_total: 0,
       TZJD_total: 0,
       SDDC_total: 0,
-      sign: ""
+      sign: "",
     };
   },
   mounted() {
-    EventBus.$on("aaa", res => {
+    EventBus.$on("aaa", (res) => {
       this.sign = res;
     });
     this.getData();
@@ -154,17 +166,11 @@ export default {
     $route: {
       handler() {},
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     getData() {
-      this.axios
-        .get(`${this.$baseUrl}content/id/8`)
-        .then(({ data }) => {
-          this.topInfo = data.data;
-        })
-        .catch(() => {});
       //  晨曦视界
       this.axios
         .get(`${this.$baseUrl}content/id/9`)
@@ -172,6 +178,19 @@ export default {
           this.SYZG_Info = data.data;
         })
         .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/10`)
+        .then(({ data }) => {
+          this.TZJD_Info = data.data;
+        })
+        .catch(() => {});
+      this.axios
+        .get(`${this.$baseUrl}content/id/11`)
+        .then(({ data }) => {
+          this.SDDC_Info = data.data;
+        })
+        .catch(() => {});
+
       this.SDDC_change(1);
       this.TZJD_change(1);
       this.SYZG_change(1);
@@ -215,8 +234,8 @@ export default {
           this.TZJD_total = parseInt(data.count);
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 
