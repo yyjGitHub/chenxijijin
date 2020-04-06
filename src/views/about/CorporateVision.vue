@@ -8,11 +8,9 @@
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
-            <div
-              v-for="(item, index) in ZZJG_List"
-              :key="index"
-              v-html="item.content"
-            ></div>
+            <div v-for="(item, index) in ZZJG_List" :key="index">
+              <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+            </div>
           </div>
         </div>
       </div>
@@ -41,11 +39,9 @@
           </div>
           <div class="layout_content_line"></div>
           <div class="_bottom">
-            <div
-              v-for="(item, index) in QYWH_List"
-              :key="index"
-              v-html="item.content"
-            ></div>
+            <div v-for="(item, index) in QYWH_List" :key="index">
+              <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
+            </div>
           </div>
         </div>
       </div>
