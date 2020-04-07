@@ -1,6 +1,6 @@
 <template>
   <div class="corporatevision_box layout_content_box">
-    <div class="page_bottom_box layout_content_innerbox" id="QYFC">
+    <div class="page_bottom_box layout_content_innerbox">
       <div class="part part1">
         <div class="_c">
           <div class="layout_content_title">
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="part part3">
+      <div class="part part3" id="QYWH">
         <div class="_c">
           <div class="layout_content_title">
             {{ QYWH_Info.ctitle }}

@@ -17,7 +17,7 @@
           </div>
           <div class="layout_content_intro" v-html="pageInfo.content"></div>
         </div>
-        <div class="_bottom">
+        <div class="_bottom" id="QYRY">
           <div v-for="(item, index) in pageList" :key="index">
             <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
           </div>

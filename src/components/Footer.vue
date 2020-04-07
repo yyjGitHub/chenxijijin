@@ -109,6 +109,7 @@ footer {
               font-size: px(20);
               line-height: px(27);
               margin-bottom: px(14);
+              font-weight: bold;
             }
             &:last-child {
               margin-bottom: 0;

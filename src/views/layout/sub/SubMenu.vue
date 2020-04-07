@@ -9,7 +9,7 @@
         v-show="!item.meta.isntShow"
         :class="[
           item.name === 'index' ? 'line' : '',
-          subactive_index === index ? 'active' : ''
+          subactive_index === index ? 'active' : '',
         ]"
       >
         {{ item.meta.label }}
@@ -27,13 +27,13 @@ export default {
     return {
       menu_path: "",
       submenu_list: [],
-      subactive_index: 0
+      subactive_index: 0,
     };
   },
   computed: {
     ...mapGetters({
-      menulist: "menulist"
-    })
+      menulist: "menulist",
+    }),
   },
   mounted() {},
   watch: {
@@ -60,8 +60,8 @@ export default {
         });
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     toPage(path, item, index) {
@@ -77,15 +77,15 @@ export default {
         $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
       }
       this.subactive_index = index;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .submenu_box {
   position: fixed;
-  top: px(160);
+  top: px(168);
   left: 0;
   width: 100%;
   height: px(57);

@@ -33,7 +33,7 @@ export default {
       active_index: 0,
       trans_left: "-8px",
       trans_width: 0,
-      font_size: 0
+      font_size: 0,
     };
   },
   mounted() {
@@ -47,8 +47,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      menulist: "menulist"
-    })
+      menulist: "menulist",
+    }),
     // transLeft(){
     //   return this.transLeft
     // }
@@ -56,12 +56,12 @@ export default {
   props: {
     is_1st_slide: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isHome: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     toPage(item) {
@@ -78,7 +78,7 @@ export default {
           ? 1024
           : rootHtml.clientWidth;
       this.font_size = (deviceWidth * 100) / 1920;
-    }
+    },
   },
   watch: {
     $route: {
@@ -109,9 +109,9 @@ export default {
         }
       },
       deep: true,
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -123,8 +123,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: px(60);
-  padding-bottom: px(60);
+  padding-top: px(74);
+  padding-bottom: px(54);
   background-color: #fff;
   position: fixed;
   z-index: 999;

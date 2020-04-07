@@ -126,10 +126,7 @@
                 </div>
               </div>
               <div class="bottom_box">
-                <div
-                  class="_other"
-                  @click="toPage('/about/CorporateVision/QYRY')"
-                >
+                <div class="_other" @click="toQYRY">
                   <div>
                     <div class="_title">
                       企业荣誉
@@ -144,7 +141,7 @@
                 </div>
                 <div
                   class="_other"
-                  @click="toPage('/about/CorporateVision/QYFC')"
+                  @click="toPage('/about/CorporateVision/QYWH')"
                 >
                   <div>
                     <div class="_title">
@@ -569,6 +566,10 @@ export default {
         })
         .catch(() => {});
     },
+    toQYRY() {
+      sessionStorage.setItem("GG", "QYRY");
+      this.$router.push("/about/CompanyProfile");
+    },
     tobusiness(index) {
       if (index === 0) {
         this.$router.push({
@@ -720,7 +721,7 @@ export default {
   // position: fixed;
   position: relative;
   // overflow: hidden;
-  margin-top: px(-160);
+  margin-top: px(-168);
   top: 0;
   left: 0;
   z-index: 98;
@@ -948,7 +949,7 @@ export default {
               background-size: cover;
               @media screen and (max-width: 1366px) {
                 & > div {
-                  width: 120% !important;
+                  width: 130% !important;
                 }
               }
               & > div {

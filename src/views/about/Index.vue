@@ -45,7 +45,10 @@
           <div class="_box">
             <img :src="`${$basePicUrl}${part_2Info.logo}`" alt="" srcset="" />
             <div>
-              <div class="more_hover big left">
+              <div
+                class="more_hover big left"
+                @click="toPage('/about/CorporateVision/QYWH')"
+              >
                 <div class="YJ"></div>
                 <span class="title">企业文化</span>
               </div>
@@ -56,7 +59,7 @@
                 alt=""
                 srcset=""
               />
-              <div class="more_hover big right">
+              <div class="more_hover big right" @click="toQYRY">
                 <div class="RY"></div>
                 <span class="title">企业荣誉</span>
               </div>
@@ -194,6 +197,10 @@ export default {
         this.$router.push(url);
       }
     },
+    toQYRY() {
+      sessionStorage.setItem("GG", "QYRY");
+      this.$router.push("/about/CompanyProfile");
+    },
     getData() {
       this.axios
         .get(`${this.$baseUrl}content/id/2`)
@@ -263,7 +270,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .about_index_box {
   .page_bottom_box {
     .part_1 {
@@ -506,10 +513,24 @@ export default {
                   }
                 }
                 .bottom {
+                  height: px(24);
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
                   font-size: px(18);
                   color: #7f7f7f;
                   line-height: px(24);
                   margin-top: px(13);
+                  p {
+                    height: px(24);
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: px(18);
+                    color: #7f7f7f;
+                    line-height: px(24);
+                  }
                 }
               }
             }

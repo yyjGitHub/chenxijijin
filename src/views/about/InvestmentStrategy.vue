@@ -48,12 +48,10 @@
         <div class="part part3" id="FXKZ">
           <div class="_c">
             <div class="_top">
-              <div class="_title">
+              <div class="layout_content_title">
                 {{ FXKZ_Info.ctitle }}
               </div>
-              <div class="_subtitle">
-                {{ FXKZ_Info.title }}
-              </div>
+              <div class="layout_content_line"></div>
             </div>
             <div class="bottom_text">
               <div class="item" v-for="(item, index) in FXKZ_List" :key="index">
@@ -75,32 +73,32 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZLN_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZLN_List: [],
       TZCL_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZCL_List: [],
       FXKZ_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       FXKZ_List: [],
-      sign: ""
+      sign: "",
     };
   },
   watch: {
@@ -111,8 +109,8 @@ export default {
         }
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   mounted() {
     this.getData();
@@ -129,7 +127,7 @@ export default {
       let t_a = $(`#${this.sign}`).offset();
       $("html,body").animate(
         {
-          scrollTop: t_a.top - ((deviceWidth * 220) / 1920) * 1.2 + "px"
+          scrollTop: t_a.top - ((deviceWidth * 220) / 1920) * 1.2 + "px",
         },
         500
       );
@@ -192,8 +190,8 @@ export default {
           this.FXKZ_List = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -203,9 +201,14 @@ export default {
       padding-top: 0 !important;
     }
     .layout_content_title {
-      &::before {
-        content: "STRATEGY";
-      }
+      font-weight: bold;
+    }
+    .layout_content_line {
+      margin-top: px(50);
+      width: px(120);
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.4);
+      margin-bottom: px(83);
     }
     ._bottom {
       .part {
@@ -226,6 +229,7 @@ export default {
               line-height: px(80);
               margin-bottom: px(26);
               color: #686568;
+              font-weight: bold;
             }
             ._subtitle {
               height: px(30);
