@@ -114,25 +114,25 @@ export default {
         title: "",
         content: "",
         logo: "",
-        contentext: "",
+        contentext: ""
       },
       CXSJ_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: "",
+        contentext: ""
       },
       QYGG_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: "",
+        contentext: ""
       },
       CEOTALK_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: "",
+        contentext: ""
       },
       CXSJ_List: [],
       QYGG_List: [],
@@ -144,19 +144,31 @@ export default {
       QYGG_total: 0,
       CEOTALK_total: 0,
       sign: "",
+      fzz: ""
     };
   },
   mounted() {
-    EventBus.$on("aaa", (res) => {
+    EventBus.$on("aaa", res => {
       this.sign = res;
     });
     this.getData();
   },
   updated() {
+    let rootHtml = document.documentElement;
+    let deviceWidth =
+      rootHtml.clientWidth > 1920
+        ? 1920
+        : rootHtml.clientWidth < 1024
+        ? 1024
+        : rootHtml.clientWidth;
+    this.fzz = (deviceWidth * 100) / 1920 / 100;
     if (this.sign) {
       this.$nextTick(() => {
         let t_a = $(`#${this.sign}`).offset();
-        $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+        $("html,body").animate(
+          { scrollTop: t_a.top - 225 * this.fzz + "px" },
+          500
+        );
       });
     }
   },
@@ -226,8 +238,8 @@ export default {
           this.QYGG_total = parseInt(data.count);
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -239,8 +251,7 @@ export default {
         margin-top: px(50);
         width: px(120);
         height: 1px;
-        background-color: rgba(0, 0, 0, 0.4);
-        margin-bottom: px(83);
+        background-color: rgba(0, 0, 0, 0);
       }
       padding-bottom: px(120);
       ._bottom {
@@ -304,11 +315,10 @@ export default {
       background-color: #f8f8f8;
       padding-bottom: px(130);
       .layout_content_line {
+        margin-top: px(50);
         width: px(120);
         height: 1px;
-        background: rgba(0, 0, 0, 0.4);
-        margin-top: px(50);
-        margin-bottom: px(80);
+        background-color: rgba(0, 0, 0, 0);
       }
       ._bottom {
         width: 100%;
@@ -379,11 +389,10 @@ export default {
     .part_3 {
       padding-bottom: px(150);
       .layout_content_line {
+        margin-top: px(50);
         width: px(120);
         height: 1px;
-        background: rgba(0, 0, 0, 0.4);
-        margin-top: px(50);
-        margin-bottom: px(80);
+        background-color: rgba(0, 0, 0, 0);
       }
       ._bottom {
         width: 100%;

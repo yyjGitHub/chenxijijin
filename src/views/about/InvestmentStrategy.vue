@@ -73,32 +73,32 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       TZLN_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       TZLN_List: [],
       TZCL_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       TZCL_List: [],
       FXKZ_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       FXKZ_List: [],
-      sign: "",
+      sign: ""
     };
   },
   watch: {
@@ -109,29 +109,11 @@ export default {
         }
       },
       deep: true,
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   mounted() {
     this.getData();
-  },
-  updated() {
-    this.$nextTick(() => {
-      let rootHtml = document.documentElement;
-      let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
-          : rootHtml.clientWidth;
-      let t_a = $(`#${this.sign}`).offset();
-      $("html,body").animate(
-        {
-          scrollTop: t_a.top - ((deviceWidth * 220) / 1920) * 1.2 + "px",
-        },
-        500
-      );
-    });
   },
   methods: {
     getData() {
@@ -190,8 +172,8 @@ export default {
           this.FXKZ_List = data.data;
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -207,11 +189,13 @@ export default {
       margin-top: px(50);
       width: px(120);
       height: 1px;
-      background-color: rgba(0, 0, 0, 0.4);
-      margin-bottom: px(83);
+      background-color: rgba(0, 0, 0, 0);
     }
     ._bottom {
       .part {
+        &:first-child {
+          padding-top: px(130);
+        }
         padding-top: px(173);
         padding-bottom: px(180);
         ._c {
@@ -228,7 +212,7 @@ export default {
               font-size: px(80);
               line-height: px(80);
               margin-bottom: px(26);
-              color: #686568;
+              color: #599ae5;
               font-weight: bold;
             }
             ._subtitle {
@@ -370,6 +354,21 @@ export default {
         }
         &.part3 {
           .bottom_text {
+            ._into {
+              display: flex;
+              align-items: center;
+              & > div {
+                &:first-child {
+                  width: px(1000);
+                  img {
+                    display: block;
+                    width: 100%;
+                  }
+                  margin-right: px(20);
+                }
+              }
+            }
+
             p {
               font-size: px(30);
               line-height: px(46);

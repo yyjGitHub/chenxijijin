@@ -71,7 +71,7 @@
         <div
           class="_box"
           :style="{
-            'background-image': `url(${$basePicUrl}${part_3Info.logo})`,
+            'background-image': `url(${$basePicUrl}${part_3Info.logo})`
           }"
         >
           <div class="_c">
@@ -146,22 +146,22 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       part_1Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       part_2Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       part_3Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       part_4List: [],
       part_2List: [],
@@ -169,18 +169,18 @@ export default {
       TZLN_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       TZCL_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       FXKZ_Info: {
         title: "",
         content: "",
-        logo: "",
-      },
+        logo: ""
+      }
     };
   },
   mounted() {
@@ -191,7 +191,7 @@ export default {
       if (query) {
         this.$router.push({
           name: url,
-          params: { activeDIV: query },
+          params: { activeDIV: query }
         });
       } else {
         this.$router.push(url);
@@ -265,8 +265,8 @@ export default {
           this.FXKZ_Info = data.data;
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -280,6 +280,7 @@ export default {
         display: flex;
         justify-content: space-between;
         padding-bottom: px(80);
+        align-items: center;
         ._left {
           .__part_title {
             margin-bottom: px(40);

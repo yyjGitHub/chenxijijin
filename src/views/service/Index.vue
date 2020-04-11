@@ -123,7 +123,7 @@
                   </div>
                   <div>
                     <img
-                      src="~@/assets/image/telphone_icon.png"
+                      src="~@/assets/image/chuanzhen_icon.png"
                       alt=""
                       srcset=""
                     />
@@ -159,16 +159,16 @@ export default {
       SHZP_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       HZQT_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       SHZP_List: [],
       get_more: false,
-      active_index: "",
+      active_index: ""
     };
   },
   mounted() {
@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     getData() {
-      //  合作洽谈
+      //  联系我们
       this.axios
         .get(`${this.$baseUrl}content/id/17`)
         .then(({ data }) => {
@@ -202,13 +202,13 @@ export default {
         .post(`${this.$baseUrl}contact`, {
           name: this.name,
           tel: this.contact,
-          content: this.content,
+          content: this.content
         })
         .then(({ data }) => {
           if (data.status === "1") {
             Message({
               message: "添加成功",
-              type: "success",
+              type: "success"
             });
             this.name = "";
             this.contact = "";
@@ -233,8 +233,8 @@ export default {
       } else {
         this.active_index = index;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -243,11 +243,10 @@ export default {
   .layout_content_innerbox {
     .part1 {
       .layout_content_line {
-        width: px(120);
-        height: 2px;
-        background: rgba(0, 0, 0, 0.4);
         margin-top: px(50);
-        margin-bottom: px(80);
+        width: px(120);
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0);
       }
       ._bottom {
         width: 100%;
@@ -306,11 +305,10 @@ export default {
     }
     .part2 {
       .layout_content_line {
-        width: px(120);
-        height: 2px;
-        background: rgba(0, 0, 0, 0.4);
         margin-top: px(50);
-        margin-bottom: px(80);
+        width: px(120);
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0);
       }
       ._bottom {
         ._box {

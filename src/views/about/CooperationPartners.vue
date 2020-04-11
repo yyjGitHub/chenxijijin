@@ -23,14 +23,14 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
-      pageList: [],
+      pageList: []
     };
   },
   mounted() {
@@ -56,8 +56,8 @@ export default {
           this.pageList = data.data;
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -66,8 +66,7 @@ export default {
     margin-top: px(50);
     width: px(120);
     height: 1px;
-    background-color: rgba(0, 0, 0, 0.4);
-    margin-bottom: px(83);
+    background-color: rgba(0, 0, 0, 0);
   }
   .layout_content_innerbox {
     ._bottom {

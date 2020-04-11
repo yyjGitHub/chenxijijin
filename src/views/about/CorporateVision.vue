@@ -57,36 +57,73 @@ export default {
       ZZJG_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       ZZJG_List: [],
       GLTD_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       GLTD_List: [],
       QYWH_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       QYWH_List: [],
+      fzz: "",
+      interval: "",
+      num: 0
     };
   },
   mounted() {
     this.getData();
   },
   updated() {
-    this.$nextTick(() => {
-      if (this.$route.path.split("/about/CorporateVision/")[1] === ":_sign") {
+    let num = 0;
+    let interval = setInterval(() => {
+      num += 1000;
+      if (num < 2000) {
         return;
       }
-      let t_a = $(
-        `#${this.$route.path.split("/about/CorporateVision/")[1]}`
-      ).offset();
-      $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
-    });
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      let fzz = (deviceWidth * 100) / 1920 / 100;
+      this.$nextTick(() => {
+        if (this.$route.name !== "CorporateVision") {
+          clearInterval(interval);
+          num = 0;
+          return;
+        }
+        if (this.$route.path.split("/about/CorporateVision/")[1] === ":_sign") {
+          clearInterval(interval);
+          num = 0;
+          return;
+        }
+        let t_a = $(
+          `#${this.$route.path.split("/about/CorporateVision/")[1]}`
+        ).offset();
+        clearInterval(interval);
+        num = 0;
+        if (t_a.hasOwnProperty("top")) {
+          $("html,body").animate(
+            { scrollTop: t_a.top - 225 * fzz + "px" },
+            500
+          );
+        }
+      });
+    }, 1000);
+  },
+  destroyed() {
+    console.log(1);
+    clearInterval(this.interval);
+    this.num = 0;
   },
   methods: {
     getData() {
@@ -126,8 +163,8 @@ export default {
           this.QYWH_List = data.data;
         })
         .catch(() => {});
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -136,8 +173,7 @@ export default {
     margin-top: px(50);
     width: px(120);
     height: 1px;
-    background-color: rgba(0, 0, 0, 0.4);
-    margin-bottom: px(83);
+    background-color: rgba(0, 0, 0, 0);
   }
   .part1,
   .part3 {

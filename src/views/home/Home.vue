@@ -13,7 +13,7 @@
                 transform: `translateY(-${(parseInt(active_slide_indexnum) -
                   1) *
                   0.36 *
-                  fz}px)`,
+                  fz}px)`
               }"
             >
               <div>{{ active_slide_indexnum }}</div>
@@ -63,7 +63,7 @@
               active_slide_tonext && active_slide_indexnum !== '01'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '01' ? 'fadeInUp' : '',
+              active_slide_indexnum === '01' ? 'fadeInUp' : ''
             ]"
           >
             <div>
@@ -87,7 +87,7 @@
               active_slide_tonext && active_slide_indexnum !== '02'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '02' ? 'fadeInUp' : '',
+              active_slide_indexnum === '02' ? 'fadeInUp' : ''
             ]"
           >
             <div class="left_box">
@@ -167,7 +167,7 @@
               active_slide_tonext && active_slide_indexnum !== '03'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '03' ? 'fadeInUp' : '',
+              active_slide_indexnum === '03' ? 'fadeInUp' : ''
             ]"
           >
             <div class="_top">
@@ -275,7 +275,7 @@
               active_slide_tonext && active_slide_indexnum !== '04'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '04' ? 'fadeInUp' : '',
+              active_slide_indexnum === '04' ? 'fadeInUp' : ''
             ]"
           >
             <div class="_top">
@@ -320,7 +320,7 @@
               active_slide_tonext && active_slide_indexnum !== '05'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '05' ? 'fadeInUp' : '',
+              active_slide_indexnum === '05' ? 'fadeInUp' : ''
             ]"
           >
             <div class="_top">
@@ -427,8 +427,9 @@ export default {
         slidesPerView: 1,
         mousewheel: {
           releaseOnEdges: true,
-          forceToAxis: false,
+          forceToAxis: false
         },
+        init: false,
         // loop: true,
         initialSlide: 0,
         simulateTouch: false,
@@ -442,7 +443,7 @@ export default {
             ? 1366
             : document.documentElement.clientWidth * 100) /
             1920),
-        height: window.innerHeight,
+        height: window.innerHeight
       },
       isTrans: false,
       active_slide_indexnum: 0,
@@ -451,14 +452,14 @@ export default {
       active_slide_index: false,
       subSwiperOption: {
         direction: "vertical",
-        slidesPerView: 3,
+        slidesPerView: 3
       },
       subActiveIndex: 0,
       fz: 0,
       QYJJ_Info: {
         title: "",
         content: "",
-        logo: "",
+        logo: ""
       },
       ZYGLR_List: [],
       YWLY_List: [],
@@ -467,15 +468,15 @@ export default {
           title: "",
           content: "",
           logo: "",
-          time: "",
+          time: ""
         },
         {
           title: "",
           content: "",
           logo: "",
-          time: "",
-        },
-      ],
+          time: ""
+        }
+      ]
     };
   },
   computed: {
@@ -484,7 +485,7 @@ export default {
     },
     subSwiper() {
       return this.$refs.subSwiper.swiper;
-    },
+    }
   },
   watch: {
     active_slide_index: {
@@ -492,34 +493,41 @@ export default {
         EventBus.$emit("sendSlideIndex", newVal);
       },
       deep: true,
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   mounted() {
-    let _this = this;
     this.resetFontsize();
     window.onresize = () => {
       return (() => {
-        _this.resetFontsize();
+        window.location.reload();
       })();
     };
+    this.swiper.init();
     this.$nextTick(() => {
       this.getData();
       this.setActiveSlideIndex();
+      let _this = this;
+      $(document).on("mousewheel DOMMouseScroll", function(e) {
+        if ($("#home_footer").offset().top < window.innerHeight) {
+          _this.swiper.mousewheel.disable();
+          _this.swiper.update();
+          e.stopPropagation();
+          if (_this.swiper.activeIndex === 3) {
+            _this.swiper.mousewheel.enable();
+            _this.swiper.update();
+            e.stopPropagation();
+          }
+        } else {
+          _this.swiper.mousewheel.enable();
+          _this.swiper.update();
+          e.stopPropagation();
+        }
+      });
     });
   },
-  updated() {
-    let _this = this;
-    $(document).on("mousewheel DOMMouseScroll", function(e) {
-      if ($("#home_footer").offset().top < 969) {
-        _this.swiper.mousewheel.disable();
-        _this.swiper.update();
-        e.stopPropagation();
-      } else {
-        _this.swiper.mousewheel.enable();
-        _this.swiper.update();
-      }
-    });
+  destroyed() {
+    $(document).off("mousewheel DOMMouseScroll");
   },
   methods: {
     getData() {
@@ -573,7 +581,7 @@ export default {
     tobusiness(index) {
       if (index === 0) {
         this.$router.push({
-          path: "/business",
+          path: "/business"
           // params: {
           //   div: "SYZG"
           // }
@@ -583,7 +591,7 @@ export default {
       }
       if (index === 1) {
         this.$router.push({
-          path: "/business",
+          path: "/business"
           // params: {
           //   div: "TZJD"
           // }
@@ -593,7 +601,7 @@ export default {
       }
       if (index === 2) {
         this.$router.push({
-          path: "/business",
+          path: "/business"
           // params: {
           //   div: "SDDC"
           // }
@@ -653,9 +661,9 @@ export default {
         return;
       }
       this.$router.push(`/news/${id}`);
-    },
+    }
   },
-  components: { Footer },
+  components: { Footer }
 };
 </script>
 
@@ -949,7 +957,7 @@ export default {
               background-size: cover;
               @media screen and (max-width: 1366px) {
                 & > div {
-                  width: 130% !important;
+                  width: 150% !important;
                 }
               }
               & > div {

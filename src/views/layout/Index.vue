@@ -22,7 +22,8 @@ import Footer from "@/components/Footer";
 var mixin = {
   data() {
     return {
-      sign_: ""
+      sign_: "",
+      fzz: ""
     };
   },
   watch: {
@@ -38,6 +39,15 @@ var mixin = {
   },
   updated() {
     this.$nextTick(() => {
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      this.fzz = (deviceWidth * 100) / 1920 / 100;
+
       setTimeout(() => {
         if (!this.sign_) {
           return;
@@ -49,7 +59,10 @@ var mixin = {
         if (!t_a) {
           return;
         }
-        $("html,body").animate({ scrollTop: t_a.top - 220 + "px" }, 500);
+        $("html,body").animate(
+          { scrollTop: t_a.top - 225 * this.fzz + "px" },
+          500
+        );
       }, 500);
     });
   }
