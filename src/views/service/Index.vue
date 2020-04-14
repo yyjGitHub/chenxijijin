@@ -12,7 +12,7 @@
               <div class="_top">
                 <span>职位名称</span>
                 <span>工作地点</span>
-                <span>查看详情</span>
+                <span>职位部门</span>
                 <span>发布时间</span>
                 <span>申请职位</span>
               </div>
@@ -33,12 +33,19 @@
                   <div class="_right">
                     <div class="_top">
                       <span>{{ item.attr }}</span>
-                      <span @click="setActive(index)">{{
-                        active_index === index ? "收起详情" : "查看详情"
-                      }}</span>
+                      <span>{{ item.entitle }}</span>
                       <span>{{ item.time.split(" ")[0] }}</span>
-                      <span>
-                        <div class="apply">APPLY</div>
+                      <span @click="setActive(index)">
+                        <div class="apply">
+                          <div>
+                            {{
+                              active_index === index ? "收起详情" : "查看详情"
+                            }}
+                          </div>
+                          <img
+                            src="~@/assets/image/arrow_right_active_white.png"
+                          />
+                        </div>
                       </span>
                     </div>
                     <div
@@ -150,8 +157,8 @@ export default {
       // zoom: "12",
       // center: [121.545101, 31.236498]
       amapManager,
-      zoom: 16,
-      center: [121.545101, 31.236498],
+      zoom: 17,
+      center: [121.554626, 31.242531],
       mapStyle: "fresh",
       name: "",
       contact: "",
@@ -406,10 +413,24 @@ export default {
                       height: px(45);
                       line-height: px(45);
                       cursor: pointer;
-                      padding: 0 px(31);
+                      padding: 0 px(15);
+
                       color: #fff;
                       background-color: #599ae5;
-                      font-size: px(24);
+                      & > div {
+                        font-size: px(16);
+                        height: px(16);
+                        line-height: px(16);
+                      }
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      img {
+                        display: block;
+                        width: px(7);
+                        height: px(14);
+                        margin-left: px(10);
+                      }
                     }
                   }
                 }

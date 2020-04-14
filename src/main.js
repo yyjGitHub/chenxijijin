@@ -53,9 +53,7 @@ new Vue({
     let _this = this;
     this.resetFontsize();
     window.onresize = () => {
-      console.log(1);
       return (() => {
-        console.log(1);
         _this.resetFontsize();
       })();
     };

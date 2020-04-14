@@ -98,7 +98,9 @@ export default {
         logo: ""
       },
       FXKZ_List: [],
-      sign: ""
+      sign: "",
+      interval: "",
+      num: 0
     };
   },
   watch: {
@@ -106,11 +108,50 @@ export default {
       handler(newVal) {
         if (newVal.params.hasOwnProperty("activeDIV")) {
           this.sign = newVal.params.activeDIV;
+        } else {
+          this.sign = "";
         }
       },
       deep: true,
       immediate: true
     }
+  },
+  updated() {
+    let num = 0;
+    let interval = setInterval(() => {
+      num += 1000;
+      if (num < 2000) {
+        return;
+      }
+      let rootHtml = document.documentElement;
+      let deviceWidth =
+        rootHtml.clientWidth > 1920
+          ? 1920
+          : rootHtml.clientWidth < 1024
+          ? 1024
+          : rootHtml.clientWidth;
+      let fzz = (deviceWidth * 100) / 1920 / 100;
+      this.$nextTick(() => {
+        if (!this.sign) {
+          clearInterval(interval);
+          num = 0;
+          return;
+        }
+        let t_a = $(`#${this.sign}`).offset();
+        clearInterval(interval);
+        num = 0;
+        if (t_a.hasOwnProperty("top")) {
+          $("html,body").animate(
+            { scrollTop: t_a.top - 225 * fzz + "px" },
+            500
+          );
+        }
+      });
+    }, 1000);
+  },
+  destroyed() {
+    clearInterval(this.interval);
+    this.num = 0;
   },
   mounted() {
     this.getData();

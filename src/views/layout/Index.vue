@@ -31,6 +31,8 @@ var mixin = {
       handler() {
         if (sessionStorage.getItem("GG")) {
           this.sign_ = sessionStorage.getItem("GG");
+        } else {
+          this.sign_ = "";
         }
       },
       deep: true,
@@ -47,7 +49,6 @@ var mixin = {
           ? 1024
           : rootHtml.clientWidth;
       this.fzz = (deviceWidth * 100) / 1920 / 100;
-
       setTimeout(() => {
         if (!this.sign_) {
           return;

@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="part part2">
+      <div class="part part2" id="GLTD">
         <div class="_c">
           <div class="layout_content_title">
             {{ GLTD_Info.ctitle }}
@@ -121,7 +121,6 @@ export default {
     }, 1000);
   },
   destroyed() {
-    console.log(1);
     clearInterval(this.interval);
     this.num = 0;
   },

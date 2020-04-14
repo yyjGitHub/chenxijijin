@@ -12,10 +12,8 @@ export default {
   mounted() {
     // let _this = this;
     this.resetFontsize();
-    console.log(window.onresize);
     window.addEventListener("resize", () => this.resetFontsize(), false);
     // window.onresize = () => {
-    //   console.log(1);
     // };
   },
   methods: {

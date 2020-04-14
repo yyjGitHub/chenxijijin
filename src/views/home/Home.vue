@@ -408,7 +408,7 @@
               </div>
             </div>
           </div>
-          <Footer id="home_footer" :isHome="true"></Footer>
+          <!-- <Footer id="home_footer" :isHome="true"></Footer> -->
         </swiper-slide>
       </swiper>
     </div>
@@ -508,22 +508,22 @@ export default {
       this.getData();
       this.setActiveSlideIndex();
       let _this = this;
-      $(document).on("mousewheel DOMMouseScroll", function(e) {
-        if ($("#home_footer").offset().top < window.innerHeight) {
-          _this.swiper.mousewheel.disable();
-          _this.swiper.update();
-          e.stopPropagation();
-          if (_this.swiper.activeIndex === 3) {
-            _this.swiper.mousewheel.enable();
-            _this.swiper.update();
-            e.stopPropagation();
-          }
-        } else {
-          _this.swiper.mousewheel.enable();
-          _this.swiper.update();
-          e.stopPropagation();
-        }
-      });
+      // $(document).on("mousewheel DOMMouseScroll", function(e) {
+      //   if ($("#home_footer").offset().top < window.innerHeight) {
+      //     _this.swiper.mousewheel.disable();
+      //     _this.swiper.update();
+      //     e.stopPropagation();
+      //     if (_this.swiper.activeIndex === 3) {
+      //       _this.swiper.mousewheel.enable();
+      //       _this.swiper.update();
+      //       e.stopPropagation();
+      //     }
+      //   } else {
+      //     _this.swiper.mousewheel.enable();
+      //     _this.swiper.update();
+      //     e.stopPropagation();
+      //   }
+      // });
     });
   },
   destroyed() {

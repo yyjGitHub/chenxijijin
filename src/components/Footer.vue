@@ -36,17 +36,17 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      menulist: this.$store.getters.menulist.filter((item) => {
+      menulist: this.$store.getters.menulist.filter(item => {
         return item.name !== "home";
-      }),
+      })
     };
   },
   created() {},
   props: {
     isHome: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   methods: {
     toPage(path, item) {
@@ -55,8 +55,16 @@ export default {
           this.$router.push(path + "/" + item.path);
           return;
         }
+        let rootHtml = document.documentElement;
+        let deviceWidth =
+          rootHtml.clientWidth > 1920
+            ? 1920
+            : rootHtml.clientWidth < 1024
+            ? 1024
+            : rootHtml.clientWidth;
+        let fzz = (deviceWidth * 100) / 1920 / 100;
         let t_a = $(`#${item.path}`).offset();
-        $("html,body").animate({ scrollTop: t_a.top + "px" }, 500);
+        $("html,body").animate({ scrollTop: t_a.top - 225 * fzz + "px" }, 500);
         return;
       }
       if (item.hasOwnProperty("component") && item.hasOwnProperty("children")) {
@@ -70,8 +78,8 @@ export default {
         sessionStorage.setItem("GG", item.name);
         this.$router.push(path);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

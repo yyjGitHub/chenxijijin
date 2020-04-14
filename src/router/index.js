@@ -3,15 +3,15 @@ import VueRouter from "vue-router";
 import store from "@/store/index";
 import Layout from "@/views/layout/Index";
 
-const _import = (file) => require(`@/views/${file}.vue`).default;
+const _import = file => require(`@/views/${file}.vue`).default;
 
 Vue.use(VueRouter);
 
 const baseroutes = [
   {
     path: "/",
-    redirect: "/home",
-  },
+    redirect: "/home"
+  }
 ];
 
 const mainroutes = [
@@ -27,14 +27,14 @@ const mainroutes = [
         component: _import("home/Home"),
         meta: {
           label: "首页",
-          title: "首页-旭辉晨曦",
-        },
-      },
+          title: "首页-旭辉晨曦"
+        }
+      }
     ],
     meta: {
       label: "首页",
-      title: "首页-旭辉晨曦",
-    },
+      title: "首页-旭辉晨曦"
+    }
   },
   {
     path: "/about",
@@ -47,8 +47,8 @@ const mainroutes = [
         component: _import("about/Index"),
         meta: {
           label: "关于晨曦",
-          title: "关于晨曦-旭辉晨曦",
-        },
+          title: "关于晨曦-旭辉晨曦"
+        }
       },
       {
         path: "CompanyProfile",
@@ -56,8 +56,8 @@ const mainroutes = [
         component: _import("about/CompanyProfile"),
         meta: {
           label: "企业简介",
-          title: "企业简介-旭辉晨曦",
-        },
+          title: "企业简介-旭辉晨曦"
+        }
       },
       {
         path: "CorporateVision/:_sign",
@@ -65,8 +65,8 @@ const mainroutes = [
         component: _import("about/CorporateVision"),
         meta: {
           label: "企业治理",
-          title: "企业治理-旭辉晨曦",
-        },
+          title: "企业治理-旭辉晨曦"
+        }
       },
       {
         path: "InvestmentStrategy",
@@ -74,8 +74,8 @@ const mainroutes = [
         component: _import("about/InvestmentStrategy"),
         meta: {
           label: "业务介绍",
-          title: "业务介绍-旭辉晨曦",
-        },
+          title: "业务介绍-旭辉晨曦"
+        }
       },
       {
         path: "CooperationPartners",
@@ -83,14 +83,14 @@ const mainroutes = [
         component: _import("about/CooperationPartners"),
         meta: {
           label: "合作伙伴",
-          title: "合作伙伴-旭辉晨曦",
-        },
-      },
+          title: "合作伙伴-旭辉晨曦"
+        }
+      }
     ],
     meta: {
       label: "关于晨曦",
-      title: "关于晨曦-旭辉晨曦",
-    },
+      title: "关于晨曦-旭辉晨曦"
+    }
   },
   {
     path: "/business",
@@ -103,35 +103,35 @@ const mainroutes = [
         component: _import("business/Index"),
         meta: {
           label: "战略蓝图",
-          title: "战略蓝图-旭辉晨曦",
-        },
+          title: "战略蓝图-旭辉晨曦"
+        }
       },
       {
         path: "SYZG",
         name: "SYZG",
         meta: {
-          label: "术有专攻",
-        },
+          label: "术有专攻"
+        }
       },
       {
         path: "TZJD",
         name: "TZJD",
         meta: {
-          label: "投资经典",
-        },
+          label: "投资经典"
+        }
       },
       {
         path: "SDDC",
         name: "SDDC",
         meta: {
-          label: "深度洞察",
-        },
-      },
+          label: "深度洞察"
+        }
+      }
     ],
     meta: {
       label: "战略蓝图",
-      title: "战略蓝图-旭辉晨曦",
-    },
+      title: "战略蓝图-旭辉晨曦"
+    }
   },
   {
     path: "/news",
@@ -144,8 +144,8 @@ const mainroutes = [
         component: _import("news/Index"),
         meta: {
           label: "晨曦视界",
-          title: "晨曦视界-旭辉晨曦",
-        },
+          title: "晨曦视界-旭辉晨曦"
+        }
       },
       {
         path: ":newsID",
@@ -154,35 +154,35 @@ const mainroutes = [
         meta: {
           label: "晨曦视界",
           title: "晨曦视界-旭辉晨曦",
-          isntShow: true,
-        },
+          isntShow: true
+        }
       },
       {
         path: "CXSJ",
         name: "CXSJ",
         meta: {
-          label: "新闻动态",
-        },
+          label: "新闻动态"
+        }
       },
       {
         path: "QYGG",
         name: "QYGG",
         meta: {
-          label: "团队建设",
-        },
+          label: "团队建设"
+        }
       },
       {
         path: "CEOTALK",
         name: "CEOTALK",
         meta: {
-          label: "CEO TALK",
-        },
-      },
+          label: "CEO TALK"
+        }
+      }
     ],
     meta: {
       label: "晨曦视界",
-      title: "晨曦视界-旭辉晨曦",
-    },
+      title: "晨曦视界-旭辉晨曦"
+    }
   },
   // {
   //   path: "/relation",
@@ -236,33 +236,33 @@ const mainroutes = [
         component: _import("service/Index"),
         meta: {
           label: "联系我们",
-          title: "联系我们-旭辉晨曦",
-        },
+          title: "联系我们-旭辉晨曦"
+        }
       },
       {
         path: "SHZP",
         name: "SHZP",
         meta: {
-          label: "加入我们",
-        },
+          label: "加入我们"
+        }
       },
       {
         path: "LXWM",
         name: "LXWM",
         meta: {
-          label: "合作洽谈",
-        },
-      },
+          label: "合作洽谈"
+        }
+      }
     ],
     meta: {
       label: "联系我们",
-      title: "联系我们-旭辉晨曦",
-    },
-  },
+      title: "联系我们-旭辉晨曦"
+    }
+  }
 ];
 const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
-  return routerPush.call(this, location).catch((error) => error);
+  return routerPush.call(this, location).catch(error => error);
 };
 const router = new VueRouter({
   mode: "hash",
@@ -273,14 +273,14 @@ const router = new VueRouter({
   scrollBehavior() {
     // to, from, savedPosition
     return { x: 0, y: 0 };
-  },
+  }
 });
 
 router.beforeEach((to, from, next) => {
   // if (!(to.path === "/business" && from.path === "/home")) {
   //   sessionStorage.clear();
   // }
-  if (from.path === "/") {
+  if (from.path === "/" || to.path === "/home") {
     sessionStorage.clear();
   }
   if (router.options.isCreateMenu) {

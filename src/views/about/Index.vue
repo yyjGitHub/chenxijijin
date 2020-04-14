@@ -47,10 +47,10 @@
             <div>
               <div
                 class="more_hover big left"
-                @click="toPage('/about/CorporateVision/QYWH')"
+                @click="toPage('/about/CorporateVision/GLTD')"
               >
                 <div class="YJ"></div>
-                <span class="title">企业文化</span>
+                <span class="title">管理团队</span>
               </div>
               <img
                 v-for="(item, index) in part_2List"
@@ -59,9 +59,12 @@
                 alt=""
                 srcset=""
               />
-              <div class="more_hover big right" @click="toQYRY">
+              <div
+                class="more_hover big right"
+                @click="toPage('/about/CorporateVision/QYWH')"
+              >
                 <div class="RY"></div>
-                <span class="title">企业荣誉</span>
+                <span class="title">企业文化</span>
               </div>
             </div>
           </div>
@@ -353,7 +356,7 @@ export default {
         & > img {
           display: block;
           width: px(720);
-          height: px(560);
+          height: px(477);
         }
         & > div {
           flex: 1;
@@ -363,7 +366,7 @@ export default {
           & > * {
             display: block;
             width: px(280);
-            height: px(280);
+            height: px(238);
           }
           & > div {
             cursor: pointer;
