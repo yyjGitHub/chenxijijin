@@ -168,7 +168,7 @@ export default {
       this.$nextTick(() => {
         let t_a = $(`#${sessionStorage.getItem("aaa")}`).offset();
         $("html,body").animate(
-          { scrollTop: t_a.top - 225 * this.fzz + "px" },
+          { scrollTop: t_a.top - 170 * this.fzz + "px" },
           500
         );
       });

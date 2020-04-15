@@ -337,7 +337,15 @@
               <div class="_left">
                 <img
                   class="topic_img"
-                  :src="`${$basePicUrl}${XWZX_List[subActiveIndex + 1].logo}`"
+                  :src="
+                    `${$basePicUrl}${
+                      XWZX_List[
+                        subActiveIndex + 1 === XWZX_List.length
+                          ? 0
+                          : subActiveIndex + 1
+                      ].logo
+                    }`
+                  "
                   alt=""
                   srcset=""
                 />
@@ -345,60 +353,91 @@
                   class="topic_title"
                   @click="
                     toNewItem(
-                      XWZX_List[subActiveIndex + 1].url,
-                      XWZX_List[subActiveIndex + 1].id
+                      XWZX_List[
+                        subActiveIndex + 1 === XWZX_List.length
+                          ? 0
+                          : subActiveIndex + 1
+                      ].url,
+                      XWZX_List[
+                        subActiveIndex + 1 === XWZX_List.length
+                          ? 0
+                          : subActiveIndex + 1
+                      ].id
                     )
                   "
                 >
-                  {{ XWZX_List[subActiveIndex + 1].title }}
+                  {{
+                    XWZX_List[
+                      subActiveIndex + 1 === XWZX_List.length
+                        ? 0
+                        : subActiveIndex + 1
+                    ].title
+                  }}
                 </div>
                 <div
                   class="topic_time"
                   @click="
                     toNewItem(
-                      XWZX_List[subActiveIndex + 1].url,
-                      XWZX_List[subActiveIndex + 1].id
+                      XWZX_List[
+                        subActiveIndex + 1 === XWZX_List.length
+                          ? 0
+                          : subActiveIndex + 1
+                      ].url,
+                      XWZX_List[
+                        subActiveIndex + 1 === XWZX_List.length
+                          ? 0
+                          : subActiveIndex + 1
+                      ].id
                     )
                   "
                 >
-                  {{ XWZX_List[subActiveIndex + 1].time.split(" ")[0] }}
+                  {{
+                    XWZX_List[
+                      subActiveIndex + 1 === XWZX_List.length
+                        ? 0
+                        : subActiveIndex + 1
+                    ].time.split(" ")[0]
+                  }}
                 </div>
               </div>
               <div class="_right">
                 <swiper
+                  v-if="XWZX_List.length > 0"
                   class="sub_swiper"
                   ref="subSwiper"
                   :options="subSwiperOption"
                   @slideChangeTransitionStart="subSlideChange"
                 >
                   <swiper-slide
-                    v-for="(item, index) in XWZX_List"
-                    @click.native="toNewItem(item.url, item.id)"
-                    :key="index"
+                    v-for="(item, sindex) in XWZX_List"
+                    @click.native="
+                      toNewItem(XWZX_List[sindex].url, XWZX_List[sindex].id)
+                    "
+                    :key="sindex"
                   >
                     <div>
                       <div class="year">
                         {{
-                          item.time
+                          XWZX_List[sindex].time
                             .split(" ")[0]
                             .substring(0, 10)
                             .replace(/\-/g, "/")
                         }}
                       </div>
                       <div class="_title">
-                        {{ item.title }}
+                        {{ XWZX_List[sindex].title }}
                       </div>
                     </div>
                   </swiper-slide>
                 </swiper>
-                <div @click="subswiperPrev" class="own_swiper_btn_prev">
+                <div class="own_swiper_btn_prev">
                   <img
                     src="~@/assets/image/own_swiper_btn.png"
                     alt=""
                     srcset=""
                   />
                 </div>
-                <div @click="subswiperNext" class="own_swiper_btn_next">
+                <div class="own_swiper_btn_next">
                   <img
                     src="~@/assets/image/own_swiper_btn.png"
                     alt=""
@@ -451,8 +490,14 @@ export default {
       active_slide_to3: false,
       active_slide_index: false,
       subSwiperOption: {
+        init: false,
         direction: "vertical",
-        slidesPerView: 3
+        loop: true,
+        slidesPerView: 3,
+        navigation: {
+          nextEl: ".own_swiper_btn_next",
+          prevEl: ".own_swiper_btn_prev"
+        }
       },
       subActiveIndex: 0,
       fz: 0,
@@ -495,6 +540,20 @@ export default {
       deep: true,
       immediate: true
     }
+  },
+  updated() {
+    let num = 0;
+    let interval = setInterval(() => {
+      num += 1000;
+      if (num < 2000) {
+        return;
+      }
+      this.$nextTick(() => {
+        this.subSwiper.init();
+        clearInterval(interval);
+        num = 0;
+      });
+    }, 1000);
   },
   mounted() {
     this.resetFontsize();
@@ -569,8 +628,7 @@ export default {
             }
           }
           this.XWZX_List = data.data;
-          this.subSwiper.update();
-          this.subSwiper.slideNext();
+          // this.subSwiper.init();
         })
         .catch(() => {});
     },
@@ -633,6 +691,7 @@ export default {
     },
     homeSlideChangeEnd() {},
     subSlideChange() {
+      console.log(this.XWZX_List[this.subSwiper.realIndex]);
       this.subActiveIndex = this.subSwiper.realIndex;
     },
     setActiveSlideIndex() {
@@ -644,6 +703,7 @@ export default {
       }
     },
     subswiperNext() {
+      console.log(1);
       this.subSwiper.slideNext();
     },
     subswiperPrev() {

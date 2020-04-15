@@ -113,7 +113,7 @@ export default {
         num = 0;
         if (t_a.hasOwnProperty("top")) {
           $("html,body").animate(
-            { scrollTop: t_a.top - 225 * fzz + "px" },
+            { scrollTop: t_a.top - 170 * fzz + "px" },
             500
           );
         }

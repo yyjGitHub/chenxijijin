@@ -82,7 +82,7 @@ export default {
             : rootHtml.clientWidth;
         let fzz = (deviceWidth * 100) / 1920 / 100;
         let t_a = $(`#${item.path}`).offset();
-        $("html,body").animate({ scrollTop: t_a.top - 225 * fzz + "px" }, 500);
+        $("html,body").animate({ scrollTop: t_a.top - 170 * fzz + "px" }, 500);
       }
       this.subactive_index = index;
     }

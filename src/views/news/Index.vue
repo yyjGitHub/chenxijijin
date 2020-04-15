@@ -166,7 +166,7 @@ export default {
       this.$nextTick(() => {
         let t_a = $(`#${this.sign}`).offset();
         $("html,body").animate(
-          { scrollTop: t_a.top - 225 * this.fzz + "px" },
+          { scrollTop: t_a.top - 170 * this.fzz + "px" },
           500
         );
       });
