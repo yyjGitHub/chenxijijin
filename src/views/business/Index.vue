@@ -168,7 +168,7 @@ export default {
       this.$nextTick(() => {
         let t_a = $(`#${sessionStorage.getItem("aaa")}`).offset();
         $("html,body").animate(
-          { scrollTop: t_a.top - 110 * this.fzz + "px" },
+          { scrollTop: t_a.top - 160 * this.fzz + "px" },
           500
         );
       });
@@ -320,7 +320,7 @@ export default {
     }
     .part_2 {
       background-color: #f8f8f8;
-      padding-bottom: px(130);
+      padding-bottom: px(68);
       .layout_content_line {
         margin-top: px(50);
         width: px(120);

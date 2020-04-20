@@ -235,10 +235,10 @@ export default {
     ._bottom {
       .part {
         &:first-child {
-          padding-top: px(130);
+          padding-top: px(68);
         }
-        padding-top: px(173);
-        padding-bottom: px(180);
+        padding-top: px(68);
+        padding-bottom: px(68);
         ._c {
           & > * {
             width: 100%;

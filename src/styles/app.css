@@ -208,7 +208,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: px(130);
+  padding-top: px(68);
 }
 
 .layout_content_box .layout_content_innerbox > div ._c > ._top {
@@ -276,7 +276,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: px(130);
+  padding-top: px(68);
 }
 
 .layout_content_box .layout_content_innerbox > ._c > ._top {
