@@ -9,7 +9,7 @@
         v-show="!item.meta.isntShow"
         :class="[
           item.name === 'index' ? 'line' : '',
-          subactive_index === index ? 'active' : ''
+          subactive_index === index ? 'active' : '',
         ]"
       >
         {{ item.meta.label }}
@@ -27,13 +27,13 @@ export default {
     return {
       menu_path: "",
       submenu_list: [],
-      subactive_index: 0
+      subactive_index: 0,
     };
   },
   computed: {
     ...mapGetters({
-      menulist: "menulist"
-    })
+      menulist: "menulist",
+    }),
   },
   mounted() {},
   watch: {
@@ -60,8 +60,8 @@ export default {
         });
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     toPage(path, item, index) {
@@ -75,25 +75,25 @@ export default {
         }
         let rootHtml = document.documentElement;
         let deviceWidth =
-          rootHtml.clientWidth > 1920
-            ? 1920
-            : rootHtml.clientWidth < 1024
-            ? 1024
+          rootHtml.clientWidth > 2304
+            ? 2304
+            : rootHtml.clientWidth < 1228.8
+            ? 1228.8
             : rootHtml.clientWidth;
-        let fzz = (deviceWidth * 100) / 1920 / 100;
+        let fzz = (deviceWidth * 100) / 2304 / 100;
         let t_a = $(`#${item.path}`).offset();
         $("html,body").animate({ scrollTop: t_a.top - 170 * fzz + "px" }, 500);
       }
       this.subactive_index = index;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .submenu_box {
   position: fixed;
-  top: px(168);
+  top: px(114);
   left: 0;
   width: 100%;
   height: px(57);

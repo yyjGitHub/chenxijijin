@@ -166,16 +166,16 @@ export default {
       SHZP_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       HZQT_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       SHZP_List: [],
       get_more: false,
-      active_index: ""
+      active_index: "",
     };
   },
   mounted() {
@@ -209,13 +209,13 @@ export default {
         .post(`${this.$baseUrl}contact`, {
           name: this.name,
           tel: this.contact,
-          content: this.content
+          content: this.content,
         })
         .then(({ data }) => {
           if (data.status === "1") {
             Message({
               message: "添加成功",
-              type: "success"
+              type: "success",
             });
             this.name = "";
             this.contact = "";
@@ -240,8 +240,8 @@ export default {
       } else {
         this.active_index = index;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -414,7 +414,8 @@ export default {
                       line-height: px(45);
                       cursor: pointer;
                       padding: 0 px(15);
-
+                      box-sizing: border-box;
+                      width: 65%;
                       color: #fff;
                       background-color: #599ae5;
                       & > div {

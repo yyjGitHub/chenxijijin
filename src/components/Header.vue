@@ -41,6 +41,7 @@ export default {
     this.resetFontsize();
     window.onresize = () => {
       return (() => {
+        window.location.reload();
         _this.resetFontsize();
       })();
     };
@@ -72,12 +73,12 @@ export default {
     resetFontsize() {
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      this.font_size = (deviceWidth * 100) / 1920;
+      this.font_size = (deviceWidth * 100) / 2304;
     },
   },
   watch: {
@@ -123,8 +124,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: px(74);
-  padding-bottom: px(54);
+  padding-top: px(37);
+  padding-bottom: px(37);
   background-color: #fff;
   position: fixed;
   z-index: 999;

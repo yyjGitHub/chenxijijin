@@ -114,25 +114,25 @@ export default {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       CXSJ_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       QYGG_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       CEOTALK_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       CXSJ_List: [],
       QYGG_List: [],
@@ -144,11 +144,11 @@ export default {
       QYGG_total: 0,
       CEOTALK_total: 0,
       sign: "",
-      fzz: ""
+      fzz: "",
     };
   },
   mounted() {
-    EventBus.$on("aaa", res => {
+    EventBus.$on("aaa", (res) => {
       this.sign = res;
     });
     this.getData();
@@ -156,17 +156,17 @@ export default {
   updated() {
     let rootHtml = document.documentElement;
     let deviceWidth =
-      rootHtml.clientWidth > 1920
-        ? 1920
-        : rootHtml.clientWidth < 1024
-        ? 1024
+      rootHtml.clientWidth > 2304
+        ? 2304
+        : rootHtml.clientWidth < 1228.8
+        ? 1228.8
         : rootHtml.clientWidth;
-    this.fzz = (deviceWidth * 100) / 1920 / 100;
+    this.fzz = (deviceWidth * 100) / 2304 / 100;
     if (this.sign) {
       this.$nextTick(() => {
         let t_a = $(`#${this.sign}`).offset();
         $("html,body").animate(
-          { scrollTop: t_a.top - 170 * this.fzz + "px" },
+          { scrollTop: t_a.top - 110 * this.fzz + "px" },
           500
         );
       });
@@ -238,8 +238,8 @@ export default {
           this.QYGG_total = parseInt(data.count);
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 

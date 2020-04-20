@@ -31,7 +31,7 @@ VueAMap.initAMapApiLoader({
   plugin: ["AMap.Scale"],
   // 默认高德 sdk 版本为 1.4.4
   v: "1.4.4",
-  uiVersion: "1.0.11"
+  uiVersion: "1.0.11",
 });
 
 Vue.config.productionTip = false;
@@ -54,6 +54,7 @@ new Vue({
     this.resetFontsize();
     window.onresize = () => {
       return (() => {
+        window.location.reload();
         _this.resetFontsize();
       })();
     };
@@ -62,12 +63,12 @@ new Vue({
     resetFontsize() {
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      rootHtml.style.fontSize = (deviceWidth * 100) / 1920 + "px";
+      rootHtml.style.fontSize = (deviceWidth * 100) / 2304 + "px";
     },
     IsPC() {
       var userAgentInfo = navigator.userAgent;
@@ -77,7 +78,7 @@ new Vue({
         "SymbianOS",
         "Windows Phone",
         "iPad",
-        "iPod"
+        "iPod",
       ];
       var flag = true;
       for (var v = 0; v < Agents.length; v++) {
@@ -87,7 +88,7 @@ new Vue({
         }
       }
       return flag;
-    }
+    },
   },
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

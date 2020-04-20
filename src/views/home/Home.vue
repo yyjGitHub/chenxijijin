@@ -13,7 +13,7 @@
                 transform: `translateY(-${(parseInt(active_slide_indexnum) -
                   1) *
                   0.36 *
-                  fz}px)`
+                  fz}px)`,
               }"
             >
               <div>{{ active_slide_indexnum }}</div>
@@ -63,7 +63,7 @@
               active_slide_tonext && active_slide_indexnum !== '01'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '01' ? 'fadeInUp' : ''
+              active_slide_indexnum === '01' ? 'fadeInUp' : '',
             ]"
           >
             <div>
@@ -87,7 +87,7 @@
               active_slide_tonext && active_slide_indexnum !== '02'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '02' ? 'fadeInUp' : ''
+              active_slide_indexnum === '02' ? 'fadeInUp' : '',
             ]"
           >
             <div class="left_box">
@@ -167,7 +167,7 @@
               active_slide_tonext && active_slide_indexnum !== '03'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '03' ? 'fadeInUp' : ''
+              active_slide_indexnum === '03' ? 'fadeInUp' : '',
             ]"
           >
             <div class="_top">
@@ -275,7 +275,7 @@
               active_slide_tonext && active_slide_indexnum !== '04'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '04' ? 'fadeInUp' : ''
+              active_slide_indexnum === '04' ? 'fadeInUp' : '',
             ]"
           >
             <div class="_top">
@@ -320,7 +320,7 @@
               active_slide_tonext && active_slide_indexnum !== '05'
                 ? 'fadeOutUp'
                 : '',
-              active_slide_indexnum === '05' ? 'fadeInUp' : ''
+              active_slide_indexnum === '05' ? 'fadeInUp' : '',
             ]"
           >
             <div class="_top">
@@ -466,7 +466,7 @@ export default {
         slidesPerView: 1,
         mousewheel: {
           releaseOnEdges: true,
-          forceToAxis: false
+          forceToAxis: false,
         },
         init: false,
         // loop: true,
@@ -476,13 +476,13 @@ export default {
         effect: "fade",
         width:
           19.2 *
-          ((document.documentElement.clientWidth > 1920
-            ? 1920
-            : document.documentElement.clientWidth < 1366
-            ? 1366
+          ((document.documentElement.clientWidth > 2304
+            ? 2304
+            : document.documentElement.clientWidth < 1639.2
+            ? 1639.2
             : document.documentElement.clientWidth * 100) /
-            1920),
-        height: window.innerHeight
+            2304),
+        height: window.innerHeight,
       },
       isTrans: false,
       active_slide_indexnum: 0,
@@ -496,15 +496,15 @@ export default {
         slidesPerView: 3,
         navigation: {
           nextEl: ".own_swiper_btn_next",
-          prevEl: ".own_swiper_btn_prev"
-        }
+          prevEl: ".own_swiper_btn_prev",
+        },
       },
       subActiveIndex: 0,
       fz: 0,
       QYJJ_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       ZYGLR_List: [],
       YWLY_List: [],
@@ -513,15 +513,15 @@ export default {
           title: "",
           content: "",
           logo: "",
-          time: ""
+          time: "",
         },
         {
           title: "",
           content: "",
           logo: "",
-          time: ""
-        }
-      ]
+          time: "",
+        },
+      ],
     };
   },
   computed: {
@@ -530,7 +530,7 @@ export default {
     },
     subSwiper() {
       return this.$refs.subSwiper.swiper;
-    }
+    },
   },
   watch: {
     active_slide_index: {
@@ -538,8 +538,8 @@ export default {
         EventBus.$emit("sendSlideIndex", newVal);
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   updated() {
     let num = 0;
@@ -639,7 +639,7 @@ export default {
     tobusiness(index) {
       if (index === 0) {
         this.$router.push({
-          path: "/business"
+          path: "/business",
           // params: {
           //   div: "SYZG"
           // }
@@ -649,7 +649,7 @@ export default {
       }
       if (index === 1) {
         this.$router.push({
-          path: "/business"
+          path: "/business",
           // params: {
           //   div: "TZJD"
           // }
@@ -659,7 +659,7 @@ export default {
       }
       if (index === 2) {
         this.$router.push({
-          path: "/business"
+          path: "/business",
           // params: {
           //   div: "SDDC"
           // }
@@ -671,12 +671,12 @@ export default {
     resetFontsize() {
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      this.fz = (deviceWidth * 100) / 1920;
+      this.fz = (deviceWidth * 100) / 2304;
     },
     homeSlideChangeStart() {
       this.active_slide_tonext = true;
@@ -721,9 +721,9 @@ export default {
         return;
       }
       this.$router.push(`/news/${id}`);
-    }
+    },
   },
-  components: { Footer }
+  components: { Footer },
 };
 </script>
 
@@ -789,7 +789,7 @@ export default {
   // position: fixed;
   position: relative;
   // overflow: hidden;
-  margin-top: px(-168);
+  margin-top: px(-114);
   top: 0;
   left: 0;
   z-index: 98;
@@ -1227,7 +1227,7 @@ export default {
                 & > .img_box {
                   display: block;
                   width: px(280);
-                  height: px(168);
+                  height: px(114);
                   overflow: hidden;
                   &:hover {
                     img {

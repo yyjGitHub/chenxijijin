@@ -116,25 +116,25 @@ export default {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       SYZG_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       TZJD_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       SDDC_Info: {
         title: "",
         content: "",
         logo: "",
-        contentext: ""
+        contentext: "",
       },
       SYZG_List: [],
       TZJD_List: [],
@@ -146,11 +146,11 @@ export default {
       TZJD_total: 0,
       SDDC_total: 0,
       sign: "",
-      fzz: ""
+      fzz: "",
     };
   },
   mounted() {
-    EventBus.$on("aaa", res => {
+    EventBus.$on("aaa", (res) => {
       this.sign = res;
     });
     this.getData();
@@ -159,16 +159,16 @@ export default {
     if (sessionStorage.getItem("aaa")) {
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      this.fzz = (deviceWidth * 100) / 1920 / 100;
+      this.fzz = (deviceWidth * 100) / 2304 / 100;
       this.$nextTick(() => {
         let t_a = $(`#${sessionStorage.getItem("aaa")}`).offset();
         $("html,body").animate(
-          { scrollTop: t_a.top - 170 * this.fzz + "px" },
+          { scrollTop: t_a.top - 110 * this.fzz + "px" },
           500
         );
       });
@@ -178,8 +178,8 @@ export default {
     $route: {
       handler() {},
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     getData() {
@@ -246,8 +246,8 @@ export default {
           this.TZJD_total = parseInt(data.count);
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -310,6 +310,9 @@ export default {
             }
             &:nth-child(3n) {
               margin-right: 0;
+            }
+            &:nth-child(calc(n + 1)) {
+              background-color: red;
             }
           }
         }

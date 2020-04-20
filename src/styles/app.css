@@ -204,15 +204,11 @@ p {
   line-height: px(50);
 }
 
-.layout_content_box .layout_content_innerbox > div:first-child ._c {
-  padding-top: px(130);
-}
-
 .layout_content_box .layout_content_innerbox > div ._c {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: px(163);
+  padding-top: px(130);
 }
 
 .layout_content_box .layout_content_innerbox > div ._c > ._top {
@@ -280,10 +276,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: px(163);
-}
-
-.layout_content_box .layout_content_innerbox > ._c:first-child {
   padding-top: px(130);
 }
 
@@ -416,7 +408,7 @@ p {
 }
 
 .sub_routerview {
-  padding-top: px(225);
+  padding-top: px(171);
 }
 
 .sub_routerview.is_home {

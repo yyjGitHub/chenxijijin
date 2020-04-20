@@ -73,34 +73,34 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZLN_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZLN_List: [],
       TZCL_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       TZCL_List: [],
       FXKZ_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       FXKZ_List: [],
       sign: "",
       interval: "",
-      num: 0
+      num: 0,
     };
   },
   watch: {
@@ -113,8 +113,8 @@ export default {
         }
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   updated() {
     let num = 0;
@@ -125,12 +125,12 @@ export default {
       }
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      let fzz = (deviceWidth * 100) / 1920 / 100;
+      let fzz = (deviceWidth * 100) / 2304 / 100;
       this.$nextTick(() => {
         if (!this.sign) {
           clearInterval(interval);
@@ -213,8 +213,8 @@ export default {
           this.FXKZ_List = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

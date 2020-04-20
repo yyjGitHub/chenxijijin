@@ -57,24 +57,24 @@ export default {
       ZZJG_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       ZZJG_List: [],
       GLTD_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       GLTD_List: [],
       QYWH_Info: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       QYWH_List: [],
       fzz: "",
       interval: "",
-      num: 0
+      num: 0,
     };
   },
   mounted() {
@@ -89,12 +89,12 @@ export default {
       }
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      let fzz = (deviceWidth * 100) / 1920 / 100;
+      let fzz = (deviceWidth * 100) / 2304 / 100;
       this.$nextTick(() => {
         if (this.$route.name !== "CorporateVision") {
           clearInterval(interval);
@@ -162,8 +162,8 @@ export default {
           this.QYWH_List = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

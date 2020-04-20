@@ -18,16 +18,17 @@ export default {
   },
   methods: {
     resetFontsize() {
+      // window.location.reload();
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      rootHtml.style.fontSize = (deviceWidth * 100) / 1920 + "px";
-    }
-  }
+      rootHtml.style.fontSize = (deviceWidth * 100) / 2304 + "px";
+    },
+  },
 };
 </script>
 <style lang="scss">

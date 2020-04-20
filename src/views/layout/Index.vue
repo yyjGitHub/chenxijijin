@@ -23,7 +23,7 @@ var mixin = {
   data() {
     return {
       sign_: "",
-      fzz: ""
+      fzz: "",
     };
   },
   watch: {
@@ -36,19 +36,19 @@ var mixin = {
         }
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   updated() {
     this.$nextTick(() => {
       let rootHtml = document.documentElement;
       let deviceWidth =
-        rootHtml.clientWidth > 1920
-          ? 1920
-          : rootHtml.clientWidth < 1024
-          ? 1024
+        rootHtml.clientWidth > 2304
+          ? 2304
+          : rootHtml.clientWidth < 1228.8
+          ? 1228.8
           : rootHtml.clientWidth;
-      this.fzz = (deviceWidth * 100) / 1920 / 100;
+      this.fzz = (deviceWidth * 100) / 2304 / 100;
       setTimeout(() => {
         if (!this.sign_) {
           return;
@@ -61,12 +61,15 @@ var mixin = {
           return;
         }
         $("html,body").animate(
-          { scrollTop: t_a.top - 170 * this.fzz + "px" },
+          {
+            scrollTop:
+              t_a.top - (this.sign_ === "QYRY" ? 280 : 110) * this.fzz + "px",
+          },
           500
         );
       }, 500);
     });
-  }
+  },
 };
 export default {
   mixins: [mixin],
@@ -75,7 +78,7 @@ export default {
     return {
       loading: false,
       isHome: false,
-      active_slide_index: false
+      active_slide_index: false,
     };
   },
   watch: {
@@ -89,16 +92,16 @@ export default {
         }
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   mounted() {
-    EventBus.$on("sendSlideIndex", res => {
+    EventBus.$on("sendSlideIndex", (res) => {
       this.active_slide_index = res;
     });
   },
   methods: {},
-  components: { Header, SubMenu, Footer }
+  components: { Header, SubMenu, Footer },
 };
 </script>
 

@@ -198,16 +198,11 @@ p {
   }
   .layout_content_innerbox {
     & > div {
-      &:first-child {
-        ._c {
-          padding-top: px(130);
-        }
-      }
       ._c {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: px(163);
+        padding-top: px(130);
         & > ._top {
           display: flex;
           flex-direction: column;
@@ -266,13 +261,10 @@ p {
       }
     }
     & > ._c {
-      &:first-child {
-        padding-top: px(130);
-      }
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: px(163);
+      padding-top: px(130);
       & > ._top {
         display: flex;
         flex-direction: column;
@@ -413,7 +405,7 @@ p {
   }
 }
 .sub_routerview {
-  padding-top: px(225);
+  padding-top: px(171);
   &.is_home {
     padding-top: 0;
   }

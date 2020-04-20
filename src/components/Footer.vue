@@ -36,17 +36,17 @@ import $ from "jquery";
 export default {
   data() {
     return {
-      menulist: this.$store.getters.menulist.filter(item => {
+      menulist: this.$store.getters.menulist.filter((item) => {
         return item.name !== "home";
-      })
+      }),
     };
   },
   created() {},
   props: {
     isHome: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     toPage(path, item) {
@@ -57,12 +57,12 @@ export default {
         }
         let rootHtml = document.documentElement;
         let deviceWidth =
-          rootHtml.clientWidth > 1920
-            ? 1920
-            : rootHtml.clientWidth < 1024
-            ? 1024
+          rootHtml.clientWidth > 2304
+            ? 2304
+            : rootHtml.clientWidth < 1228.8
+            ? 1228.8
             : rootHtml.clientWidth;
-        let fzz = (deviceWidth * 100) / 1920 / 100;
+        let fzz = (deviceWidth * 100) / 2304 / 100;
         let t_a = $(`#${item.path}`).offset();
         $("html,body").animate({ scrollTop: t_a.top - 170 * fzz + "px" }, 500);
         return;
@@ -78,15 +78,15 @@ export default {
         sessionStorage.setItem("GG", item.name);
         this.$router.push(path);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 footer {
   background-color: #f8f8f8;
   ._box {
-    width: px(1280);
+    width: px(1580);
     height: px(281);
     margin: 0 auto;
     display: flex;
