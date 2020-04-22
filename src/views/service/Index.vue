@@ -259,7 +259,7 @@ export default {
         width: 100%;
         ._box {
           display: flex;
-          padding-bottom: px(120);
+          padding-bottom: px(68);
           .map_wrapper {
             width: px(838);
             margin-left: px(16);
@@ -311,6 +311,7 @@ export default {
       }
     }
     .part2 {
+      padding-bottom: px(68);
       .layout_content_line {
         margin-top: px(50);
         width: px(120);

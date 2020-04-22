@@ -16,7 +16,7 @@
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <span class="_title">{{ item.title }}</span>
-                <span class="_tiem">{{ item.update_time.split(" ")[0] }}</span>
+                <span class="_tiem">{{ item.date }}</span>
               </div>
             </div>
             <el-pagination
@@ -46,7 +46,7 @@
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_time">
-                    {{ item.entitle }}
+                    {{ item.date }}
                   </span>
                   <span class="_title">
                     {{ item.title }}
@@ -81,7 +81,7 @@
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
-                  <div class="_time">{{ item.entitle }}</div>
+                  <div class="_time">{{ item.date }}</div>
                   <span class="_title">
                     {{ item.title }}
                   </span>
@@ -253,7 +253,7 @@ export default {
         height: 1px;
         background-color: rgba(0, 0, 0, 0);
       }
-      padding-bottom: px(120);
+      padding-bottom: px(68);
       ._bottom {
         width: 100%;
         display: flex;
@@ -313,7 +313,7 @@ export default {
     }
     .part_2 {
       background-color: #f8f8f8;
-      padding-bottom: px(130);
+      padding-bottom: px(68);
       .layout_content_line {
         margin-top: px(50);
         width: px(120);
@@ -387,7 +387,7 @@ export default {
       }
     }
     .part_3 {
-      padding-bottom: px(150);
+      padding-bottom: px(68);
       .layout_content_line {
         margin-top: px(50);
         width: px(120);

@@ -178,7 +178,7 @@ export default {
   .part3 {
     ._bottom {
       position: relative;
-      padding-bottom: px(100);
+      padding-bottom: px(68);
       img {
         display: block;
         width: px(1773);
@@ -190,7 +190,7 @@ export default {
   }
   .part2 {
     background-color: #f8f8f8;
-    padding-bottom: px(168);
+    padding-bottom: px(68);
     ._bottom {
       & > div {
         width: px(1280);

@@ -16,7 +16,7 @@
               >
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div class="_title">{{ item.title }}</div>
-                <span class="_tiem">{{ item.time.split(" ")[0] }}</span>
+                <span class="_tiem">{{ item.date }}</span>
               </div>
             </div>
             <el-pagination
@@ -46,7 +46,7 @@
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <span class="_time">
-                    {{ item.entitle }}
+                    {{ item.date }}
                   </span>
                   <div class="_title">
                     {{ item.title }}
@@ -82,7 +82,7 @@
                 <img :src="`${$basePicUrl}${item.logo}`" alt="" srcset="" />
                 <div>
                   <div class="_time">
-                    {{ item.entitle }}
+                    {{ item.date }}
                   </div>
                   <div class="_title">
                     {{ item.title }}
@@ -261,7 +261,7 @@ export default {
         height: 1px;
         background-color: rgba(0, 0, 0, 0);
       }
-      padding-bottom: px(120);
+      padding-bottom: px(68);
       ._bottom {
         width: 100%;
         display: flex;
@@ -395,7 +395,7 @@ export default {
       }
     }
     .part_3 {
-      padding-bottom: px(150);
+      padding-bottom: px(68);
       .layout_content_line {
         margin-top: px(50);
         width: px(120);

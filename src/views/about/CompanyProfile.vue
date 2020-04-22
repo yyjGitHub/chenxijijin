@@ -88,7 +88,7 @@ export default {
       }
     }
     ._bottom {
-      padding-bottom: px(120);
+      padding-bottom: px(68);
       display: flex;
       align-items: center;
       justify-content: space-between;

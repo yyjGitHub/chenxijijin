@@ -23,14 +23,14 @@ export default {
       topInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
       pageInfo: {
         title: "",
         content: "",
-        logo: ""
+        logo: "",
       },
-      pageList: []
+      pageList: [],
     };
   },
   mounted() {
@@ -56,8 +56,8 @@ export default {
           this.pageList = data.data;
         })
         .catch(() => {});
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -71,7 +71,7 @@ export default {
   .layout_content_innerbox {
     ._bottom {
       width: 100%;
-      padding-bottom: px(96);
+      padding-bottom: px(68);
       display: flex;
       flex-wrap: wrap;
       & > div {
