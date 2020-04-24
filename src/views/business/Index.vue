@@ -58,7 +58,7 @@
             <el-pagination
               background
               layout="prev, pager, next"
-              :page-size="6"
+              :page-size="2"
               @current-change="TZJD_change"
               :total="TZJD_total"
             >
@@ -94,7 +94,7 @@
             <el-pagination
               background
               layout="prev, pager, next"
-              :page-size="6"
+              :page-size="2"
               @current-change="SDDC_change"
               :total="SDDC_total"
             >
@@ -211,7 +211,7 @@ export default {
       this.SDDC_p = p;
       // SDDC
       this.axios
-        .get(`${this.$baseUrl}contentext/id/11/p/${this.SDDC_p}/count/6`)
+        .get(`${this.$baseUrl}contentext/id/11/p/${this.SDDC_p}/count/2`)
         .then(({ data }) => {
           this.SDDC_List = data.data;
           this.SDDC_total = parseInt(data.count);
@@ -240,8 +240,9 @@ export default {
       this.TZJD_p = p;
       // 企业公告
       this.axios
-        .get(`${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/6`)
+        .get(`${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/2`)
         .then(({ data }) => {
+          console.log(data.count);
           this.TZJD_List = data.data;
           this.TZJD_total = parseInt(data.count);
         })
@@ -298,6 +299,7 @@ export default {
               overflow: hidden;
               margin-bottom: px(20);
               transition: all ease-in-out 0.3s;
+              height: px(65);
             }
             ._tiem {
               height: px(24);
@@ -352,7 +354,7 @@ export default {
             }
             & > div {
               ._title {
-                width: px(466);
+                width: px(666);
                 font-size: px(34);
                 color: rgba(0, 0, 0, 1);
                 line-height: px(40);
@@ -443,7 +445,6 @@ export default {
                 margin-bottom: px(20);
               }
               ._title {
-                width: px(466);
                 height: px(81);
                 font-size: px(34);
                 color: #313131;

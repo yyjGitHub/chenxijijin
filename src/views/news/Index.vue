@@ -58,7 +58,7 @@
             <el-pagination
               background
               layout="prev, pager, next"
-              :page-size="6"
+              :page-size="2"
               @current-change="QYGG_change"
               :total="QYGG_total"
             >
@@ -92,7 +92,7 @@
             <el-pagination
               background
               layout="prev, pager, next"
-              :page-size="6"
+              :page-size="2"
               @current-change="CEOTALK_change"
               :total="CEOTALK_total"
             >
@@ -208,7 +208,7 @@ export default {
       this.CEOTALK_p = p;
       // CEOTALK
       this.axios
-        .get(`${this.$baseUrl}contentext/id/14/p/${this.CEOTALK_p}/count/6`)
+        .get(`${this.$baseUrl}contentext/id/14/p/${this.CEOTALK_p}/count/2`)
         .then(({ data }) => {
           this.CEOTALK_List = data.data;
           this.CEOTALK_total = parseInt(data.count);
@@ -232,7 +232,7 @@ export default {
       this.QYGG_p = p;
       // 企业公告
       this.axios
-        .get(`${this.$baseUrl}contentext/id/13/p/${this.QYGG_p}/count/6`)
+        .get(`${this.$baseUrl}contentext/id/13/p/${this.QYGG_p}/count/2`)
         .then(({ data }) => {
           this.QYGG_List = data.data;
           this.QYGG_total = parseInt(data.count);
@@ -291,6 +291,7 @@ export default {
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
                 overflow: hidden;
+                height: px(65);
                 margin-bottom: px(20);
                 transition: all ease-in-out 0.3s;
               }
@@ -358,7 +359,7 @@ export default {
                   margin-bottom: px(20);
                 }
                 &._title {
-                  width: px(466);
+                  width: px(666);
                   font-size: px(34);
                   color: rgba(0, 0, 0, 1);
                   line-height: px(40);
@@ -435,7 +436,6 @@ export default {
                 margin-bottom: px(20);
               }
               ._title {
-                width: px(466);
                 min-height: px(81);
                 font-size: px(34);
                 color: #313131;

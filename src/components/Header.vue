@@ -1,6 +1,7 @@
 <template>
   <header :class="[isHome ? 'is_home' : '']">
     <img
+      @click="toHome"
       class="logo"
       :src="require('@/assets/image/logo.png')"
       alt=""
@@ -65,6 +66,9 @@ export default {
     },
   },
   methods: {
+    toHome() {
+      this.$router.push("/home");
+    },
     toPage(item) {
       // this.active_index = index;
       sessionStorage.clear();
@@ -143,6 +147,7 @@ header {
     width: px(235);
     height: px(40);
     display: block;
+    cursor: pointer;
   }
   .menu_list {
     display: flex;

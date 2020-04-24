@@ -430,14 +430,14 @@
                     </div>
                   </swiper-slide>
                 </swiper>
-                <div class="own_swiper_btn_prev">
+                <div class="own_swiper_btn_prev" @click="subswiperPrev">
                   <img
                     src="~@/assets/image/own_swiper_btn.png"
                     alt=""
                     srcset=""
                   />
                 </div>
-                <div class="own_swiper_btn_next">
+                <div class="own_swiper_btn_next" @click="subswiperNext">
                   <img
                     src="~@/assets/image/own_swiper_btn.png"
                     alt=""
@@ -494,10 +494,11 @@ export default {
         direction: "vertical",
         loop: true,
         slidesPerView: 3,
-        navigation: {
-          nextEl: ".own_swiper_btn_next",
-          prevEl: ".own_swiper_btn_prev",
-        },
+        centeredSlides: true,
+        // navigation: {
+        //   nextEl: ".own_swiper_btn_next",
+        //   prevEl: ".own_swiper_btn_prev",
+        // },
       },
       subActiveIndex: 0,
       fz: 0,
@@ -703,7 +704,6 @@ export default {
       }
     },
     subswiperNext() {
-      console.log(1);
       this.subSwiper.slideNext();
     },
     subswiperPrev() {
@@ -1708,8 +1708,7 @@ export default {
                           margin-top: px(1);
                         }
                       }
-                      &.swiper-slide-next {
-                        // &.swiper-slide-active {
+                      &.swiper-slide-active {
                         ._title {
                           color: #5b9be4;
                         }
