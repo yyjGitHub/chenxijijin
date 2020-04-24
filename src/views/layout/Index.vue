@@ -63,7 +63,7 @@ var mixin = {
         $("html,body").animate(
           {
             scrollTop:
-              t_a.top - (this.sign_ === "QYRY" ? 280 : 160) * this.fzz + "px",
+              t_a.top - (this.sign_ === "QYRY" ? 220 : 160) * this.fzz + "px",
           },
           500
         );

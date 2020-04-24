@@ -208,7 +208,9 @@ export default {
       this.CEOTALK_p = p;
       // CEOTALK
       this.axios
-        .get(`${this.$baseUrl}contentext/id/14/p/${this.CEOTALK_p}/count/2`)
+        .get(
+          `${this.$baseUrl}contentext/id/14/p/${this.CEOTALK_p}/count/2/sortTime/desc`
+        )
         .then(({ data }) => {
           this.CEOTALK_List = data.data;
           this.CEOTALK_total = parseInt(data.count);
@@ -232,7 +234,9 @@ export default {
       this.QYGG_p = p;
       // 企业公告
       this.axios
-        .get(`${this.$baseUrl}contentext/id/13/p/${this.QYGG_p}/count/2`)
+        .get(
+          `${this.$baseUrl}contentext/id/13/p/${this.QYGG_p}/count/2/sortTime/desc`
+        )
         .then(({ data }) => {
           this.QYGG_List = data.data;
           this.QYGG_total = parseInt(data.count);

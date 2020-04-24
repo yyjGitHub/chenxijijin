@@ -14,7 +14,7 @@
                 <span>工作地点</span>
                 <span>职位部门</span>
                 <span>发布时间</span>
-                <span>申请职位</span>
+                <span>查看详情</span>
               </div>
               <div class="_bottom">
                 <div

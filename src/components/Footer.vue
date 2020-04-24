@@ -23,7 +23,7 @@
           <div class="_company">
             Copyright©️ 上海晨曦股权投资基金管理有限公司
           </div>
-          <div class="_beian">备案号：泸ICP18001865号</div>
+          <div class="_beian">备案号：沪ICP18001865号</div>
         </div>
         <img src="~@/assets/image/company_qrcode.png" alt="" srcset="" />
       </div>

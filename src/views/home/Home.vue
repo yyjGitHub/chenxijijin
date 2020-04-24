@@ -75,7 +75,7 @@
           </div>
           <img
             class="home_bg"
-            src="~@/assets/image/home_1st_slide_bg.png"
+            src="~@/assets/image/home_1st_slide_bg.jpg"
             alt=""
             srcset=""
           />
@@ -396,7 +396,7 @@
                       subActiveIndex + 1 === XWZX_List.length
                         ? 0
                         : subActiveIndex + 1
-                    ].time.split(" ")[0]
+                    ].date
                   }}
                 </div>
               </div>
@@ -417,12 +417,7 @@
                   >
                     <div>
                       <div class="year">
-                        {{
-                          XWZX_List[sindex].time
-                            .split(" ")[0]
-                            .substring(0, 10)
-                            .replace(/\-/g, "/")
-                        }}
+                        {{ XWZX_List[sindex].date }}
                       </div>
                       <div class="_title">
                         {{ XWZX_List[sindex].title }}

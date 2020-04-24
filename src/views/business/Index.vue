@@ -211,7 +211,9 @@ export default {
       this.SDDC_p = p;
       // SDDC
       this.axios
-        .get(`${this.$baseUrl}contentext/id/11/p/${this.SDDC_p}/count/2`)
+        .get(
+          `${this.$baseUrl}contentext/id/11/p/${this.SDDC_p}/count/2/sortTime/desc`
+        )
         .then(({ data }) => {
           this.SDDC_List = data.data;
           this.SDDC_total = parseInt(data.count);
@@ -222,7 +224,9 @@ export default {
       this.SYZG_p = p;
       // 晨曦世界
       this.axios
-        .get(`${this.$baseUrl}contentext/id/9/p/${this.SYZG_p}/count/6`)
+        .get(
+          `${this.$baseUrl}contentext/id/9/p/${this.SYZG_p}/count/6/sortTime/desc`
+        )
         .then(({ data }) => {
           this.SYZG_List = data.data;
           this.SYZG_total = parseInt(data.count);
@@ -240,7 +244,9 @@ export default {
       this.TZJD_p = p;
       // 企业公告
       this.axios
-        .get(`${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/2`)
+        .get(
+          `${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/2/sortTime/desc`
+        )
         .then(({ data }) => {
           console.log(data.count);
           this.TZJD_List = data.data;
