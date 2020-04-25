@@ -1218,7 +1218,6 @@ export default {
                 & > .img_box {
                   display: block;
                   width: px(280);
-                  height: px(114);
                   overflow: hidden;
                   &:hover {
                     img {

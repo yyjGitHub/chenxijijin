@@ -100,8 +100,8 @@ export default {
                 if (!elementj.hasClass("active")) {
                   left += elementj.width() + this.font_size * 0.46;
                 } else {
-                  this.trans_width = elementj.width() + 16 + "px";
-                  this.trans_left = left - 6 + "px";
+                  this.trans_width = elementj.width() + 8 + "px";
+                  this.trans_left = left - 3 + "px";
                   break;
                 }
               }
