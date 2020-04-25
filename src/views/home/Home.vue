@@ -544,11 +544,11 @@ export default {
       if (num < 2000) {
         return;
       }
-      this.$nextTick(() => {
-        this.subSwiper.init();
-        clearInterval(interval);
-        num = 0;
-      });
+      // this.$nextTick(() => {
+      clearInterval(interval);
+      num = 0;
+      this.subSwiper.init();
+      // });
     }, 1000);
   },
   mounted() {
@@ -640,8 +640,7 @@ export default {
           //   div: "SYZG"
           // }
         });
-        sessionStorage.setItem("aaa", "SYZG");
-        EventBus.$emit("aaa", "SYZG");
+        sessionStorage.setItem("GG", "SYZG");
       }
       if (index === 1) {
         this.$router.push({
@@ -650,8 +649,7 @@ export default {
           //   div: "TZJD"
           // }
         });
-        sessionStorage.setItem("aaa", "TZJD");
-        EventBus.$emit("aaa", "TZJD");
+        sessionStorage.setItem("GG", "TZJD");
       }
       if (index === 2) {
         this.$router.push({
@@ -660,8 +658,7 @@ export default {
           //   div: "SDDC"
           // }
         });
-        sessionStorage.setItem("aaa", "SDDC");
-        EventBus.$emit("aaa", "SDDC");
+        sessionStorage.setItem("GG", "SDDC");
       }
     },
     resetFontsize() {
@@ -687,7 +684,6 @@ export default {
     },
     homeSlideChangeEnd() {},
     subSlideChange() {
-      console.log(this.XWZX_List[this.subSwiper.realIndex]);
       this.subActiveIndex = this.subSwiper.realIndex;
     },
     setActiveSlideIndex() {

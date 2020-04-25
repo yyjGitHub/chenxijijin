@@ -51,7 +51,7 @@ export default {
         })
         .catch(() => {});
       this.axios
-        .get(`${this.$baseUrl}contentext/id/7`)
+        .get(`${this.$baseUrl}contentext/id/7/sortTime/desc`)
         .then(({ data }) => {
           this.pageList = data.data;
         })

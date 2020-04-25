@@ -150,29 +150,7 @@ export default {
     };
   },
   mounted() {
-    EventBus.$on("aaa", (res) => {
-      this.sign = res;
-    });
     this.getData();
-  },
-  updated() {
-    if (sessionStorage.getItem("aaa")) {
-      let rootHtml = document.documentElement;
-      let deviceWidth =
-        rootHtml.clientWidth > 2304
-          ? 2304
-          : rootHtml.clientWidth < 1228.8
-          ? 1228.8
-          : rootHtml.clientWidth;
-      this.fzz = (deviceWidth * 100) / 2304 / 100;
-      this.$nextTick(() => {
-        let t_a = $(`#${sessionStorage.getItem("aaa")}`).offset();
-        $("html,body").animate(
-          { scrollTop: t_a.top - 160 * this.fzz + "px" },
-          500
-        );
-      });
-    }
   },
   watch: {
     $route: {
@@ -248,7 +226,6 @@ export default {
           `${this.$baseUrl}contentext/id/10/p/${this.TZJD_p}/count/2/sortTime/desc`
         )
         .then(({ data }) => {
-          console.log(data.count);
           this.TZJD_List = data.data;
           this.TZJD_total = parseInt(data.count);
         })
