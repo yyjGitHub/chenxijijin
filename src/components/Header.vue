@@ -1,26 +1,20 @@
 <template>
   <header :class="[isHome ? 'is_home' : '']">
-    <img
-      @click="toHome"
-      class="logo"
-      :src="require('@/assets/image/logo.png')"
-      alt=""
-      srcset=""
-    />
+    <img @click="toHome"
+         class="logo"
+         :src="require('@/assets/image/logo.png')"
+         alt=""
+         srcset="" />
     <div class="menu_list tran-3s">
-      <div
-        class="_item tran-3s"
-        :class="[index === active_index ? 'active' : '']"
-        v-for="(item, index) in menulist"
-        :key="index"
-        @click="toPage(item, index)"
-      >
+      <div class="_item tran-3s"
+           :class="[index === active_index ? 'active' : '']"
+           v-for="(item, index) in menulist"
+           :key="index"
+           @click="toPage(item, index)">
         {{ item.meta.label }}
       </div>
-      <div
-        class="trans_item"
-        :style="{ width: trans_width, left: trans_left }"
-      ></div>
+      <div class="trans_item"
+           :style="{ width: trans_width, left: trans_left }"></div>
     </div>
   </header>
 </template>
@@ -29,7 +23,7 @@
 import $ from "jquery";
 import { mapGetters } from "vuex";
 export default {
-  data() {
+  data () {
     return {
       active_index: 0,
       trans_left: "-8px",
@@ -37,7 +31,7 @@ export default {
       font_size: 0,
     };
   },
-  mounted() {
+  mounted () {
     let _this = this;
     this.resetFontsize();
     window.onresize = () => {
@@ -66,28 +60,28 @@ export default {
     },
   },
   methods: {
-    toHome() {
+    toHome () {
       this.$router.push("/home");
     },
-    toPage(item) {
+    toPage (item) {
       // this.active_index = index;
       sessionStorage.clear();
       this.$router.push(item.path);
     },
-    resetFontsize() {
+    resetFontsize () {
       let rootHtml = document.documentElement;
       let deviceWidth =
         rootHtml.clientWidth > 2304
           ? 2304
           : rootHtml.clientWidth < 1228.8
-          ? 1228.8
-          : rootHtml.clientWidth;
+            ? 1228.8
+            : rootHtml.clientWidth;
       this.font_size = (deviceWidth * 100) / 2304;
     },
   },
   watch: {
     $route: {
-      handler(newVal) {
+      handler (newVal) {
         for (let i = 0; i < this.menulist.length; i++) {
           const element = this.menulist[i];
           if (newVal.path.includes(element.path)) {
@@ -100,8 +94,8 @@ export default {
                 if (!elementj.hasClass("active")) {
                   left += elementj.width() + this.font_size * 0.46;
                 } else {
-                  this.trans_width = elementj.width() + 8 + "px";
-                  this.trans_left = left - 3 + "px";
+                  this.trans_width = elementj.width() + 0 + "px";
+                  this.trans_left = left - 0 + "px";
                   break;
                 }
               }
